@@ -201,6 +201,7 @@ select_workload()
 
 	OUTPUTDIR_DEV_ITER=$1
 	num_threads=$2
+	echo 0 > /proc/sys/kernel/randomize_va_space
 
 	case $BENCHMARK in
 		"filebench-varmail")
