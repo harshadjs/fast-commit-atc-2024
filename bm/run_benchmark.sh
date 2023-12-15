@@ -36,6 +36,10 @@ pre_run_workload()
 	num_threads=$2
 
 	# Format and Mount
+	if [ "$NFS_SERVER" == "1" ]; then
+		service nfs-kernel-server stop
+		umount $MNT
+	fi
 
 	if [ "${NFS_CLIENT}" == "1" ]; then
 		echo "This is a NFS Client, using $dev IP address"
