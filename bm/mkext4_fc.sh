@@ -2,8 +2,7 @@
 
 dev=$1
 MNT=$2
-#MKE2FS=benchmark/e2fsprogs/build/sbin/mkfs.ext4
-MKE2FS=mkfs.ext4
+JOURNAL_DEV=$3
 
 if [ "${dev}" = "ramdisk" ]
 then
@@ -17,18 +16,14 @@ else
 	umount ${dev} > /dev/null
 	umount ${MNT} > /dev/null
 
-#Journal on
-        ${MKE2FS} -F -O fast_commit -E lazy_journal_init=0,lazy_itable_init=0 -J fast_commit_size=256 ${dev} > /dev/null
-
-#Journal off
-#       mkfs.ext4 -O ^has_journal -F -E lazy_journal_init=0,lazy_itable_init=0 ${dev}
-
-#Checksum off
-        #mkfs.ext4 -O ^metadata_csum -F -E lazy_journal_init=0,lazy_itable_init=0 ${dev}
-
+	JOURNAL_DEV_FLAGS=""
+	if [ "$JOURNAL_DEV" != "" ]; then
+	        mkfs.ext4 -F -O journal_dev -b 4096 $JOURNAL_DEV 262144
+		JOURNAL_DEV_FLAGS="-J device=$JOURNAL_DEV"
+	fi
+        mkfs.ext4 -F -O fast_commit -E lazy_journal_init=0,lazy_itable_init=0 ${JOURNAL_DEV_FLAGS} -J fast_commit_size=256 ${dev} > /dev/null
 
 	mount -t ext4 ${dev} ${MNT} > /dev/null
-	#mount -t ext4 -o nobarrier $1 $2 > /dev/null
 	sync
 fi
 

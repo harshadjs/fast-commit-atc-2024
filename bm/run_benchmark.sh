@@ -23,7 +23,7 @@ BENCHMARK=$1
 OUTPUTDIR_DEV=$2
 dev=$3
 domain=$4
-
+JOURNAL_DEV=$5
 
 lockstat_on() {
 	echo 1 > /proc/sys/kernel/lock_stat
@@ -46,7 +46,7 @@ pre_run_workload()
 		sudo  mount -t nfs ${dev}:/export $MNT
 	elif [ ${FAST_COMMIT} == "1" ];then
 		echo "Fast Commit is enabled!"
-		sudo bash mkext4_fc.sh $dev $MNT
+		sudo bash mkext4_fc.sh $dev $MNT $JOURNAL_DEV
 	elif [ ${SPANFS} == "1" ]; then
 		echo "SpanFS Mode!"
 		sudo bash mkspanfs.sh $dev $MNT $domain
@@ -54,7 +54,7 @@ pre_run_workload()
 		echo "Asynchronous Commit with Checksum!"
 		sudo bash mkext4_nobarrier.sh $dev $MNT
 	else
-		sudo bash mkext4.sh $dev $MNT
+		sudo bash mkext4.sh $dev $MNT $JOURNAL_DEV
 	fi
 	#sudo bash mkbtrfs.sh $dev $MNT
 
@@ -95,8 +95,13 @@ debug()
 	#cat /proc/fs/jbd2/${dev:5}-8/pcl \
 	#	> ${OUTPUTDIR_DEV_PSP_ITER}/pcl_${num_threads}.dat;
 	iostat > ${OUTPUTDIR_DEV_ITER}/iostat_after_${num_threads}.dat;
-	cat /proc/fs/jbd2/${dev:5}-8/info \
-		> ${OUTPUTDIR_DEV_ITER}/info_${num_threads}.dat;
+	if [ "$JOURNAL_DEV" == "" ]; then
+		cat /proc/fs/jbd2/${dev:5}-8/info \
+			> ${OUTPUTDIR_DEV_ITER}/info_${num_threads}.dat;
+	else
+		cat /proc/fs/jbd2/${JOURNAL_DEV:5}-8/info \
+			> ${OUTPUTDIR_DEV_ITER}/info_${num_threads}.dat;
+	fi
 	if [ ${FAST_COMMIT} == 1 ];then
 		cat /proc/fs/ext4/${dev:5}/fc_info \
 			> ${OUTPUTDIR_DEV_ITER}/fc_info_${num_threads}.dat;
@@ -460,7 +465,7 @@ run_bench()
 	COUNT=1
 	while [ ${COUNT} -le ${ITER} ]
 	do
-		OUTPUTDIR_DEV_ITER=${OUTPUTDIR_DEV}/"ex-${COUNT}"
+		OUTPUTDIR_DEV_ITER=${OUTPUTDIR_DEV}/$UNIQUE_ID.$BENCHMARK/iteration-${COUNT}
 
 		# Create Directory for Iteration
 		mkdir -p ${OUTPUTDIR_DEV_ITER}
@@ -537,4 +542,5 @@ run_bench()
 	}' ${OUTPUTDIR_DEV}/summary_total >> ${OUTPUTDIR_DEV}/summary_avg
 }
 
+UNIQUE_ID=$(date +%s)
 run_bench

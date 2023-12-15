@@ -2,6 +2,7 @@
 
 dev=$1
 MNT=$2
+JOURNAL_DEV=$3
 
 if [ "${dev}" = "ramdisk" ]
 then
@@ -15,19 +16,14 @@ else
 	umount ${dev} > /dev/null
 	umount ${MNT} > /dev/null
 
-#Journal on
-        mkfs.ext4 -F -O journal_dev -b 4096 /dev/nvme0n3 262144
-        mkfs.ext4 -J device=/dev/nvme0n3 -F -E lazy_journal_init=0,lazy_itable_init=0 ${dev} > /dev/null
-
-#Journal off
-#       mkfs.ext4 -O ^has_journal -F -E lazy_journal_init=0,lazy_itable_init=0 ${dev}
-
-#Checksum off
-        #mkfs.ext4 -O ^metadata_csum -F -E lazy_journal_init=0,lazy_itable_init=0 ${dev}
-
+	JOURNAL_DEV_FLAGS=""
+	if [ "$JOURNAL_DEV" != "" ]; then
+	        mkfs.ext4 -F -O journal_dev -b 4096 $JOURNAL_DEV 262144
+		JOURNAL_DEV_FLAGS="-J device=$JOURNAL_DEV"
+	fi
+        mkfs.ext4 $JOURNAL_DEV_FLAGS -F -E lazy_journal_init=0,lazy_itable_init=0 ${dev} > /dev/null
 
 	mount -t ext4 ${dev} ${MNT} > /dev/null
-	#mount -t ext4 -o nobarrier $1 $2 > /dev/null
 	sync
 fi
 
