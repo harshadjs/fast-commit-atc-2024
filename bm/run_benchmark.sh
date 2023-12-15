@@ -19,11 +19,7 @@ ROCKSDB_DIR=benchmark/rocksdb
 DB_BENCH=${ROCKSDB_DIR}/db_bench
 STOP_FILE=stop
 
-BENCHMARK=$1
-OUTPUTDIR_DEV=$2
-dev=$3
-domain=$4
-JOURNAL_DEV=$5
+OUTPUTDIR_DEV=$1
 
 lockstat_on() {
 	echo 1 > /proc/sys/kernel/lock_stat

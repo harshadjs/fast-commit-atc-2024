@@ -6,15 +6,13 @@
 VERSION="$(uname -r| awk -F '-' '{print $1}')"
 EXTRA_VERSION="$(uname -r| awk -F '-' '{print $2}')"
 DEBUG="$(uname -r | awk -F '-' '{print $3}')"
-FAST_COMMIT=1
 NOBARRIER=0
 SPANFS=0
 MEMORY_FOOTPRINT=0
 CPU_USAGE=0
 DEBUG_TX_INTERVAL=0
 DEBUG_FSYNC_LATENCY=0
-NFS_SERVER=0
-NFS_CLIENT=0
+
 
 #BENCHMARK="mobibench"
 BENCHMARKS=(filebench-varmail)
@@ -24,11 +22,6 @@ BENCHMARKS=(filebench-varmail)
 #BENCHMARKS=(sysbench-update sysbench-insert) 
 #BENCHMARKS=(sysbench-insert) 
 
-#	/dev/sde	860PRO
-#	/dev/nvme0n1	Intel 900P
-#	/dev/nvme1n1	970pro
-DEV=(/dev/nvme1n1)
-domain=40
 
 
 #FTRACE_PATH=/sys/kernel/debug/tracing
@@ -40,7 +33,14 @@ NUM_THREADS=(40)
 ITER=1
 MNT=/mnt
 
-
+## Configurables
+BENCHMARK=filebench-varmail
+dev=/dev/nvme0n1
+domain=40
+JOURNAL_DEV=/dev/nvme0n3
+FAST_COMMIT=1
+NFS_SERVER=0
+NFS_CLIENT=0
 
 VERSION_PATH="raw_data"
 if [ "$EXTRA_VERSION" == "CJFS" ] || [ "$EXTRA_VERSION" == "CJFS+" ]; then
