@@ -1,0 +1,134 @@
+From 897e9e3f89fc469919f207c0a8010105c97110b5 Mon Sep 17 00:00:00 2001
+From: Harshad Shirwadkar <harshadshirwadkar@gmail.com>
+Date: Mon, 7 Mar 2022 06:03:14 -0800
+Subject: [PATCH 1/8] ext4: convert i_fc_lock to spinlock
+
+Convert ext4_inode_info->i_fc_lock to spinlock to avoid sleeping
+in invalid contexts.
+
+Signed-off-by: Harshad Shirwadkar <harshadshirwadkar@gmail.com>
+---
+ fs/ext4/ext4.h        |  7 +++++--
+ fs/ext4/fast_commit.c | 22 ++++++++++------------
+ fs/ext4/super.c       |  2 +-
+ 3 files changed, 16 insertions(+), 15 deletions(-)
+
+diff --git a/fs/ext4/ext4.h b/fs/ext4/ext4.h
+index 310e976ef1fd..9655a8f49c3c 100644
+--- a/fs/ext4/ext4.h
++++ b/fs/ext4/ext4.h
+@@ -1067,8 +1067,11 @@ struct ext4_inode_info {
+ 	/* Fast commit wait queue for this inode */
+ 	wait_queue_head_t i_fc_wait;
+ 
+-	/* Protect concurrent accesses on i_fc_lblk_start, i_fc_lblk_len */
+-	struct mutex i_fc_lock;
++	/*
++	 * Protect concurrent accesses on i_fc_lblk_start, i_fc_lblk_len
++	 * and inode's EXT4_FC_STATE_COMMITTING state bit.
++	 */
++	spinlock_t i_fc_lock;
+ 
+ 	/*
+ 	 * i_disksize keeps track of what the inode size is ON DISK, not
+diff --git a/fs/ext4/fast_commit.c b/fs/ext4/fast_commit.c
+index 0349cd96e935..78f7f878f20f 100644
+--- a/fs/ext4/fast_commit.c
++++ b/fs/ext4/fast_commit.c
+@@ -380,7 +380,7 @@ static int ext4_fc_track_template(
+ 	int ret;
+ 
+ 	tid = handle->h_transaction->t_tid;
+-	mutex_lock(&ei->i_fc_lock);
++	spin_lock(&ei->i_fc_lock);
+ 	if (tid == ei->i_sync_tid) {
+ 		update = true;
+ 	} else {
+@@ -388,7 +388,7 @@ static int ext4_fc_track_template(
+ 		ei->i_sync_tid = tid;
+ 	}
+ 	ret = __fc_track_fn(inode, args, update);
+-	mutex_unlock(&ei->i_fc_lock);
++	spin_unlock(&ei->i_fc_lock);
+ 
+ 	if (!enqueue)
+ 		return ret;
+@@ -420,11 +420,11 @@ static int __track_dentry_update(struct inode *inode, void *arg, bool update)
+ 	struct dentry *dentry = dentry_update->dentry;
+ 	struct ext4_sb_info *sbi = EXT4_SB(inode->i_sb);
+ 
+-	mutex_unlock(&ei->i_fc_lock);
++	spin_unlock(&ei->i_fc_lock);
+ 	node = kmem_cache_alloc(ext4_fc_dentry_cachep, GFP_NOFS);
+ 	if (!node) {
+ 		ext4_fc_mark_ineligible(inode->i_sb, EXT4_FC_REASON_NOMEM, NULL);
+-		mutex_lock(&ei->i_fc_lock);
++		spin_lock(&ei->i_fc_lock);
+ 		return -ENOMEM;
+ 	}
+ 
+@@ -437,7 +437,7 @@ static int __track_dentry_update(struct inode *inode, void *arg, bool update)
+ 			kmem_cache_free(ext4_fc_dentry_cachep, node);
+ 			ext4_fc_mark_ineligible(inode->i_sb,
+ 				EXT4_FC_REASON_NOMEM, NULL);
+-			mutex_lock(&ei->i_fc_lock);
++			spin_lock(&ei->i_fc_lock);
+ 			return -ENOMEM;
+ 		}
+ 		memcpy((u8 *)node->fcd_name.name, dentry->d_name.name,
+@@ -471,7 +471,7 @@ static int __track_dentry_update(struct inode *inode, void *arg, bool update)
+ 		list_add_tail(&node->fcd_dilist, &ei->i_fc_dilist);
+ 	}
+ 	spin_unlock(&sbi->s_fc_lock);
+-	mutex_lock(&ei->i_fc_lock);
++	spin_lock(&ei->i_fc_lock);
+ 
+ 	return 0;
+ }
+@@ -611,10 +611,8 @@ static int __track_range(struct inode *inode, void *arg, bool update)
+ 	struct __track_range_args *__arg =
+ 		(struct __track_range_args *)arg;
+ 
+-	if (inode->i_ino < EXT4_FIRST_INO(inode->i_sb)) {
+-		ext4_debug("Special inode %ld being modified\n", inode->i_ino);
++	if (inode->i_ino < EXT4_FIRST_INO(inode->i_sb))
+ 		return -ECANCELED;
+-	}
+ 
+ 	oldstart = ei->i_fc_lblk_start;
+ 
+@@ -906,15 +904,15 @@ static int ext4_fc_write_inode_data(struct inode *inode, u32 *crc)
+ 	struct ext4_extent *ex;
+ 	int ret;
+ 
+-	mutex_lock(&ei->i_fc_lock);
++	spin_lock(&ei->i_fc_lock);
+ 	if (ei->i_fc_lblk_len == 0) {
+-		mutex_unlock(&ei->i_fc_lock);
++		spin_unlock(&ei->i_fc_lock);
+ 		return 0;
+ 	}
+ 	old_blk_size = ei->i_fc_lblk_start;
+ 	new_blk_size = ei->i_fc_lblk_start + ei->i_fc_lblk_len - 1;
+ 	ei->i_fc_lblk_len = 0;
+-	mutex_unlock(&ei->i_fc_lock);
++	spin_unlock(&ei->i_fc_lock);
+ 
+ 	cur_lblk_off = old_blk_size;
+ 	ext4_debug("will try writing %d to %d for inode %ld\n",
+diff --git a/fs/ext4/super.c b/fs/ext4/super.c
+index a6d71a41a0c4..7bdba935418a 100644
+--- a/fs/ext4/super.c
++++ b/fs/ext4/super.c
+@@ -1354,7 +1354,7 @@ static struct inode *ext4_alloc_inode(struct super_block *sb)
+ 	atomic_set(&ei->i_unwritten, 0);
+ 	INIT_WORK(&ei->i_rsv_conversion_work, ext4_end_io_rsv_work);
+ 	ext4_fc_init_inode(&ei->vfs_inode);
+-	mutex_init(&ei->i_fc_lock);
++	spin_lock_init(&ei->i_fc_lock);
+ 	return &ei->vfs_inode;
+ }
+ 
+-- 
+2.43.0.472.g3155946c3a-goog
+

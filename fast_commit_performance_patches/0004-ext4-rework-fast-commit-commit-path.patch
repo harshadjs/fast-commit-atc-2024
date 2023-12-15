@@ -1,0 +1,168 @@
+From 6de209ba485485f50ae547613b0bfad7dea4a081 Mon Sep 17 00:00:00 2001
+From: Harshad Shirwadkar <harshadshirwadkar@gmail.com>
+Date: Mon, 7 Mar 2022 09:03:28 -0800
+Subject: [PATCH 4/8] ext4: rework fast commit commit path
+
+This patch reworks fast commit's commit path to remove locking the
+journal for the entire duration of a fast commit. Instead, we only lock
+the journal while marking all the eligible inodes as "committing". This
+allows handles to make progress in parallel with the fast commit.
+
+Signed-off-by: Harshad Shirwadkar <harshadshirwadkar@gmail.com>
+Reviewed-by: Jan Kara <jack@suse.cz>
+---
+ fs/ext4/fast_commit.c | 71 ++++++++++++++++++++++++++++---------------
+ fs/jbd2/journal.c     |  2 --
+ 2 files changed, 46 insertions(+), 27 deletions(-)
+
+diff --git a/fs/ext4/fast_commit.c b/fs/ext4/fast_commit.c
+index 35e18d7d3196..de17a267cd64 100644
+--- a/fs/ext4/fast_commit.c
++++ b/fs/ext4/fast_commit.c
+@@ -287,20 +287,30 @@ void ext4_fc_del(struct inode *inode)
+ 	    (EXT4_SB(inode->i_sb)->s_mount_state & EXT4_FC_REPLAY))
+ 		return;
+ 
+-restart:
+ 	spin_lock(&EXT4_SB(inode->i_sb)->s_fc_lock);
+ 	if (list_empty(&ei->i_fc_list) && list_empty(&ei->i_fc_dilist)) {
+ 		spin_unlock(&EXT4_SB(inode->i_sb)->s_fc_lock);
+ 		return;
+ 	}
+ 
+-	if (ext4_test_inode_state(inode, EXT4_STATE_FC_COMMITTING)) {
+-		ext4_fc_wait_committing_inode(inode);
+-		goto restart;
+-	}
+-
+-	if (!list_empty(&ei->i_fc_list))
+-		list_del_init(&ei->i_fc_list);
++	/*
++	 * Since ext4_fc_del is called from ext4_evict_inode while having a
++	 * handle open, there is no need for us to wait here even if a fast
++	 * commit is going on. That is because, if this inode is being
++	 * committed, ext4_mark_inode_dirty would have waited for inode commit
++	 * operation to finish before we come here. So, by the time we come
++	 * here, inode's EXT4_STATE_FC_COMMITTING would have been cleared. So,
++	 * we shouldn't see EXT4_STATE_FC_COMMITTING to be set on this inode
++	 * here.
++	 *
++	 * We may come here without any handles open in the "no_delete" case of
++	 * ext4_evict_inode as well. However, if that happens, we first mark the
++	 * file system as fast commit ineligible anyway. So, even in that case,
++	 * it is okay to remove the inode from the fc list.
++	 */
++	WARN_ON(ext4_test_inode_state(inode, EXT4_STATE_FC_COMMITTING)
++		&& !ext4_test_mount_flag(inode->i_sb, EXT4_MF_FC_INELIGIBLE));
++	list_del_init(&ei->i_fc_list);
+ 
+ 	/*
+ 	 * Since this inode is getting removed, let's also remove all FC
+@@ -323,8 +333,6 @@ void ext4_fc_del(struct inode *inode)
+ 		fc_dentry->fcd_name.len > DNAME_INLINE_LEN)
+ 		kfree(fc_dentry->fcd_name.name);
+ 	kmem_cache_free(ext4_fc_dentry_cachep, fc_dentry);
+-
+-	return;
+ }
+ 
+ /*
+@@ -1013,19 +1021,6 @@ static int ext4_fc_submit_inode_data_all(journal_t *journal)
+ 
+ 	spin_lock(&sbi->s_fc_lock);
+ 	list_for_each_entry(ei, &sbi->s_fc_q[FC_Q_MAIN], i_fc_list) {
+-		ext4_set_inode_state(&ei->vfs_inode, EXT4_STATE_FC_COMMITTING);
+-		while (atomic_read(&ei->i_fc_updates)) {
+-			DEFINE_WAIT(wait);
+-
+-			prepare_to_wait(&ei->i_fc_wait, &wait,
+-						TASK_UNINTERRUPTIBLE);
+-			if (atomic_read(&ei->i_fc_updates)) {
+-				spin_unlock(&sbi->s_fc_lock);
+-				schedule();
+-				spin_lock(&sbi->s_fc_lock);
+-			}
+-			finish_wait(&ei->i_fc_wait, &wait);
+-		}
+ 		spin_unlock(&sbi->s_fc_lock);
+ 		ret = jbd2_submit_inode_data(ei->jinode);
+ 		if (ret)
+@@ -1138,6 +1133,16 @@ static int ext4_fc_perform_commit(journal_t *journal)
+ 	int ret = 0;
+ 	u32 crc = 0;
+ 
++	/* Lock the journal */
++	jbd2_journal_lock_updates(journal);
++	spin_lock(&sbi->s_fc_lock);
++	list_for_each_entry(iter, &sbi->s_fc_q[FC_Q_MAIN], i_fc_list) {
++		ext4_set_inode_state(&iter->vfs_inode,
++				     EXT4_STATE_FC_COMMITTING);
++	}
++	spin_unlock(&sbi->s_fc_lock);
++	jbd2_journal_unlock_updates(journal);
++
+ 	ret = ext4_fc_submit_inode_data_all(journal);
+ 	if (ret)
+ 		return ret;
+@@ -1188,6 +1193,18 @@ static int ext4_fc_perform_commit(journal_t *journal)
+ 		ret = ext4_fc_write_inode(inode, &crc);
+ 		if (ret)
+ 			goto out;
++		ext4_clear_inode_state(inode, EXT4_STATE_FC_COMMITTING);
++		/*
++		 * Make sure clearing of EXT4_STATE_FC_COMMITTING is
++		 * visible before we send the wakeup. Pairs with implicit
++		 * barrier in prepare_to_wait() in ext4_fc_track_inode().
++		 */
++		smp_mb();
++#if (BITS_PER_LONG < 64)
++		wake_up_bit(&iter->i_state_flags, EXT4_STATE_FC_COMMITTING);
++#else
++		wake_up_bit(&iter->i_flags, EXT4_STATE_FC_COMMITTING);
++#endif
+ 		spin_lock(&sbi->s_fc_lock);
+ 	}
+ 	spin_unlock(&sbi->s_fc_lock);
+@@ -1325,13 +1342,17 @@ static void ext4_fc_cleanup(journal_t *journal, int full, tid_t tid)
+ 	spin_lock(&sbi->s_fc_lock);
+ 	list_for_each_entry_safe(iter, iter_n, &sbi->s_fc_q[FC_Q_MAIN],
+ 				 i_fc_list) {
+-		list_del_init(&iter->i_fc_list);
+ 		ext4_clear_inode_state(&iter->vfs_inode,
+ 				       EXT4_STATE_FC_COMMITTING);
+ 		if (iter->i_sync_tid <= tid)
+ 			ext4_fc_reset_inode(&iter->vfs_inode);
+-		/* Make sure EXT4_STATE_FC_COMMITTING bit is clear */
++		/*
++		 * Make sure clearing of EXT4_STATE_FC_COMMITTING is
++		 * visible before we send the wakeup. Pairs with implicit
++		 * barrier in prepare_to_wait() in ext4_fc_track_inode().
++		 */
+ 		smp_mb();
++		list_del_init(&iter->i_fc_list);
+ #if (BITS_PER_LONG < 64)
+ 		wake_up_bit(&iter->i_state_flags, EXT4_STATE_FC_COMMITTING);
+ #else
+diff --git a/fs/jbd2/journal.c b/fs/jbd2/journal.c
+index 97e205a0689d..1c83750ab1b5 100644
+--- a/fs/jbd2/journal.c
++++ b/fs/jbd2/journal.c
+@@ -754,7 +754,6 @@ int jbd2_fc_begin_commit(journal_t *journal, tid_t tid)
+ 	}
+ 	journal->j_flags |= JBD2_FAST_COMMIT_ONGOING;
+ 	write_unlock(&journal->j_state_lock);
+-	jbd2_journal_lock_updates(journal);
+ 
+ 	return 0;
+ }
+@@ -766,7 +765,6 @@ EXPORT_SYMBOL(jbd2_fc_begin_commit);
+  */
+ static int __jbd2_fc_end_commit(journal_t *journal, tid_t tid, bool fallback)
+ {
+-	jbd2_journal_unlock_updates(journal);
+ 	if (journal->j_fc_cleanup_callback)
+ 		journal->j_fc_cleanup_callback(journal, 0, tid);
+ 	write_lock(&journal->j_state_lock);
+-- 
+2.43.0.472.g3155946c3a-goog
+

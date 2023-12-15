@@ -1,0 +1,49 @@
+From 953948f2acf6ff89597adcb1e093d423b1e456f1 Mon Sep 17 00:00:00 2001
+From: Harshad Shirwadkar <harshadshirwadkar@gmail.com>
+Date: Thu, 7 Jul 2022 16:34:51 +0000
+Subject: [PATCH 8/8] use extent status tree in commit path
+
+---
+ fs/ext4/extents_status.c | 5 ++++-
+ fs/ext4/fast_commit.c    | 2 +-
+ 2 files changed, 5 insertions(+), 2 deletions(-)
+
+diff --git a/fs/ext4/extents_status.c b/fs/ext4/extents_status.c
+index 9a3a8996aacf..f52dc3265f0f 100644
+--- a/fs/ext4/extents_status.c
++++ b/fs/ext4/extents_status.c
+@@ -1500,6 +1500,8 @@ static int __es_shrink(struct ext4_sb_info *sbi, int nr_to_scan,
+ 			continue;
+ 		}
+ 
++		ext4_fc_commit(sbi->s_journal, ei->i_sync_tid);
++
+ 		if (ei == locked_ei || !write_trylock(&ei->i_es_lock)) {
+ 			nr_skipped++;
+ 			continue;
+@@ -1574,7 +1576,8 @@ static unsigned long ext4_es_scan(struct shrinker *shrink,
+ 	ret = percpu_counter_read_positive(&sbi->s_es_stats.es_stats_shk_cnt);
+ 	trace_ext4_es_shrink_scan_enter(sbi->s_sb, nr_to_scan, ret);
+ 
+-	nr_shrunk = __es_shrink(sbi, nr_to_scan, NULL);
++	//nr_shrunk = __es_shrink(sbi, nr_to_scan, NULL);
++	nr_shrunk = 0;
+ 
+ 	ret = percpu_counter_read_positive(&sbi->s_es_stats.es_stats_shk_cnt);
+ 	trace_ext4_es_shrink_scan_exit(sbi->s_sb, nr_shrunk, ret);
+diff --git a/fs/ext4/fast_commit.c b/fs/ext4/fast_commit.c
+index b71de96e747e..a48fc31c9407 100644
+--- a/fs/ext4/fast_commit.c
++++ b/fs/ext4/fast_commit.c
+@@ -912,7 +912,7 @@ static int ext4_fc_write_inode_data(struct inode *inode, u32 *crc)
+ 	while (cur_lblk_off <= new_blk_size) {
+ 		map.m_lblk = cur_lblk_off;
+ 		map.m_len = new_blk_size - cur_lblk_off + 1;
+-		ret = ext4_map_blocks(NULL, inode, &map, 0);
++		ret = ext4_map_blocks(NULL, inode, &map, EXT4_GET_BLOCKS_CACHED_NOWAIT);
+ 		if (ret < 0)
+ 			return -ECANCELED;
+ 
+-- 
+2.43.0.472.g3155946c3a-goog
+
