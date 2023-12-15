@@ -460,7 +460,7 @@ select_workload()
 			debug ${OUTPUTDIR_DEV_ITER} ${num_threads} ${dev}
 			;;
 		"custom")
-			bash custom_workload.sh $MNT
+			bash custom-workload.sh $MNT
 			debug ${OUTPUTDIR_DEV_ITER} ${num_threads} ${dev} > ${OUTPUTDIR_DEV_ITER}/result
 			;;
 
