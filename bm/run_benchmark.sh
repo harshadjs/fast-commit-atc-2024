@@ -555,6 +555,7 @@ run_bench()
 			printf "%.1f\n", s[k"."NF]/c[k];
 		}
 	}' ${OUTPUTDIR_DEV}/summary_total >> ${OUTPUTDIR_DEV}/summary_avg
+	echo "Find results in: ${OUTPUTDIR_DEV}"
 }
 
 UNIQUE_ID=$(date +%s)
