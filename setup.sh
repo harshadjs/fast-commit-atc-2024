@@ -9,7 +9,7 @@ JOURNAL_DEV=/dev/nvme0n3
 FAST_COMMIT=1
 NFS_SERVER=0
 NFS_CLIENT=0
-""" > ~/fast-commit-override.sh
+BENCHMARK=filebench-varmail""" > ~/fast-commit-override.sh
 cd filebench
 libtoolize
 aclocal
