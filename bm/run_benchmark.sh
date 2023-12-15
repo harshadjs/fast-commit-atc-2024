@@ -17,7 +17,7 @@ YCSB=bin/ycsb
 EXP_DIR=/home/harshads/cjfs/experiment
 ROCKSDB_DIR=benchmark/rocksdb
 DB_BENCH=${ROCKSDB_DIR}/db_bench
-NFS="1"
+STOP_FILE=stop
 
 BENCHMARK=$1
 OUTPUTDIR_DEV=$2
@@ -41,8 +41,8 @@ pre_run_workload()
 
 	# Format and Mount
 
-	if [ "${NFS}" == "1" ]; then
-		echo "NFS is enabled, using $dev IP address"
+	if [ "${NFS_CLIENT}" == "1" ]; then
+		echo "This is a NFS Client, using $dev IP address"
 		sudo  mount -t nfs ${dev}:/export $MNT
 	elif [ ${FAST_COMMIT} == "1" ];then
 		echo "Fast Commit is enabled!"
@@ -58,7 +58,15 @@ pre_run_workload()
 	fi
 	#sudo bash mkbtrfs.sh $dev $MNT
 
-	echo "==== Fotmat complete ===="
+	echo "==== Format complete ===="
+	if [ "$NFS_SERVER" == "1" ]; then
+		echo "This is a NFS Sever, with $num_threads threads."
+		service nfs-kernel-server restart
+		exportfs -a
+		ifconfig
+		/usr/sbin/rpc.nfsd $num_threads
+		export BENCHMARK="noop"
+	fi
 
 	# Initialize Page Conflict List
 	#cat /proc/fs/jbd2/${dev:5}-8/pcl \
@@ -72,9 +80,8 @@ pre_run_workload()
 
 	sync && sh -c 'echo 3 > /proc/sys/vm/drop_caches'
 	dmesg -c > ${OUTPUTDIR_DEV_ITER}/log_${num_threads}.txt
-		
+	iostat > ${OUTPUTDIR_DEV_ITER}/iostat_before_${num_threads}.dat;	
 }
-
 
 
 debug()
@@ -87,6 +94,7 @@ debug()
 	# sort by block number
 	#cat /proc/fs/jbd2/${dev:5}-8/pcl \
 	#	> ${OUTPUTDIR_DEV_PSP_ITER}/pcl_${num_threads}.dat;
+	iostat > ${OUTPUTDIR_DEV_ITER}/iostat_after_${num_threads}.dat;
 	cat /proc/fs/jbd2/${dev:5}-8/info \
 		> ${OUTPUTDIR_DEV_ITER}/info_${num_threads}.dat;
 	if [ ${FAST_COMMIT} == 1 ];then
@@ -189,9 +197,7 @@ select_workload()
 			${FILEBENCH} -f \
 				benchmark/filebench/workloads/varmail_${num_threads}.f \
 				> ${OUTPUTDIR_DEV_ITER}/result_${num_threads}.dat;
-
 			debug ${OUTPUTDIR_DEV_ITER} ${num_threads} ${dev}
-
 			;;
 		"filebench-varmail-split16")
 			${FILEBENCH} -f \
@@ -437,8 +443,16 @@ select_workload()
 				> ${OUTPUTDIR_DEV_ITER}/result_${num_process}.dat
 			debug ${OUTPUTDIR_DEV_ITER} ${num_threads} ${dev}
 			;;
+		"noop")
+			while [ ! -f ${MNT}/${STOP_FILE} ]; do
+				sleep 1
+			done
+			debug ${OUTPUTDIR_DEV_ITER} ${num_threads} ${dev}
+			;;
 	esac
-
+	if [ "$NFS_CLIENT" == "1" ]; then
+		touch ${MNT}/${STOP_FILE}
+	fi
 }
 
 run_bench()

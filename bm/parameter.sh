@@ -13,7 +13,8 @@ MEMORY_FOOTPRINT=0
 CPU_USAGE=0
 DEBUG_TX_INTERVAL=0
 DEBUG_FSYNC_LATENCY=0
-
+NFS_SERVER=0
+NFS_CLIENT=0
 
 #BENCHMARK="mobibench"
 BENCHMARKS=(filebench-varmail)
@@ -32,8 +33,8 @@ domain=40
 
 #FTRACE_PATH=/sys/kernel/debug/tracing
 
-NUM_THREADS=(10 20 30 40)
-#NUM_THREADS=(40)
+#NUM_THREADS=(10 20 30 40)
+NUM_THREADS=(40)
 #NUM_THREADS=(1)
 #NUM_THREADS=(1 2 5 10 20 30 40)
 ITER=1
@@ -59,3 +60,5 @@ else
 fi
 
 echo "$VERSION_PATH"
+
+source ~/fast-commit-override.sh
