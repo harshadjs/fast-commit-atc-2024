@@ -85,6 +85,7 @@ FAST_COMMIT=$FAST_COMMIT
 NFS_SERVER=$NFS_SERVER
 NFS_CLIENT=$NFS_CLIENT
 NUM_THREADS=$NUM_THREADS""" > ${OUTPUTDIR_DEV_ITER}/config
+	cp custom-workload.sh ${OUTPUTDIR_DEV_ITER}
 }
 
 
@@ -458,6 +459,11 @@ select_workload()
 			done
 			debug ${OUTPUTDIR_DEV_ITER} ${num_threads} ${dev}
 			;;
+		"custom")
+			bash custom_workload.sh $MNT
+			debug ${OUTPUTDIR_DEV_ITER} ${num_threads} ${dev} > ${OUTPUTDIR_DEV_ITER}/result
+			;;
+
 	esac
 	if [ "$NFS_CLIENT" == "1" ]; then
 		touch ${MNT}/${STOP_FILE}
