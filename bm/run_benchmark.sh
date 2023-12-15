@@ -95,7 +95,7 @@ debug()
 		cat /proc/fs/jbd2/${dev:5}-8/info \
 			> ${OUTPUTDIR_DEV_ITER}/info_${num_threads}.dat;
 	else
-		cat /proc/fs/jbd2/${JOURNAL_DEV:5}-8/info \
+		cat /proc/fs/jbd2/${JOURNAL_DEV:5}/info \
 			> ${OUTPUTDIR_DEV_ITER}/info_${num_threads}.dat;
 	fi
 	if [ ${FAST_COMMIT} == 1 ];then
