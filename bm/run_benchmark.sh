@@ -56,6 +56,8 @@ pre_run_workload()
 
 	echo "==== Format complete ===="
 	if [ "$NFS_SERVER" == "1" ]; then
+		service nfs-kernel-server stop
+		umount $MNT
 		echo "This is a NFS Sever, with $num_threads threads."
 		service nfs-kernel-server restart
 		exportfs -a
