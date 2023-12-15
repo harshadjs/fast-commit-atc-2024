@@ -76,7 +76,15 @@ pre_run_workload()
 
 	sync && sh -c 'echo 3 > /proc/sys/vm/drop_caches'
 	dmesg -c > ${OUTPUTDIR_DEV_ITER}/log_${num_threads}.txt
-	iostat > ${OUTPUTDIR_DEV_ITER}/iostat_before_${num_threads}.dat;	
+	iostat > ${OUTPUTDIR_DEV_ITER}/iostat_before_${num_threads}.dat
+	echo """BENCHMARK=$BENCHMARK
+dev=$dev
+domain=$domain
+JOURNAL_DEV=$JOURNAL_DEV
+FAST_COMMIT=$FAST_COMMIT
+NFS_SERVER=$NFS_SERVER
+NFS_CLIENT=$NFS_CLIENT
+NUM_THREADS=$NUM_THREADS""" > ${OUTPUTDIR_DEV_ITER}/config
 }
 
 

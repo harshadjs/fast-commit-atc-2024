@@ -27,7 +27,6 @@ BENCHMARKS=(filebench-varmail)
 #FTRACE_PATH=/sys/kernel/debug/tracing
 
 #NUM_THREADS=(10 20 30 40)
-NUM_THREADS=(40)
 #NUM_THREADS=(1)
 #NUM_THREADS=(1 2 5 10 20 30 40)
 ITER=1
@@ -41,6 +40,8 @@ JOURNAL_DEV=/dev/nvme0n3
 FAST_COMMIT=1
 NFS_SERVER=0
 NFS_CLIENT=0
+NUM_THREADS=(40)
+
 
 VERSION_PATH="raw_data"
 if [ "$EXTRA_VERSION" == "CJFS" ] || [ "$EXTRA_VERSION" == "CJFS+" ]; then
