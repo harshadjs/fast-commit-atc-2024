@@ -217,9 +217,9 @@ select_workload()
 		"filebench-varmail-split16")
 			${FILEBENCH} -f \
 				benchmark/filebench/workloads/varmail_split16_${num_threads}.f \
-				> ${OUTPUTDIR_DEV_PSP_ITER}/result_${num_threads}.dat;
+				> ${OUTPUTDIR_DEV_ITER}/result_${num_threads}.dat;
 
-			debug ${OUTPUTDIR_DEV_PSP_ITER} ${num_threads} ${dev}
+			debug ${OUTPUTDIR_DEV_ITER} ${num_threads} ${dev}
 
 			;;
 		"filebench-varmail-perthreaddir")
