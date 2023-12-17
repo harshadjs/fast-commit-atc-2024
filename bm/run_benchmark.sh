@@ -44,6 +44,8 @@ pre_run_workload()
 	if [ "${NFS_CLIENT}" == "1" ]; then
 		echo "This is a NFS Client, using $dev IP address"
 		sudo  mount -t nfs ${NFS_CLIENT_OPS} ${dev}:/mnt $MNT
+	elif [ "{XFS}" == "1" ]; then
+		sudo bash mkxfs.sh $dev $MNT $JOURNAL_DEV
 	elif [ ${FAST_COMMIT} == "1" ];then
 		echo "Fast Commit is enabled!"
 		sudo bash mkext4_fc.sh $dev $MNT $JOURNAL_DEV
