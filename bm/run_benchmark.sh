@@ -505,7 +505,7 @@ run_bench()
 	COUNT=1
 	while [ ${COUNT} -le ${ITER} ]
 	do
-		OUTPUTDIR_DEV_ITER=${OUTPUTDIR_DEV}/$UNIQUE_ID.$BENCHMARK/iteration-${COUNT}
+		OUTPUTDIR_DEV_ITER=${OUTPUTDIR_DEV}/$UNIQUE_ID/iteration-${COUNT}
 
 		# Create Directory for Iteration
 		mkdir -p ${OUTPUTDIR_DEV_ITER}
