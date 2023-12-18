@@ -55,7 +55,7 @@ pre_run_workload()
 
 	if [ "${NFS_CLIENT}" == "1" ]; then
 		echo "This is a NFS Client, using $dev IP address"
-		nfs_client_start()
+		nfs_client_start
 	elif [ "${XFS}" == "1" ]; then
 		sudo bash mkxfs.sh $dev $MNT $JOURNAL_DEV
 	elif [ ${FAST_COMMIT} == "1" ];then
