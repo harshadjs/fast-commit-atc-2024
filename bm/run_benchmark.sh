@@ -79,6 +79,7 @@ pre_run_workload()
 		exportfs -a
 		ifconfig
 		/usr/sbin/rpc.nfsd $num_threads
+		touch $MNT/$START_FILE
 		export BENCHMARK="noop"
 	fi
 
