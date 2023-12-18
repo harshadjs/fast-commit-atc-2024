@@ -170,11 +170,7 @@ debug()
 	if [ "${DEBUG_FSYNC_LATENCY}" == 1 ]; then
 		sudo bash ./parse_fsync_latency.sh ${OUTPUTDIR_DEV_ITER} ${num_threads} ${dev}
 	fi
-	CURDIR=$(pwd)
-	cp parse.sh ${OUTPUTDIR_DEV_ITER}
-	cd ${OUTPUTDIR_DEV_ITER}
-	./parse.sh ${num_threads}
-	cd ${CURDIR}
+
 }
 
 save_summary()
@@ -498,6 +494,11 @@ select_workload()
 		done
 		cp -r ${MNT}/results ${OUTPUTDIR_DEV_ITER}/client-results
 	fi
+	CURDIR=$(pwd)
+	cp parse.sh ${OUTPUTDIR_DEV_ITER}
+	cd ${OUTPUTDIR_DEV_ITER}
+	./parse.sh ${num_threads} $UNIQUE_ID >> ~/global-summary
+	cd ${CURDIR}
 }
 
 run_bench()
@@ -580,7 +581,7 @@ run_bench()
 			printf "%.1f\n", s[k"."NF]/c[k];
 		}
 	}' ${OUTPUTDIR_DEV}/summary_total >> ${OUTPUTDIR_DEV}/summary_avg
-	echo "Find results in: ${OUTPUTDIR_DEV}/$UNIQUE_ID.$BENCHMARK"
+	echo "Find results in: ${OUTPUTDIR_DEV}/$UNIQUE_ID"
 }
 
 UNIQUE_ID=$(date +%s)

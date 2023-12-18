@@ -1,9 +1,11 @@
 #!/bin/bash
 
 THREADS=$1
+RUN_ID=$2
 
 source ./config
 
+echo -n "$RUN_ID,"
 if [ "$NFS_CLIENT" == "1" ]; then
     exit
 fi
