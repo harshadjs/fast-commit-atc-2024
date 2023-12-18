@@ -30,7 +30,7 @@ if [ "$NFS_SERVER" == "1" ]; then
 else
     echo -n ",Local"
 fi
-echo -n ",$THREADS,$BENCHMARK"
+echo -n ":FC=$FAST_COMMIT:XFS=$XFS,$THREADS,$BENCHMARK"
 if [[ "$BENCHMARK" == filebench* ]]; then
     runtime=$(cat result_$THREADS.dat | grep "Run took" | xargs | cut -d " " -f4)
 else
