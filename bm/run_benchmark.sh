@@ -474,7 +474,7 @@ select_workload()
 	esac
 	if [ "$NFS_CLIENT" == "1" ]; then
 		touch ${MNT}/${STOP_FILE}
-		cp ${OUTPUTDIR_DEV_ITER} ${MNT}/results.tmp
+		cp -r ${OUTPUTDIR_DEV_ITER} ${MNT}/results.tmp
 		mv ${MNT}/results.tmp ${MNT}/results
 		umount /mnt
 	fi
