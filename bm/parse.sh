@@ -35,3 +35,11 @@ else
     runtime=60
 fi
 echo -n ",$runtime"
+sum=0
+cat iostat_$THREADS.dat | grep ${dev:5} | sed -r 's/[[:blank:]]+/,/g' | cut -d "," -f8 > /tmp/wiops
+while read wiops; do
+    sum=$(python3 -c "print($sum+$wiops)")
+done < /tmp/wiops
+
+echo -n ",$sum,$runtime"
+echo ""
