@@ -474,6 +474,15 @@ select_workload()
 	esac
 	if [ "$NFS_CLIENT" == "1" ]; then
 		touch ${MNT}/${STOP_FILE}
+		cp ${OUTPUTDIR_DEV_ITER} ${MNT}/results.tmp
+		mv ${MNT}/results.tmp ${MNT}/results
+		umount /mnt
+	fi
+	if [ "$NFS_SERVER" == "1" ]; then
+		while [ ! -d ${MNT}/results ]; do
+			sleep 1
+		done
+		cp -r ${MNT}/results ${OUTPUTDIR_DEV_ITER}/client-results
 	fi
 }
 
