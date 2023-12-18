@@ -83,6 +83,7 @@ pre_run_workload()
 	sync && sh -c 'echo 3 > /proc/sys/vm/drop_caches'
 	dmesg -c > ${OUTPUTDIR_DEV_ITER}/log_${num_threads}.txt
 	iostat > ${OUTPUTDIR_DEV_ITER}/iostat_before_${num_threads}.dat
+	iostat -x -y 5 > ${OUTPUTDIR_DEV_ITER}/iostat_${num_threads}.dat&
 	echo """BENCHMARK=$BENCHMARK
 dev=$dev
 domain=$domain
@@ -102,10 +103,10 @@ debug()
 	num_threads=$2
 	dev=$3
 	# Debug Page Conflict
-	# sort by block number
-	#cat /proc/fs/jbd2/${dev:5}-8/pcl \
+	# sort by block number	# cat /proc/fs/jbd2/${dev:5}-8/pcl \
 	#	> ${OUTPUTDIR_DEV_PSP_ITER}/pcl_${num_threads}.dat;
 	iostat > ${OUTPUTDIR_DEV_ITER}/iostat_after_${num_threads}.dat;
+	killall iostat
 	if [ "$JOURNAL_DEV" == "" ]; then
 		cat /proc/fs/jbd2/${dev:5}-8/info \
 			> ${OUTPUTDIR_DEV_ITER}/info_${num_threads}.dat;
@@ -157,9 +158,9 @@ debug()
 		sudo bash ./parse_fsync_latency.sh ${OUTPUTDIR_DEV_ITER} ${num_threads} ${dev}
 	fi
 	CURDIR=$(pwd)
+	cp parse.sh ${OUTPUTDIR_DEV_ITER}
 	cd ${OUTPUTDIR_DEV_ITER}
-	sudo cp /home/harshads/cjfs/experiment/parse.sh .
-	sudo ./parse.sh ${num_threads}
+	./parse.sh ${num_threads}
 	cd ${CURDIR}
 }
 

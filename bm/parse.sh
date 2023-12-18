@@ -1,19 +1,37 @@
 #!/bin/bash
 
-FILE_OP=$1
+THREADS=$1
 
-main()
-{
-        FILE="cc_${FILE_OP}.dat"
-	awk '{ if (NF == 3) print $3 }' $FILE > pcc_${FILE_OP}.dat
-        FILE="fsync_${FILE_OP}.dat"
-	awk '{ if (NF == 3) print $3 }' $FILE > pfsync_${FILE_OP}.tmp
-	sort -n pfsync_${FILE_OP}.tmp > pfsync_${FILE_OP}.dat
-	sudo rm -f pfsync_${FILE_OP}.tmp
-        FILE="op_${FILE_OP}.dat"
-	awk '{ if (NF == 3) print $3 }' $FILE > pop_${FILE_OP}.tmp	
-	sort -n pop_${FILE_OP}.tmp > pop_${FILE_OP}.dat
-	sudo rm -f pop_${FILE_OP}.tmp
+source ./config
+
+if [ "$NFS_CLIENT" == "1" ]; then
+    exit
+fi
+
+function get_mb_written() {
+    devname=${1:5}
+    dev_kb_after=$(cat iostat_after_$THREADS.dat | grep $devname | xargs | cut -d " " -f7)
+    dev_kb_before=$(cat iostat_before_$THREADS.dat | grep $devname | xargs | cut -d " " -f7)
+    echo -n $(((dev_kb_after-dev_kb_before)/1024))
 }
+    
+get_mb_written ${dev}
+echo -n ","
+if [ "$JOURNAL_DEV" != "" ]; then
+    get_mb_written ${JOURNAL_DEV}
+fi
 
-main
+if [ "$NFS_SERVER" == "1" ]; then
+    cd client-results
+    echo -n ",NFS"
+    source ./config
+else
+    echo -n ",Local"
+fi
+echo -n ",$THREADS,$BENCHMARK"
+if [[ "$BENCHMARK" == filebench* ]]; then
+    runtime=$(cat result_$THREADS.dat | grep "Run took" | xargs | cut -d " " -f4)
+else
+    runtime=60
+fi
+echo -n ",$runtime"
