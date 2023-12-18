@@ -1,0 +1,21 @@
+diff --git a/filebench/flowop.c b/filebench/flowop.c
+index 786caed..738fc7e 100644
+--- a/filebench/flowop.c
++++ b/filebench/flowop.c
+@@ -441,12 +441,15 @@ flowop_start(threadflow_t *threadflow)
+ 		/* Execute the flowop for fo_iters times */
+ 		count = (int)avd_get_int(flowop->fo_iters);
+ 		for (i = 0; i < count; i++) {
+-
++			static int global_count = 100000;
+ 			filebench_log(LOG_DEBUG_SCRIPT, "%s: executing flowop "
+ 			    "%s-%d", threadflow->tf_name, flowop->fo_name,
+ 			    flowop->fo_instance);
+ 
+ 			ret = (*flowop->fo_func)(threadflow, flowop);
++			if (global_count-- <= 0) {
++				ret = FILEBENCH_DONE;
++			}
+ 
+ 			/*
+ 			 * Return value FILEBENCH_ERROR means "flowop
