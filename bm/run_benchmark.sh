@@ -18,6 +18,7 @@ EXP_DIR=/home/harshads/cjfs/experiment
 ROCKSDB_DIR=benchmark/rocksdb
 DB_BENCH=${ROCKSDB_DIR}/db_bench
 STOP_FILE=stop
+START_FILE=start
 
 OUTPUTDIR_DEV=$1
 
@@ -28,6 +29,17 @@ lockstat_off() {
 	echo 0 > /proc/sys/kernel/lock_stat
 	cp /proc/lock_stat $1
 	echo 0 > /proc/lock_stat
+}
+
+nfs_client_start() {
+	echo "Waiting for NFS Server..."
+	while [ ! -f ${MNT}/${START_FILE} ]; do
+		umount $MNT
+		sleep 1
+		mount -t nfs ${NFS_CLIENT_OPS} ${dev}:/mnt $MNT
+	done
+	rm ${MNT}/${START_FILE}
+	echo "Connected."
 }
 
 pre_run_workload() 
@@ -43,7 +55,7 @@ pre_run_workload()
 
 	if [ "${NFS_CLIENT}" == "1" ]; then
 		echo "This is a NFS Client, using $dev IP address"
-		sudo  mount -t nfs ${NFS_CLIENT_OPS} ${dev}:/mnt $MNT
+		nfs_client_start()
 	elif [ "${XFS}" == "1" ]; then
 		sudo bash mkxfs.sh $dev $MNT $JOURNAL_DEV
 	elif [ ${FAST_COMMIT} == "1" ];then
