@@ -1,7 +1,7 @@
 dev=/dev/nvme0n1
-XFS=1
+XFS=0
 FAST_COMMIT=0
-JOURNAL_DEV=
+JOURNAL_DEV=/dev/nvme0n3
 NFS_SERVER=0
-BENCHMARK=filebench-varmail-split16
-NUM_THREADS=20
+BENCHMARK=filebench-varmail
+NUM_THREADS=10
