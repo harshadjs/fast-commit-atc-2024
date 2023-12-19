@@ -48,10 +48,8 @@ pre_run_workload()
 	num_threads=$2
 
 	# Format and Mount
-	if [ "$NFS_SERVER" == "1" ]; then
-		service nfs-kernel-server stop
-		umount $MNT
-	fi
+	service nfs-kernel-server stop
+	umount $MNT
 
 	if [ "${NFS_CLIENT}" == "1" ]; then
 		echo "This is a NFS Client, using $dev IP address"
@@ -481,6 +479,14 @@ select_workload()
 	cd ${CURDIR}
 }
 
+cleanup()
+{
+	if [ "$NFS_SERVER" == "1" ]; then
+		service nfs-kernel-server stop
+	fi
+	umount /mnt
+}
+
 run_bench()
 {
 	UNIQ_OUTDIR=${OUTDIR}/$UNIQUE_ID
@@ -554,6 +560,7 @@ run_bench()
 		}
 	}' ${OUTDIR}/summary_total >> ${OUTDIR}/summary_avg
 	echo "Find results in: ${OUTDIR}/$UNIQUE_ID"
+	cleanup
 }
 
 for file in $(ls $CONFIGS_DIR); do
