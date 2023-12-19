@@ -586,5 +586,7 @@ for file in $(ls $CONFIGS_DIR); do
 	cp ${CONFIGS_DIR}/$file ~/fast-commit-override.sh
 	source parameter.sh
 	UNIQUE_ID=$(date +%s)
+	echo "RUNNING TEST $file"
 	run_bench
+	echo "TEST $file FINISHED"
 done

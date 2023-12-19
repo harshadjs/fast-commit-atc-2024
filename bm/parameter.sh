@@ -29,7 +29,7 @@ BENCHMARKS=(filebench-varmail)
 #NUM_THREADS=(10 20 30 40)
 #NUM_THREADS=(1)
 #NUM_THREADS=(1 2 5 10 20 30 40)
-ITER=5
+ITER=1
 MNT=/mnt
 
 ## Configurables
