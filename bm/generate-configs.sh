@@ -32,10 +32,11 @@ rm -rf $SERVER_DIR/*
 
 ID=500
 NFS_ID=0
-for journal in ${JOURNAL_DEV[@]}; do
-	for fs in ${FILESYSTEMS[@]}; do
-		for workload in ${WORKLOADS[@]}; do
-			for num_threads in ${NUM_WORKLOAD_THREADS[@]}; do
+
+for workload in ${WORKLOADS[@]}; do
+	for num_threads in ${NUM_WORKLOAD_THREADS[@]}; do
+		for journal in ${JOURNAL_DEV[@]}; do
+			for fs in ${FILESYSTEMS[@]}; do
 				# Generate common first
 				LOCAL_FILENAME=$(printf "%03d" $ID)
 				NFS_FILENAME=$(printf "%03d" $NFS_ID)
