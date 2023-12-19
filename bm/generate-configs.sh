@@ -34,31 +34,35 @@ NFS_ID=0
 for journal in ${JOURNAL_DEV[@]}; do
 	for fs in ${FILESYSTEMS[@]}; do
 		for workload in ${WORKLOADS[@]}; do
-			# Generate Local Workload First
+			# Generate common first
 			LOCAL_FILENAME=$(printf "%03d" $ID)
 			NFS_FILENAME=$(printf "%03d" $NFS_ID)
-			echo $LOCAL_FILENAME:$NFS_FILENAME
 			echo "dev=$DATA_DEV" > $SERVER_DIR/$LOCAL_FILENAME
+			XFS=0
+			FAST_COMMIT=0
 			if [ "$fs" == "XFS" ]; then
-				echo "XFS=1" >> $SERVER_DIR/$LOCAL_FILENAME
+				XFS=1
 			elif [ "$fs" == "FC" ]; then
-				echo "FAST_COMMIT=1" >> $SERVER_DIR/$LOCAL_FILENAME
-			elif [ "$fs" == "EXT4" ]; then
-				echo "FAST_COMMIT=0" >> $SERVER_DIR/$LOCAL_FILENAME
-			else
-				echo "Unsupported filesystem $fs"
+				FAST_COMMIT=1
 			fi
+			echo "XFS=$XFS" >> $SERVER_DIR/$LOCAL_FILENAME
+			echo "FAST_COMMIT=$FAST_COMMIT" >> $SERVER_DIR/$LOCAL_FILENAME
 			if [ "$journal" == "none" ]; then
 				echo "JOURNAL_DEV=" >> $SERVER_DIR/$LOCAL_FILENAME
 			else
 				echo "JOURNAL_DEV=$journal" >> $SERVER_DIR/$LOCAL_FILENAME
 			fi
 			cp $SERVER_DIR/$LOCAL_FILENAME $SERVER_DIR/$NFS_FILENAME
-			echo "NFS_SERVER=1" >> $SERVER_DIR/$NFS_FILENAME
+			# Local only
+			echo "NFS_SERVER=0" >> $SERVER_DIR/$LOCAL_FILENAME
 			echo "BENCHMARK=$workload" >> $SERVER_DIR/$LOCAL_FILENAME
 			echo "NUM_THREADS=(10 20 40 80)" >> $SERVER_DIR/$LOCAL_FILENAME
+
+			# NFS Server
+			echo "NFS_SERVER=1" >> $SERVER_DIR/$NFS_FILENAME
 			echo "NUM_THREADS=(64)" >> $SERVER_DIR/$NFS_FILENAME
 
+			# NFS Client
 			echo "dev=$SERVER_IP" > $CLIENT_DIR/$NFS_FILENAME
 			echo "NFS_CLIENT=1" >> $CLIENT_DIR/$NFS_FILENAME
 			echo "BENCHMARK=$workload" >> $CLIENT_DIR/$NFS_FILENAME

@@ -120,10 +120,10 @@ debug()
 		cat /proc/fs/jbd2/${JOURNAL_DEV:5}/info \
 			> ${OUTPUTDIR_DEV_ITER}/info_${num_threads}.dat;
 	fi
-	if [ ${FAST_COMMIT} == 1 ];then
+	if [ "${FAST_COMMIT}" == "1" ];then
 		cat /proc/fs/ext4/${dev:5}/fc_info \
 			> ${OUTPUTDIR_DEV_ITER}/fc_info_${num_threads}.dat;
-	elif [ ${SPANFS} == 1 ]; then
+	elif [ "${SPANFS}" == 1 ]; then
 		mkdir -p ${OUTPUTDIR_DEV_ITER}/${num_threads}d
 		for ((i=1; i<=${domain}; i++)); do
 			cat /proc/fs/jbd2/${dev:5}-${i}-8/info \
