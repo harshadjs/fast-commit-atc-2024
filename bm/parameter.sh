@@ -33,14 +33,14 @@ ITER=1
 MNT=/mnt
 
 ## Configurables
-BENCHMARK=filebench-varmail
-dev=/dev/nvme0n1
-domain=40
-JOURNAL_DEV=/dev/nvme0n3
-FAST_COMMIT=1
-NFS_SERVER=0
-NFS_CLIENT=0
-NUM_THREADS=(40)
+# BENCHMARK=filebench-varmail
+# dev=/dev/nvme0n1
+# domain=40
+# JOURNAL_DEV=/dev/nvme0n3
+# FAST_COMMIT=1
+# NFS_SERVER=0
+# NFS_CLIENT=0
+# NUM_THREADS=(40)
 
 
 VERSION_PATH="raw_data"

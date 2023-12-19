@@ -97,14 +97,7 @@ pre_run_workload()
 	dmesg -c > ${OUTPUTDIR_DEV_ITER}/log_${num_threads}.txt
 	iostat > ${OUTPUTDIR_DEV_ITER}/iostat_before_${num_threads}.dat
 	iostat -x -y 5 > ${OUTPUTDIR_DEV_ITER}/iostat_${num_threads}.dat&
-	echo """BENCHMARK=$BENCHMARK
-dev=$dev
-domain=$domain
-JOURNAL_DEV=$JOURNAL_DEV
-FAST_COMMIT=$FAST_COMMIT
-NFS_SERVER=$NFS_SERVER
-NFS_CLIENT=$NFS_CLIENT
-NUM_THREADS=$NUM_THREADS""" > ${OUTPUTDIR_DEV_ITER}/config
+	cp ~/fast-commit-override.sh ${OUTPUTDIR_DEV_ITER}/config
 	cp custom-workload.sh ${OUTPUTDIR_DEV_ITER}
 }
 
