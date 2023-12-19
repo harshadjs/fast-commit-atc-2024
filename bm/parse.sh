@@ -24,6 +24,12 @@ function get_wiops_sum() {
 	done < /tmp/wiops
 	echo $sum
 }
+
+if [ "$JOURNAL_DEV" == "" ]; then
+	jrnl="combined"
+else
+	jrnl="split"
+fi
     
 echo -n "$(get_mb_written ${dev}),$(get_mb_written ${JOURNAL_DEV}),$(get_wiops_sum $dev),$(get_wiops_sum $JOURNAL_DEV),"
 
@@ -34,12 +40,12 @@ done < /tmp/wiops
 
 if [ "$NFS_SERVER" == "1" ]; then
     cd client-results
-    echo -n "NFS=1,"
+    echo -n "NFS=1"
     source ./config
 else
-    echo -n "NFS=0."
+    echo -n "NFS=0"
 fi
-echo -n ":FC=$FAST_COMMIT:XFS=$XFS,$NUM_THREADS,$BENCHMARK,"
+echo -n ":FC=$FAST_COMMIT:XFS=$XFS:JOURNAL=$jrnl,$NUM_THREADS,$BENCHMARK,"
 if [[ "$BENCHMARK" == filebench* ]]; then
     runtime=$(cat result.dat | grep "Run took" | xargs | cut -d " " -f4)
 else
