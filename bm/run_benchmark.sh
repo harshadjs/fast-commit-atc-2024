@@ -477,7 +477,7 @@ select_workload()
 	CURDIR=$(pwd)
 	cp parse.sh ${UNIQ_OUTDIR}
 	cd ${UNIQ_OUTDIR}
-	./parse.sh ${num_threads} $UNIQUE_ID >> ~/global-summary
+	./parse.sh $UNIQUE_ID >> ~/global-summary
 	cd ${CURDIR}
 }
 
