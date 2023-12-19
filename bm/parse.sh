@@ -22,6 +22,12 @@ if [ "$JOURNAL_DEV" != "" ]; then
     get_mb_written ${JOURNAL_DEV}
 fi
 
+sum=0
+cat iostat.dat | grep ${dev:5} | sed -r 's/[[:blank:]]+/,/g' | cut -d "," -f8 > /tmp/wiops
+while read wiops; do
+    sum=$(python3 -c "print($sum+$wiops)")
+done < /tmp/wiops
+
 if [ "$NFS_SERVER" == "1" ]; then
     cd client-results
     echo -n ",NFS"
@@ -35,12 +41,4 @@ if [[ "$BENCHMARK" == filebench* ]]; then
 else
     runtime=60
 fi
-echo -n ",$runtime"
-sum=0
-cat iostat.dat | grep ${dev:5} | sed -r 's/[[:blank:]]+/,/g' | cut -d "," -f8 > /tmp/wiops
-while read wiops; do
-    sum=$(python3 -c "print($sum+$wiops)")
-done < /tmp/wiops
-
-echo -n ",$sum,$runtime"
-echo ""
+echo ",$runtime,$sum,$runtime"
