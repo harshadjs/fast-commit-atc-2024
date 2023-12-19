@@ -1,0 +1,13 @@
+Linux 5.19.0-rc5-xfstests-perf-00986-g953948f2acf6-dirty (harshads-do-not-delete-3) 	12/19/23 	_x86_64_	(32 CPU)
+
+avg-cpu:  %user   %nice %system %iowait  %steal   %idle
+           0.06    0.00    1.30    0.59    0.00   98.05
+
+Device             tps    kB_read/s    kB_wrtn/s    kB_dscd/s    kB_read    kB_wrtn    kB_dscd
+nvme0n1        3158.62         2.67     22777.55    423082.18     715072 6097367584 113255694336
+nvme0n2           0.00         0.01         0.00         0.00       2092          0          0
+nvme0n3         499.14         1.00     13144.19     58816.23     267356 3518594936 15744630784
+nvme0n4           0.00         0.01         0.00         0.00       2092          0          0
+sda               4.60        31.10        51.08        52.32    8326368   13673116   14005444
+
+
