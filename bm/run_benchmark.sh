@@ -532,8 +532,7 @@ run_bench()
 		cp /proc/stat ${UNIQ_OUTDIR}/cpu_end_${num_threads}.dat
 	fi
 
-	save_summary ${UNIQ_OUTDIR}/info_${num_threads}.dat \
-		${UNIQ_OUTDIR}/result_${num_threads}.dat \
+	save_summary ${UNIQ_OUTDIR}/info.dat ${UNIQ_OUTDIR}/result.dat \
 		${num_threads}>>${UNIQ_OUTDIR}/summary;
 	cat ${UNIQ_OUTDIR}/summary | tail -1 \
 		>> ${OUTDIR}/summary_total
