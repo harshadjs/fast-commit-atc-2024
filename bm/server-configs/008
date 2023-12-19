@@ -1,0 +1,5 @@
+dev=/dev/nvme0n1
+FAST_COMMIT=1
+JOURNAL_DEV=/dev/nvme0n3
+NFS_SERVER=1
+NUM_THREADS=(64)

@@ -19,8 +19,9 @@ ROCKSDB_DIR=benchmark/rocksdb
 DB_BENCH=${ROCKSDB_DIR}/db_bench
 STOP_FILE=stop
 START_FILE=start
+OUTPUTDIR_DEV=~/results
 
-OUTPUTDIR_DEV=$1
+CONFIGS_DIR=$1
 
 lockstat_on() {
 	echo 1 > /proc/sys/kernel/lock_stat
@@ -221,14 +222,12 @@ select_workload()
 
 	case $BENCHMARK in
 		"filebench-varmail")
-			${FILEBENCH} -f \
-				benchmark/filebench/workloads/varmail_${num_threads}.f \
+			${FILEBENCH} -f workloads/varmail_${num_threads}.f \
 				> ${OUTPUTDIR_DEV_ITER}/result_${num_threads}.dat;
 			debug ${OUTPUTDIR_DEV_ITER} ${num_threads} ${dev}
 			;;
 		"filebench-varmail-split16")
-			${FILEBENCH} -f \
-				benchmark/filebench/workloads/varmail_split16_${num_threads}.f \
+			${FILEBENCH} -f workloads/varmail_split16_${num_threads}.f \
 				> ${OUTPUTDIR_DEV_ITER}/result_${num_threads}.dat;
 
 			debug ${OUTPUTDIR_DEV_ITER} ${num_threads} ${dev}
@@ -584,5 +583,8 @@ run_bench()
 	echo "Find results in: ${OUTPUTDIR_DEV}/$UNIQUE_ID"
 }
 
-UNIQUE_ID=$(date +%s)
-run_bench
+for file in $(ls $CONFIGS_DIR); do
+	cp ${CONFIGS_DIR}/$file ~/fast-commit-override.sh
+	UNIQUE_ID=$(date +%s)
+	run_bench
+done
