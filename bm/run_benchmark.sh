@@ -1,6 +1,5 @@
 #!/bin/bash
 
-source parameter.sh
 
 FILEBENCH_DIR=benchmark/filebench
 FILEBENCH_PERTHREADDIR_DIR=benchmark/filebench-perthreaddir
@@ -585,6 +584,7 @@ run_bench()
 
 for file in $(ls $CONFIGS_DIR); do
 	cp ${CONFIGS_DIR}/$file ~/fast-commit-override.sh
+	source parameter.sh
 	UNIQUE_ID=$(date +%s)
 	run_bench
 done
