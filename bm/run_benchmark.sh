@@ -541,8 +541,6 @@ run_bench()
 		>> ${OUTDIR}/summary_total
 	echo "==== End the experiment ===="
 	echo $'\n'
-	done
-
 
 	echo "# thr tx h/tx blk/tx" >> ${OUTDIR}/summary_avg
 	awk '
