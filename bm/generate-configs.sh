@@ -62,7 +62,7 @@ for journal in ${JOURNAL_DEV[@]}; do
 
 				# NFS Server
 				echo "NFS_SERVER=1" >> $SERVER_DIR/$NFS_FILENAME
-				echo "NUM_THREADS=(64)" >> $SERVER_DIR/$NFS_FILENAME
+				echo "NUM_THREADS=64" >> $SERVER_DIR/$NFS_FILENAME
 
 				# NFS Client
 				echo "dev=$SERVER_IP" > $CLIENT_DIR/$NFS_FILENAME

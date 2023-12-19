@@ -1,7 +1,6 @@
 #!/bin/bash
 
-THREADS=$1
-RUN_ID=$2
+RUN_ID=$1
 
 source ./config
 
@@ -12,8 +11,8 @@ fi
 
 function get_mb_written() {
     devname=${1:5}
-    dev_kb_after=$(cat iostat_after_$THREADS.dat | grep $devname | xargs | cut -d " " -f7)
-    dev_kb_before=$(cat iostat_before_$THREADS.dat | grep $devname | xargs | cut -d " " -f7)
+    dev_kb_after=$(cat iostat_after.dat | grep $devname | xargs | cut -d " " -f7)
+    dev_kb_before=$(cat iostat_before.dat | grep $devname | xargs | cut -d " " -f7)
     echo -n $(((dev_kb_after-dev_kb_before)/1024))
 }
     
@@ -30,15 +29,15 @@ if [ "$NFS_SERVER" == "1" ]; then
 else
     echo -n ",Local"
 fi
-echo -n ":FC=$FAST_COMMIT:XFS=$XFS,$THREADS,$BENCHMARK"
+echo -n ":FC=$FAST_COMMIT:XFS=$XFS,$NUM_THREADS,$BENCHMARK"
 if [[ "$BENCHMARK" == filebench* ]]; then
-    runtime=$(cat result_$THREADS.dat | grep "Run took" | xargs | cut -d " " -f4)
+    runtime=$(cat result.dat | grep "Run took" | xargs | cut -d " " -f4)
 else
     runtime=60
 fi
 echo -n ",$runtime"
 sum=0
-cat iostat_$THREADS.dat | grep ${dev:5} | sed -r 's/[[:blank:]]+/,/g' | cut -d "," -f8 > /tmp/wiops
+cat iostat.dat | grep ${dev:5} | sed -r 's/[[:blank:]]+/,/g' | cut -d "," -f8 > /tmp/wiops
 while read wiops; do
     sum=$(python3 -c "print($sum+$wiops)")
 done < /tmp/wiops

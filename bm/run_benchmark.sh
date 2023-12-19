@@ -102,18 +102,16 @@ debug()
 	# Debug Page Conflict
 	# sort by block number	# cat /proc/fs/jbd2/${dev:5}-8/pcl \
 	#	> ${OUTPUTDIR_DEV_PSP_ITER}/pcl_${num_threads}.dat;
-	iostat > ${UNIQ_OUTDIR}/iostat_after_${num_threads}.dat;
+	iostat > ${UNIQ_OUTDIR}/iostat_after.dat;
 	killall iostat
 	if [ "$JOURNAL_DEV" == "" ]; then
-		cat /proc/fs/jbd2/${dev:5}-8/info \
-			> ${UNIQ_OUTDIR}/info_${num_threads}.dat;
+		cat /proc/fs/jbd2/${dev:5}-8/info > ${UNIQ_OUTDIR}/info.dat;
 	else
-		cat /proc/fs/jbd2/${JOURNAL_DEV:5}/info \
-			> ${UNIQ_OUTDIR}/info_${num_threads}.dat;
+		cat /proc/fs/jbd2/${JOURNAL_DEV:5}/info > ${UNIQ_OUTDIR}/info.dat;
 	fi
 	if [ "${FAST_COMMIT}" == "1" ];then
 		cat /proc/fs/ext4/${dev:5}/fc_info \
-			> ${UNIQ_OUTDIR}/fc_info_${num_threads}.dat;
+			> ${UNIQ_OUTDIR}/fc_info.dat;
 	elif [ "${SPANFS}" == 1 ]; then
 		mkdir -p ${UNIQ_OUTDIR}/${num_threads}d
 		for ((i=1; i<=${domain}; i++)); do
