@@ -19,6 +19,7 @@ function get_mb_written() {
 function get_wiops_sum() {
 	devname=${1:5}
 	sum=0
+	cat iostat.dat | grep ${devname} | sed -r 's/[[:blank:]]+/,/g' | cut -d "," -f8 > /tmp/wiops
 	while read wiops; do
     		sum=$(python3 -c "print($sum+$wiops)")
 	done < /tmp/wiops
@@ -32,11 +33,6 @@ else
 fi
     
 echo -n "$(get_mb_written ${dev}),$(get_mb_written ${JOURNAL_DEV}),$(get_wiops_sum $dev),$(get_wiops_sum $JOURNAL_DEV),"
-
-cat iostat.dat | grep ${dev:5} | sed -r 's/[[:blank:]]+/,/g' | cut -d "," -f8 > /tmp/wiops
-while read wiops; do
-    dev_sum=$(python3 -c "print($sum+$wiops)")
-done < /tmp/wiops
 
 if [ "$NFS_SERVER" == "1" ]; then
     cd client-results
