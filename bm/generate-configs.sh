@@ -12,12 +12,13 @@
 CLIENT_DIR="client-configs"
 SERVER_DIR="server-configs"
 DATA_DEV="/dev/nvme0n1"
-JOURNAL_DEV=("none" "/dev/nvme0n3")
+#JOURNAL_DEV=("none" "/dev/nvme0n3")
+JOURNAL_DEV=("none")
 NUM_THREADS=(10 20 40 80)
 SERVER_IP="10.132.0.21"
 NUM_WORKLOAD_THREADS=(10 20 40 80)
 
-FILESYSTEMS=("XFS" "FC" "EXT4")
+FILESYSTEMS=("XFS" "EXT4FC" "EXT4")
 WORKLOADS=("filebench-varmail" "filebench-varmail-split16")
 
 for workload in ${WORKLOADS[@]}; do
@@ -41,15 +42,7 @@ for workload in ${WORKLOADS[@]}; do
 				LOCAL_FILENAME=$(printf "%03d" $ID)
 				NFS_FILENAME=$(printf "%03d" $NFS_ID)
 				echo "dev=$DATA_DEV" > $SERVER_DIR/$LOCAL_FILENAME
-				XFS=0
-				FAST_COMMIT=0
-				if [ "$fs" == "XFS" ]; then
-					XFS=1
-				elif [ "$fs" == "FC" ]; then
-					FAST_COMMIT=1
-				fi
-				echo "XFS=$XFS" >> $SERVER_DIR/$LOCAL_FILENAME
-				echo "FAST_COMMIT=$FAST_COMMIT" >> $SERVER_DIR/$LOCAL_FILENAME
+				echo "FS=$fs" >> $SERVER_DIR/$LOCAL_FILENAME
 				if [ "$journal" == "none" ]; then
 					echo "JOURNAL_DEV=" >> $SERVER_DIR/$LOCAL_FILENAME
 				else

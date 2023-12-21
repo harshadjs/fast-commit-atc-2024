@@ -54,15 +54,15 @@ pre_run_workload()
 	if [ "${NFS_CLIENT}" == "1" ]; then
 		echo "This is a NFS Client, using $dev IP address"
 		nfs_client_start
-	elif [ "${XFS}" == "1" ]; then
+	elif [ "${FS}" == "XFS" ]; then
 		sudo bash mkxfs.sh $dev $MNT $JOURNAL_DEV
-	elif [ ${FAST_COMMIT} == "1" ];then
+	elif [ "${FS}" == "EXT4FC" ];then
 		echo "Fast Commit is enabled!"
 		sudo bash mkext4_fc.sh $dev $MNT $JOURNAL_DEV
-	elif [ ${SPANFS} == "1" ]; then
+	elif [ "${SPANFS}" == "1" ]; then
 		echo "SpanFS Mode!"
 		sudo bash mkspanfs.sh $dev $MNT $domain
-	elif [ ${NOBARRIER} == "1" ]; then
+	elif [ "${NOBARRIER}" == "1" ]; then
 		echo "Asynchronous Commit with Checksum!"
 		sudo bash mkext4_nobarrier.sh $dev $MNT
 	else
@@ -107,7 +107,7 @@ debug()
 	else
 		cat /proc/fs/jbd2/${JOURNAL_DEV:5}/info > ${UNIQ_OUTDIR}/info.dat;
 	fi
-	if [ "${FAST_COMMIT}" == "1" ];then
+	if [ "${FS}" == "EXT4FC" ];then
 		cat /proc/fs/ext4/${dev:5}/fc_info \
 			> ${UNIQ_OUTDIR}/fc_info.dat;
 	elif [ "${SPANFS}" == 1 ]; then

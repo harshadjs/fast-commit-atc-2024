@@ -441,7 +441,7 @@ flowop_start(threadflow_t *threadflow)
 		/* Execute the flowop for fo_iters times */
 		count = (int)avd_get_int(flowop->fo_iters);
 		for (i = 0; i < count; i++) {
-			static int global_count = 10000000;
+			static int global_count = 1000000;
 			filebench_log(LOG_DEBUG_SCRIPT, "%s: executing flowop "
 			    "%s-%d", threadflow->tf_name, flowop->fo_name,
 			    flowop->fo_instance);

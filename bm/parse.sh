@@ -41,7 +41,7 @@ if [ "$NFS_SERVER" == "1" ]; then
 else
     echo -n "NFS=0"
 fi
-echo -n ":FC=$FAST_COMMIT:XFS=$XFS:JOURNAL=$jrnl,$NUM_THREADS,$BENCHMARK,"
+echo -n "$FS,JOURNAL=$jrnl,$NUM_THREADS,$BENCHMARK,"
 if [[ "$BENCHMARK" == filebench* ]]; then
     runtime=$(cat result.dat | grep "Run took" | xargs | cut -d " " -f4)
     throughput=$(cat result.dat  | grep "IO Summary" | cut -d " " -f6)
