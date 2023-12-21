@@ -485,7 +485,6 @@ run_bench()
 {
 	UNIQ_OUTDIR=${OUTDIR}/$UNIQUE_ID
 
-	mkdir -p ${UNIQ_OUTDIR}
 	echo `uname -r` >> ${UNIQ_OUTDIR}/summary
 	echo "# thr tx h/tx blk/tx" >> ${UNIQ_OUTDIR}/summary;
 
@@ -557,12 +556,13 @@ run_bench()
 	cleanup
 }
 
+echo "Results sent to ${OUTDIR}/$UNIQUE_ID/log"
+mkdir -p ${OUTDIR}/$UNIQUE_ID
 for file in $(ls $CONFIGS_DIR); do
 	cp ${CONFIGS_DIR}/$file ~/fast-commit-override.sh
 	source parameter.sh
 	UNIQUE_ID=$(date +%s)
-	echo "Results sent to ${OUTDIR}/$UNIQUE_ID"
-	echo "Starting test config [$file]..."
-	run_bench > ${OUTDIR}/$UNIQUE_ID/log
-	echo "Test $file finised"
+	echo -n "[$file]: Running Test..."
+	run_bench > ${OUTDIR}/$UNIQUE_ID/log 2>&1
+	echo "\tFinished."
 done
