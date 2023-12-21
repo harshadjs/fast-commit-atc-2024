@@ -556,12 +556,13 @@ run_bench()
 	cleanup
 }
 
-echo "Results sent to ${OUTDIR}/$UNIQUE_ID/log"
-mkdir -p ${OUTDIR}/$UNIQUE_ID
+
 for file in $(ls $CONFIGS_DIR); do
 	cp ${CONFIGS_DIR}/$file ~/fast-commit-override.sh
 	source parameter.sh
 	UNIQUE_ID=$(date +%s)
+	echo "[$file]: Results sent to ${OUTDIR}/$UNIQUE_ID/log"
+	mkdir -p ${OUTDIR}/$UNIQUE_ID
 	echo -n "[$file]: Running Test..."
 	run_bench > ${OUTDIR}/$UNIQUE_ID/log 2>&1
 	echo "\tFinished."
