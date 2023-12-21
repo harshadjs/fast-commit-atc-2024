@@ -163,7 +163,7 @@ save_summary()
 	HPT=`grep -E "handles per transaction" ${INFO} | awk '{print $1}'`
 	BPT=`grep -E "blocks per transaction" ${INFO} | awk '{print $1}'`
 	case ${BENCHMARK} in
-		"filebench-varmail"|"filebench-fileserver"|"filebench-varmail-perthreaddir")
+		"filebench-varmail"|"filebench-fileserver"|"filebench-varmail-perthreaddir"|"filebench-webserver"|"filebench-networkfs")
 		RET2=`grep -E " ops/s" $DAT | awk '{print $6}'`
 		;;
 		"sysbench-update")
@@ -203,25 +203,31 @@ select_workload()
 		"filebench-varmail")
 			${FILEBENCH} -f workloads/varmail_${num_threads}.f \
 				> ${UNIQ_OUTDIR}/result.dat;
-			debug ${UNIQ_OUTDIR} ${num_threads} ${dev}
 			;;
 		"filebench-varmail-split16")
 			${FILEBENCH} -f workloads/varmail_split16_${num_threads}.f \
 				> ${UNIQ_OUTDIR}/result.dat;
-
-			debug ${UNIQ_OUTDIR} ${num_threads} ${dev}
-
 			;;
 		"filebench-varmail-perthreaddir")
 			${FILEBENCH_PERTHREADDIR} -f \
 				${FILEBENCH_PERTHREADDIR_DIR}/workloads/varmail_${num_threads}.f \
 				> ${UNIQ_OUTDIR}/result.dat;
-
-			debug ${UNIQ_OUTDIR} ${num_threads} ${dev}
-
 			;;
 		"filebench-fileserver")
+			${FILEBENCH} -f workloads/fileserver_${num_threads}.f \
+				> ${UNIQ_OUTDIR}/result.dat;
 			;;
+		"filebench-webserver")
+			${FILEBENCH} -f workloads/webserver_${num_threads}.f \
+				> ${UNIQ_OUTDIR}/result.dat;
+			;;
+		"filebench-networkfs")
+			${FILEBENCH} -f workloads/networkfs_${num_threads}.f \
+				> ${UNIQ_OUTDIR}/result.dat;
+			;;
+		"postmark")
+		    postmark workloads/postmark > ${UNIQ_OUTDIR}/result.dat
+		    ;;
 		"mobibench")
 			./${MOBIBENCH} -p $MNT -f 10000000 -r 4 -y 2 -a 0 \
 			> ${OUTPUTDIR_DEV_PSP_ITER}/result.dat
@@ -266,8 +272,6 @@ select_workload()
 
 			cd $CURDIR
 			systemctl stop mysqld
-
-			debug ${UNIQ_OUTDIR} ${num_threads} ${dev}
 			;;
 		"sysbench-update")
 			filesize=128G
@@ -302,8 +306,6 @@ select_workload()
 
 			cd $CURDIR
 			systemctl stop mysqld
-
-			debug ${UNIQ_OUTDIR} ${num_threads} ${dev}
 			;;
 		"dbench-client")
 			num_process=${num_threads}
@@ -313,7 +315,6 @@ select_workload()
 				> ${UNIQ_OUTDIR}/result_${num_process}.dat;"
 			./${DBENCH} ${num_process} -t ${DURATION} -c ${WORKLOAD} -D ${MNT} --sync-dir \
 				> ${UNIQ_OUTDIR}/result_${num_process}.dat;
-			debug ${UNIQ_OUTDIR} ${num_threads} ${dev}
 			;;
 		"ycsb-load")
 			CURDIR=$(pwd)
@@ -324,7 +325,6 @@ select_workload()
 			./${YCSB} load rocksdb -threads ${num_threads} -s -P ./workloads/workloada -p rocksdb.dir=${MNT} \
 			&> ${EXP_DIR}/${UNIQ_OUTDIR}/result_${num_threads}.dat;
 			cd ${CURDIR}
-			debug ${UNIQ_OUTDIR} ${num_threads} ${dev}
 			;;
 		"ycsb-a")
 			CURDIR=$(pwd)
@@ -337,7 +337,6 @@ select_workload()
 			./${YCSB} run rocksdb -threads ${num_threads} -s -P ./workloads/workloada -p rocksdb.dir=${MNT} \
 			&> ${EXP_DIR}/${UNIQ_OUTDIR}/result_${num_threads}.dat;
 			cd ${CURDIR}
-			debug ${UNIQ_OUTDIR} ${num_threads} ${dev}
 			;;
 		"ycsb-b")
 			CURDIR=$(pwd)
@@ -350,7 +349,6 @@ select_workload()
 			./${YCSB} run rocksdb -threads ${num_threads} -s -P ./workloads/workloadb -p rocksdb.dir=${MNT}  \
 			&> ${EXP_DIR}/${UNIQ_OUTDIR}/result_${num_threads}.dat;
 			cd ${CURDIR}
-			debug ${UNIQ_OUTDIR} ${num_threads} ${dev}
 			;;
 		"ycsb-c")
 			CURDIR=$(pwd)
@@ -363,7 +361,6 @@ select_workload()
 			./${YCSB} run rocksdb -threads ${num_threads} -s -P ./workloads/workloadc -p rocksdb.dir=${MNT} \
 			&> ${EXP_DIR}/${UNIQ_OUTDIR}/result_${num_threads}.dat;
 			cd ${CURDIR}
-			debug ${UNIQ_OUTDIR} ${num_threads} ${dev}
 			;;
 		"ycsb-d")
 			CURDIR=$(pwd)
@@ -376,7 +373,6 @@ select_workload()
 			./${YCSB} run rocksdb -threads ${num_threads} -s -P ./workloads/workloadd -p rocksdb.dir=${MNT} \
 			&> ${EXP_DIR}/${UNIQ_OUTDIR}/result_${num_threads}.dat;
 			cd ${CURDIR}
-			debug ${UNIQ_OUTDIR} ${num_threads} ${dev}
 			;;
 		"ycsb-e")
 			CURDIR=$(pwd)
@@ -389,7 +385,6 @@ select_workload()
 			./${YCSB} run rocksdb -threads ${num_threads} -s -P ./workloads/workloade -p rocksdb.dir=${MNT} \
 			&> ${EXP_DIR}/${UNIQ_OUTDIR}/result_${num_threads}.dat;
 			cd ${CURDIR}
-			debug ${UNIQ_OUTDIR} ${num_threads} ${dev}
 			;;
 		"ycsb-f")
 			CURDIR=$(pwd)
@@ -402,7 +397,6 @@ select_workload()
 			./${YCSB} run rocksdb -threads ${num_threads} -s -P ./workloads/workloadf -p rocksdb.dir=${MNT} \
 			&> ${EXP_DIR}/${UNIQ_OUTDIR}/result_${num_threads}.dat;
 			cd ${CURDIR}
-			debug ${UNIQ_OUTDIR} ${num_threads} ${dev}
 			;;
 		"db_bench")
 			DB_DIR=/mnt
@@ -426,7 +420,6 @@ select_workload()
         			--disable_wal=0 \
         			--report_file=${UNIQ_OUTDIR}/benchmark_fillsync.wal_enabled.log \
 				&> ${EXP_DIR}/${UNIQ_OUTDIR}/result_${num_threads}.dat;
-			debug ${UNIQ_OUTDIR} ${num_threads} ${dev}
 			;;
 		"exim")
 			;;
@@ -446,20 +439,18 @@ select_workload()
 			/usr/lib64/openmpi3/bin/mpirun -np ${num_process} --allow-run-as-root ${MDTEST} -z ${num_depth} -b ${num_branch} \
 				-I ${num_make} -i ${num_iteration} -y -w ${write_bytes} -d ${MNT} -F -C \
 				> ${UNIQ_OUTDIR}/result_${num_process}.dat
-			debug ${UNIQ_OUTDIR} ${num_threads} ${dev}
 			;;
 		"noop")
 			while [ ! -f ${MNT}/${STOP_FILE} ]; do
 				sleep 1
 			done
-			debug ${UNIQ_OUTDIR} ${num_threads} ${dev}
 			;;
 		"custom")
 			bash custom-workload.sh $MNT
-			debug ${UNIQ_OUTDIR} ${num_threads} ${dev} > ${UNIQ_OUTDIR}/result
 			;;
 
 	esac
+	debug ${UNIQ_OUTDIR} ${num_threads} ${dev}
 	if [ "$NFS_CLIENT" == "1" ]; then
 		touch ${MNT}/${STOP_FILE}
 		cp -r ${UNIQ_OUTDIR} ${MNT}/results.tmp
@@ -538,10 +529,10 @@ run_bench()
 		cp /proc/stat ${UNIQ_OUTDIR}/cpu_end_${num_threads}.dat
 	fi
 
-	save_summary ${UNIQ_OUTDIR}/info.dat ${UNIQ_OUTDIR}/result.dat \
-		${num_threads}>>${UNIQ_OUTDIR}/summary;
-	cat ${UNIQ_OUTDIR}/summary | tail -1 \
-		>> ${OUTDIR}/summary_total
+	# save_summary ${UNIQ_OUTDIR}/info.dat ${UNIQ_OUTDIR}/result.dat \
+	#	${num_threads}>>${UNIQ_OUTDIR}/summary;
+	# cat ${UNIQ_OUTDIR}/summary | tail -1 \
+	#	>> ${OUTDIR}/summary_total
 	echo "==== End the experiment ===="
 	echo $'\n'
 

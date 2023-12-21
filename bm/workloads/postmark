@@ -1,0 +1,5 @@
+set transactions 5000000
+set location /mnt
+set report terse
+run
+quit

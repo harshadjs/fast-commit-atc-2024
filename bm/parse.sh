@@ -45,6 +45,7 @@ echo -n "$FS,JOURNAL=$jrnl,$NUM_THREADS,$BENCHMARK,"
 if [[ "$BENCHMARK" == filebench* ]]; then
     runtime=$(cat result.dat | grep "Run took" | xargs | cut -d " " -f4)
     throughput=$(cat result.dat  | grep "IO Summary" | cut -d " " -f6)
+elif [ "$BENCHMARK" == "postmark" ]; then
 else
     runtime=60
     throughput=unknown
