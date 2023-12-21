@@ -45,23 +45,23 @@ MNT=/mnt
 # NUM_THREADS=(40)
 
 
-VERSION_PATH="raw_data"
-if [ "$EXTRA_VERSION" == "CJFS" ] || [ "$EXTRA_VERSION" == "CJFS+" ]; then
-	#VERSION_PATH=${VERSION_PATH}"/CJFS-nobarrier"
-	VERSION_PATH=${VERSION_PATH}"/CJFS"
-elif [ "$EXTRA_VERSION" == "barrier" ] || [ "$EXTRA_VERSION" == "barrier+" ]; then
-	VERSION_PATH=${VERSION_PATH}"/bfs"
-elif [ "$EXTRA_VERSION" == "SpanFS" ] || [ "$EXTRA_VERSION" == "SpanFS+" ]; then
-	VERSION_PATH=${VERSION_PATH}"/spanfs"
-else
-	if [ "${FAST_COMMIT}" == 1 ]; then
-		VERSION_PATH=${VERSION_PATH}"/ext4-fc"
-	else
-		VERSION_PATH=${VERSION_PATH}"/ext"
-	fi
-	DEBUG="$EXTRA_VERSION"
-fi
+# VERSION_PATH="raw_data"
+# if [ "$EXTRA_VERSION" == "CJFS" ] || [ "$EXTRA_VERSION" == "CJFS+" ]; then
+# 	#VERSION_PATH=${VERSION_PATH}"/CJFS-nobarrier"
+# 	VERSION_PATH=${VERSION_PATH}"/CJFS"
+# elif [ "$EXTRA_VERSION" == "barrier" ] || [ "$EXTRA_VERSION" == "barrier+" ]; then
+# 	VERSION_PATH=${VERSION_PATH}"/bfs"
+# elif [ "$EXTRA_VERSION" == "SpanFS" ] || [ "$EXTRA_VERSION" == "SpanFS+" ]; then
+# 	VERSION_PATH=${VERSION_PATH}"/spanfs"
+# else
+# 	if [ "${FAST_COMMIT}" == 1 ]; then
+# 		VERSION_PATH=${VERSION_PATH}"/ext4-fc"
+# 	else
+# 		VERSION_PATH=${VERSION_PATH}"/ext"
+# 	fi
+# 	DEBUG="$EXTRA_VERSION"
+# fi
 
-echo "$VERSION_PATH"
+# echo "$VERSION_PATH"
 
 source ~/fast-commit-override.sh
