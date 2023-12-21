@@ -57,8 +57,11 @@ pre_run_workload()
 	elif [ "${FS}" == "XFS" ]; then
 		sudo bash mkxfs.sh $dev $MNT $JOURNAL_DEV
 	elif [ "${FS}" == "EXT4FC" ];then
-		echo "Fast Commit is enabled!"
+		echo "Fast Commits!"
 		sudo bash mkext4_fc.sh $dev $MNT $JOURNAL_DEV
+	elif [ "${FS}" == "F2FS" ];then
+		echo "F2FS File system"
+		sudo bash mkf2fs.sh $dev $MNT $JOURNAL_DEV
 	elif [ "${SPANFS}" == "1" ]; then
 		echo "SpanFS Mode!"
 		sudo bash mkspanfs.sh $dev $MNT $domain
