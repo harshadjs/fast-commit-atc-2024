@@ -14,7 +14,6 @@ SERVER_DIR="server-configs"
 DATA_DEV="/dev/nvme0n1"
 #JOURNAL_DEV=("none" "/dev/nvme0n3")
 JOURNAL_DEV=("none")
-NUM_THREADS=(10 20 40 80)
 SERVER_IP="10.132.0.21"
 NUM_WORKLOAD_THREADS=(10 20 40 80)
 

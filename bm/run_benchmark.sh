@@ -229,8 +229,8 @@ select_workload()
 				> ${UNIQ_OUTDIR}/result.dat;
 			;;
 		"postmark")
-		    postmark workloads/postmark > ${UNIQ_OUTDIR}/result.dat
-		    ;;
+			postmark workloads/postmark > ${UNIQ_OUTDIR}/result.dat
+			;;
 		"mobibench")
 			./${MOBIBENCH} -p $MNT -f 10000000 -r 4 -y 2 -a 0 \
 			> ${OUTPUTDIR_DEV_PSP_ITER}/result.dat
@@ -561,7 +561,8 @@ for file in $(ls $CONFIGS_DIR); do
 	cp ${CONFIGS_DIR}/$file ~/fast-commit-override.sh
 	source parameter.sh
 	UNIQUE_ID=$(date +%s)
-	echo "RUNNING TEST $file"
-	run_bench
-	echo "TEST $file FINISHED"
+	echo "Results sent to ${OUTDIR}/$UNIQUE_ID"
+	echo "Starting test config [$file]..."
+	run_bench > ${OUTDIR}/$UNIQUE_ID/log
+	echo "Test $file finised"
 done
