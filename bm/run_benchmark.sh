@@ -90,7 +90,6 @@ pre_run_workload()
 	iostat > ${UNIQ_OUTDIR}/iostat_before.dat
 	iostat -x -y 5 > ${UNIQ_OUTDIR}/iostat.dat&
 	cp ~/fast-commit-override.sh ${UNIQ_OUTDIR}/config
-	cp custom-workload.sh ${UNIQ_OUTDIR}
 }
 
 
@@ -448,8 +447,8 @@ select_workload()
 				sleep 1
 			done
 			;;
-		"custom")
-			bash custom-workload.sh $MNT
+		"kernel-compile")
+			bash workloads/kernel-compile/run.sh $MNT
 			;;
 
 	esac
