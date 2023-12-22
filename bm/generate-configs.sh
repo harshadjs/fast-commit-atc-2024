@@ -18,7 +18,7 @@ SERVER_IP="10.132.0.21"
 NUM_WORKLOAD_THREADS=(10 20 40 80 0)
 
 FILESYSTEMS=("XFS" "EXT4FC" "EXT4")
-WORKLOADS=("filebench-varmail" "filebench-varmail-split16" "filebench-webserver" "filebench-fileserver" "postmark")
+WORKLOADS=("kernel-compile" "filebench-varmail" "filebench-varmail-split16" "filebench-webserver" "filebench-fileserver" "postmark")
 
 for workload in ${WORKLOADS[@]}; do
 	echo $workload
@@ -35,7 +35,7 @@ NFS_ID=0
 
 for workload in ${WORKLOADS[@]}; do
 	for num_threads in ${NUM_WORKLOAD_THREADS[@]}; do
-		if [ "$workload" == "postmark" ]; then
+		if [ "$workload" == "postmark" -o "$workload" == "kernel-compile" ]; then
 			if [ "$num_threads" != "0" ]; then
 				continue
 			fi
