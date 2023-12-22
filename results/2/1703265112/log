@@ -1,0 +1,569 @@
+
+
+==== Start experiment of filebench-webserver with 80 ====
+==== Format /dev/sdb on /mnt ====
+umount: /mnt: not mounted.
+umount: /dev/sdb: not mounted.
+umount: /mnt: not mounted.
+meta-data=/dev/sdb               isize=512    agcount=5, agsize=268435455 blks
+         =                       sectsz=4096  attr=2, projid32bit=1
+         =                       crc=1        finobt=1, sparse=1, rmapbt=0
+         =                       reflink=1    bigtime=0
+data     =                       bsize=4096   blocks=1310720000, imaxpct=5
+         =                       sunit=0      swidth=0 blks
+naming   =version 2              bsize=4096   ascii-ci=0, ftype=1
+log      =internal log           bsize=4096   blocks=521728, version=2
+         =                       sectsz=4096  sunit=1 blks, lazy-count=1
+realtime =none                   extsz=4096   blocks=0, rtextents=0
+Discarding blocks...Done.
+==== Format complete ====
+==== Run workload ====
+0.185: Out of shared memory (4)!
+0.185: flowop_define: Can't malloc flowop
+0.186: Out of shared memory (4)!
+0.186: flowop_define: Can't malloc flowop
+0.186: Out of shared memory (4)!
+0.186: flowop_define: Can't malloc flowop
+0.186: Out of shared memory (4)!
+0.186: flowop_define: Can't malloc flowop
+0.186: Out of shared memory (4)!
+0.186: flowop_define: Can't malloc flowop
+0.186: Out of shared memory (4)!
+0.186: flowop_define: Can't malloc flowop
+0.186: Out of shared memory (4)!
+0.186: flowop_define: Can't malloc flowop
+0.186: Out of shared memory (4)!
+0.186: flowop_define: Can't malloc flowop
+0.186: Out of shared memory (4)!
+0.186: flowop_define: Can't malloc flowop
+0.186: Out of shared memory (4)!
+0.186: flowop_define: Can't malloc flowop
+0.186: Out of shared memory (4)!
+0.186: flowop_define: Can't malloc flowop
+0.186: Out of shared memory (4)!
+0.186: flowop_define: Can't malloc flowop
+0.186: Out of shared memory (4)!
+0.186: flowop_define: Can't malloc flowop
+0.186: Out of shared memory (4)!
+0.186: flowop_define: Can't malloc flowop
+0.186: Out of shared memory (4)!
+0.186: flowop_define: Can't malloc flowop
+0.186: Out of shared memory (4)!
+0.187: flowop_define: Can't malloc flowop
+0.187: Out of shared memory (4)!
+0.187: flowop_define: Can't malloc flowop
+0.187: Out of shared memory (4)!
+0.187: flowop_define: Can't malloc flowop
+0.187: Out of shared memory (4)!
+0.187: flowop_define: Can't malloc flowop
+0.187: Out of shared memory (4)!
+0.187: flowop_define: Can't malloc flowop
+0.187: Out of shared memory (4)!
+0.187: flowop_define: Can't malloc flowop
+0.187: Out of shared memory (4)!
+0.187: flowop_define: Can't malloc flowop
+0.187: Out of shared memory (4)!
+0.187: flowop_define: Can't malloc flowop
+0.187: Out of shared memory (4)!
+0.187: flowop_define: Can't malloc flowop
+0.187: Out of shared memory (4)!
+0.187: flowop_define: Can't malloc flowop
+0.187: Out of shared memory (4)!
+0.187: flowop_define: Can't malloc flowop
+0.187: Out of shared memory (4)!
+0.187: flowop_define: Can't malloc flowop
+0.187: Out of shared memory (4)!
+0.187: flowop_define: Can't malloc flowop
+0.187: Out of shared memory (4)!
+0.187: flowop_define: Can't malloc flowop
+0.187: Out of shared memory (4)!
+0.187: flowop_define: Can't malloc flowop
+0.187: Out of shared memory (4)!
+0.187: flowop_define: Can't malloc flowop
+0.187: Out of shared memory (4)!
+0.187: flowop_define: Can't malloc flowop
+0.187: Out of shared memory (4)!
+0.187: flowop_define: Can't malloc flowop
+0.188: Out of shared memory (4)!
+0.188: flowop_define: Can't malloc flowop
+0.188: Out of shared memory (4)!
+0.188: flowop_define: Can't malloc flowop
+0.188: Out of shared memory (4)!
+0.188: flowop_define: Can't malloc flowop
+0.188: Out of shared memory (4)!
+0.188: flowop_define: Can't malloc flowop
+0.188: Out of shared memory (4)!
+0.188: flowop_define: Can't malloc flowop
+0.188: Out of shared memory (4)!
+0.188: flowop_define: Can't malloc flowop
+0.188: Out of shared memory (4)!
+0.188: flowop_define: Can't malloc flowop
+0.188: Out of shared memory (4)!
+0.188: flowop_define: Can't malloc flowop
+0.188: Out of shared memory (4)!
+0.188: flowop_define: Can't malloc flowop
+0.188: Out of shared memory (4)!
+0.188: flowop_define: Can't malloc flowop
+0.188: Out of shared memory (4)!
+0.188: flowop_define: Can't malloc flowop
+0.188: Out of shared memory (4)!
+0.188: flowop_define: Can't malloc flowop
+0.188: Out of shared memory (4)!
+0.188: flowop_define: Can't malloc flowop
+0.188: Out of shared memory (4)!
+0.188: flowop_define: Can't malloc flowop
+0.188: Out of shared memory (4)!
+0.188: flowop_define: Can't malloc flowop
+0.188: Out of shared memory (4)!
+0.188: flowop_define: Can't malloc flowop
+0.188: Out of shared memory (4)!
+0.189: flowop_define: Can't malloc flowop
+0.189: Out of shared memory (4)!
+0.189: flowop_define: Can't malloc flowop
+0.189: Out of shared memory (4)!
+0.189: flowop_define: Can't malloc flowop
+0.189: Out of shared memory (4)!
+0.189: flowop_define: Can't malloc flowop
+0.189: Out of shared memory (4)!
+0.189: flowop_define: Can't malloc flowop
+0.189: Out of shared memory (4)!
+0.189: flowop_define: Can't malloc flowop
+0.189: Out of shared memory (4)!
+0.189: flowop_define: Can't malloc flowop
+0.189: Out of shared memory (4)!
+0.189: flowop_define: Can't malloc flowop
+0.189: Out of shared memory (4)!
+0.189: flowop_define: Can't malloc flowop
+0.189: Out of shared memory (4)!
+0.189: flowop_define: Can't malloc flowop
+0.189: Out of shared memory (4)!
+0.189: flowop_define: Can't malloc flowop
+0.189: Out of shared memory (4)!
+0.189: flowop_define: Can't malloc flowop
+0.189: Out of shared memory (4)!
+0.189: flowop_define: Can't malloc flowop
+0.189: Out of shared memory (4)!
+0.189: flowop_define: Can't malloc flowop
+0.189: Out of shared memory (4)!
+0.189: flowop_define: Can't malloc flowop
+0.189: Out of shared memory (4)!
+0.189: flowop_define: Can't malloc flowop
+0.189: Out of shared memory (4)!
+0.189: flowop_define: Can't malloc flowop
+0.190: Out of shared memory (4)!
+0.190: flowop_define: Can't malloc flowop
+0.190: Out of shared memory (4)!
+0.190: flowop_define: Can't malloc flowop
+0.190: Out of shared memory (4)!
+0.190: flowop_define: Can't malloc flowop
+0.190: Out of shared memory (4)!
+0.190: flowop_define: Can't malloc flowop
+0.190: Out of shared memory (4)!
+0.190: flowop_define: Can't malloc flowop
+0.190: Out of shared memory (4)!
+0.190: flowop_define: Can't malloc flowop
+0.190: Out of shared memory (4)!
+0.190: flowop_define: Can't malloc flowop
+0.190: Out of shared memory (4)!
+0.190: flowop_define: Can't malloc flowop
+0.190: Out of shared memory (4)!
+0.190: flowop_define: Can't malloc flowop
+0.190: Out of shared memory (4)!
+0.190: flowop_define: Can't malloc flowop
+0.190: Out of shared memory (4)!
+0.190: flowop_define: Can't malloc flowop
+0.190: Out of shared memory (4)!
+0.190: flowop_define: Can't malloc flowop
+0.190: Out of shared memory (4)!
+0.190: flowop_define: Can't malloc flowop
+0.190: Out of shared memory (4)!
+0.190: flowop_define: Can't malloc flowop
+0.190: Out of shared memory (4)!
+0.190: flowop_define: Can't malloc flowop
+0.190: Out of shared memory (4)!
+0.190: flowop_define: Can't malloc flowop
+0.191: Out of shared memory (4)!
+0.191: flowop_define: Can't malloc flowop
+0.191: Out of shared memory (4)!
+0.191: flowop_define: Can't malloc flowop
+0.191: Out of shared memory (4)!
+0.191: flowop_define: Can't malloc flowop
+0.191: Out of shared memory (4)!
+0.191: flowop_define: Can't malloc flowop
+0.191: Out of shared memory (4)!
+0.191: flowop_define: Can't malloc flowop
+0.191: Out of shared memory (4)!
+0.191: flowop_define: Can't malloc flowop
+0.191: Out of shared memory (4)!
+0.191: flowop_define: Can't malloc flowop
+0.191: Out of shared memory (4)!
+0.191: flowop_define: Can't malloc flowop
+0.191: Out of shared memory (4)!
+0.191: flowop_define: Can't malloc flowop
+0.191: Out of shared memory (4)!
+0.191: flowop_define: Can't malloc flowop
+0.191: Out of shared memory (4)!
+0.191: flowop_define: Can't malloc flowop
+0.191: Out of shared memory (4)!
+0.191: flowop_define: Can't malloc flowop
+0.191: Out of shared memory (4)!
+0.191: flowop_define: Can't malloc flowop
+0.191: Out of shared memory (4)!
+0.191: flowop_define: Can't malloc flowop
+0.191: Out of shared memory (4)!
+0.191: flowop_define: Can't malloc flowop
+0.191: Out of shared memory (4)!
+0.191: flowop_define: Can't malloc flowop
+0.191: Out of shared memory (4)!
+0.191: flowop_define: Can't malloc flowop
+0.191: Out of shared memory (4)!
+0.191: flowop_define: Can't malloc flowop
+0.192: Out of shared memory (4)!
+0.192: flowop_define: Can't malloc flowop
+0.192: Out of shared memory (4)!
+0.192: flowop_define: Can't malloc flowop
+0.192: Out of shared memory (4)!
+0.192: flowop_define: Can't malloc flowop
+0.192: Out of shared memory (4)!
+0.192: flowop_define: Can't malloc flowop
+0.192: Out of shared memory (4)!
+0.192: flowop_define: Can't malloc flowop
+0.192: Out of shared memory (4)!
+0.192: flowop_define: Can't malloc flowop
+0.192: Out of shared memory (4)!
+0.192: flowop_define: Can't malloc flowop
+0.192: Out of shared memory (4)!
+0.192: flowop_define: Can't malloc flowop
+0.192: Out of shared memory (4)!
+0.192: flowop_define: Can't malloc flowop
+0.192: Out of shared memory (4)!
+0.192: flowop_define: Can't malloc flowop
+0.192: Out of shared memory (4)!
+0.192: flowop_define: Can't malloc flowop
+0.192: Out of shared memory (4)!
+0.192: flowop_define: Can't malloc flowop
+0.192: Out of shared memory (4)!
+0.192: flowop_define: Can't malloc flowop
+0.192: Out of shared memory (4)!
+0.192: flowop_define: Can't malloc flowop
+0.192: Out of shared memory (4)!
+0.192: flowop_define: Can't malloc flowop
+0.192: Out of shared memory (4)!
+0.192: flowop_define: Can't malloc flowop
+0.192: Out of shared memory (4)!
+0.192: flowop_define: Can't malloc flowop
+0.192: Out of shared memory (4)!
+0.192: flowop_define: Can't malloc flowop
+0.193: Out of shared memory (4)!
+0.193: flowop_define: Can't malloc flowop
+0.193: Out of shared memory (4)!
+0.193: flowop_define: Can't malloc flowop
+0.193: Out of shared memory (4)!
+0.193: flowop_define: Can't malloc flowop
+0.193: Out of shared memory (4)!
+0.193: flowop_define: Can't malloc flowop
+0.193: Out of shared memory (4)!
+0.193: flowop_define: Can't malloc flowop
+0.193: Out of shared memory (4)!
+0.193: flowop_define: Can't malloc flowop
+0.193: Out of shared memory (4)!
+0.193: flowop_define: Can't malloc flowop
+0.193: Out of shared memory (4)!
+0.193: flowop_define: Can't malloc flowop
+0.193: Out of shared memory (4)!
+0.193: flowop_define: Can't malloc flowop
+0.193: Out of shared memory (4)!
+0.193: flowop_define: Can't malloc flowop
+0.193: Out of shared memory (4)!
+0.193: flowop_define: Can't malloc flowop
+0.193: Out of shared memory (4)!
+0.193: flowop_define: Can't malloc flowop
+0.193: Out of shared memory (4)!
+0.193: flowop_define: Can't malloc flowop
+0.193: Out of shared memory (4)!
+0.193: flowop_define: Can't malloc flowop
+0.193: Out of shared memory (4)!
+0.193: flowop_define: Can't malloc flowop
+0.193: Out of shared memory (4)!
+0.193: flowop_define: Can't malloc flowop
+0.193: Out of shared memory (4)!
+0.193: flowop_define: Can't malloc flowop
+0.193: Out of shared memory (4)!
+0.193: flowop_define: Can't malloc flowop
+0.194: Out of shared memory (4)!
+0.194: flowop_define: Can't malloc flowop
+0.194: Out of shared memory (4)!
+0.194: flowop_define: Can't malloc flowop
+0.194: Out of shared memory (4)!
+0.194: flowop_define: Can't malloc flowop
+0.194: Out of shared memory (4)!
+0.194: flowop_define: Can't malloc flowop
+0.194: Out of shared memory (4)!
+0.194: flowop_define: Can't malloc flowop
+0.194: Out of shared memory (4)!
+0.194: flowop_define: Can't malloc flowop
+0.194: Out of shared memory (4)!
+0.194: flowop_define: Can't malloc flowop
+0.194: Out of shared memory (4)!
+0.194: flowop_define: Can't malloc flowop
+0.194: Out of shared memory (4)!
+0.194: flowop_define: Can't malloc flowop
+0.194: Out of shared memory (4)!
+0.194: flowop_define: Can't malloc flowop
+0.194: Out of shared memory (4)!
+0.194: flowop_define: Can't malloc flowop
+0.194: Out of shared memory (4)!
+0.194: flowop_define: Can't malloc flowop
+0.194: Out of shared memory (4)!
+0.194: flowop_define: Can't malloc flowop
+0.194: Out of shared memory (4)!
+0.194: flowop_define: Can't malloc flowop
+0.194: Out of shared memory (4)!
+0.194: flowop_define: Can't malloc flowop
+0.194: Out of shared memory (4)!
+0.194: flowop_define: Can't malloc flowop
+0.194: Out of shared memory (4)!
+0.194: flowop_define: Can't malloc flowop
+0.194: Out of shared memory (4)!
+0.194: flowop_define: Can't malloc flowop
+0.194: Out of shared memory (4)!
+0.194: flowop_define: Can't malloc flowop
+0.195: Out of shared memory (4)!
+0.195: flowop_define: Can't malloc flowop
+0.195: Out of shared memory (4)!
+0.195: flowop_define: Can't malloc flowop
+0.195: Out of shared memory (4)!
+0.195: flowop_define: Can't malloc flowop
+0.195: Out of shared memory (4)!
+0.195: flowop_define: Can't malloc flowop
+0.195: Out of shared memory (4)!
+0.195: flowop_define: Can't malloc flowop
+0.195: Out of shared memory (4)!
+0.195: flowop_define: Can't malloc flowop
+0.195: Out of shared memory (4)!
+0.195: flowop_define: Can't malloc flowop
+0.195: Out of shared memory (4)!
+0.195: flowop_define: Can't malloc flowop
+0.195: Out of shared memory (4)!
+0.195: flowop_define: Can't malloc flowop
+0.195: Out of shared memory (4)!
+0.195: flowop_define: Can't malloc flowop
+0.195: Out of shared memory (4)!
+0.195: flowop_define: Can't malloc flowop
+0.195: Out of shared memory (4)!
+0.195: flowop_define: Can't malloc flowop
+0.195: Out of shared memory (4)!
+0.195: flowop_define: Can't malloc flowop
+0.195: Out of shared memory (4)!
+0.195: flowop_define: Can't malloc flowop
+0.195: Out of shared memory (4)!
+0.195: flowop_define: Can't malloc flowop
+0.195: Out of shared memory (4)!
+0.195: flowop_define: Can't malloc flowop
+0.195: Out of shared memory (4)!
+0.195: flowop_define: Can't malloc flowop
+0.195: Out of shared memory (4)!
+0.195: flowop_define: Can't malloc flowop
+0.195: Out of shared memory (4)!
+0.195: flowop_define: Can't malloc flowop
+0.195: Out of shared memory (4)!
+0.196: flowop_define: Can't malloc flowop
+0.196: Out of shared memory (4)!
+0.196: flowop_define: Can't malloc flowop
+0.196: Out of shared memory (4)!
+0.196: flowop_define: Can't malloc flowop
+0.196: Out of shared memory (4)!
+0.196: flowop_define: Can't malloc flowop
+0.196: Out of shared memory (4)!
+0.196: flowop_define: Can't malloc flowop
+0.196: Out of shared memory (4)!
+0.196: flowop_define: Can't malloc flowop
+0.196: Out of shared memory (4)!
+0.196: flowop_define: Can't malloc flowop
+0.196: Out of shared memory (4)!
+0.196: flowop_define: Can't malloc flowop
+0.196: Out of shared memory (4)!
+0.196: flowop_define: Can't malloc flowop
+0.196: Out of shared memory (4)!
+0.196: flowop_define: Can't malloc flowop
+0.196: Out of shared memory (4)!
+0.196: flowop_define: Can't malloc flowop
+0.196: Out of shared memory (4)!
+0.196: flowop_define: Can't malloc flowop
+0.196: Out of shared memory (4)!
+0.196: flowop_define: Can't malloc flowop
+0.196: Out of shared memory (4)!
+0.196: flowop_define: Can't malloc flowop
+0.196: Out of shared memory (4)!
+0.196: flowop_define: Can't malloc flowop
+0.196: Out of shared memory (4)!
+0.196: flowop_define: Can't malloc flowop
+0.196: Out of shared memory (4)!
+0.196: flowop_define: Can't malloc flowop
+0.196: Out of shared memory (4)!
+0.196: flowop_define: Can't malloc flowop
+0.197: Out of shared memory (4)!
+0.197: flowop_define: Can't malloc flowop
+0.197: Out of shared memory (4)!
+0.197: flowop_define: Can't malloc flowop
+0.197: Out of shared memory (4)!
+0.197: flowop_define: Can't malloc flowop
+0.197: Out of shared memory (4)!
+0.197: flowop_define: Can't malloc flowop
+0.197: Out of shared memory (4)!
+0.197: flowop_define: Can't malloc flowop
+0.197: Out of shared memory (4)!
+0.197: flowop_define: Can't malloc flowop
+0.197: Out of shared memory (4)!
+0.197: flowop_define: Can't malloc flowop
+0.197: Out of shared memory (4)!
+0.197: flowop_define: Can't malloc flowop
+0.197: Out of shared memory (4)!
+0.197: flowop_define: Can't malloc flowop
+0.197: Out of shared memory (4)!
+0.197: flowop_define: Can't malloc flowop
+0.197: Out of shared memory (4)!
+0.197: flowop_define: Can't malloc flowop
+0.197: Out of shared memory (4)!
+0.197: flowop_define: Can't malloc flowop
+0.197: Out of shared memory (4)!
+0.197: flowop_define: Can't malloc flowop
+0.197: Out of shared memory (4)!
+0.197: flowop_define: Can't malloc flowop
+0.197: Out of shared memory (4)!
+0.197: flowop_define: Can't malloc flowop
+0.197: Out of shared memory (4)!
+0.197: flowop_define: Can't malloc flowop
+0.197: Out of shared memory (4)!
+0.197: flowop_define: Can't malloc flowop
+0.197: Out of shared memory (4)!
+0.197: flowop_define: Can't malloc flowop
+0.198: Out of shared memory (4)!
+0.198: flowop_define: Can't malloc flowop
+0.198: Out of shared memory (4)!
+0.198: flowop_define: Can't malloc flowop
+0.198: Out of shared memory (4)!
+0.198: flowop_define: Can't malloc flowop
+0.198: Out of shared memory (4)!
+0.198: flowop_define: Can't malloc flowop
+0.198: Out of shared memory (4)!
+0.198: flowop_define: Can't malloc flowop
+0.198: Out of shared memory (4)!
+0.198: flowop_define: Can't malloc flowop
+0.198: Out of shared memory (4)!
+0.198: flowop_define: Can't malloc flowop
+0.198: Out of shared memory (4)!
+0.198: flowop_define: Can't malloc flowop
+0.198: Out of shared memory (4)!
+0.198: flowop_define: Can't malloc flowop
+0.198: Out of shared memory (4)!
+0.198: flowop_define: Can't malloc flowop
+0.198: Out of shared memory (4)!
+0.198: flowop_define: Can't malloc flowop
+0.198: Out of shared memory (4)!
+0.198: flowop_define: Can't malloc flowop
+0.198: Out of shared memory (4)!
+0.198: flowop_define: Can't malloc flowop
+0.198: Out of shared memory (4)!
+0.198: flowop_define: Can't malloc flowop
+0.198: Out of shared memory (4)!
+0.198: flowop_define: Can't malloc flowop
+0.198: Out of shared memory (4)!
+0.198: flowop_define: Can't malloc flowop
+0.198: Out of shared memory (4)!
+0.198: flowop_define: Can't malloc flowop
+0.198: Out of shared memory (4)!
+0.198: flowop_define: Can't malloc flowop
+0.199: Out of shared memory (4)!
+0.199: flowop_define: Can't malloc flowop
+0.199: Out of shared memory (4)!
+0.199: flowop_define: Can't malloc flowop
+0.199: Out of shared memory (4)!
+0.199: flowop_define: Can't malloc flowop
+0.199: Out of shared memory (4)!
+0.199: flowop_define: Can't malloc flowop
+0.199: Out of shared memory (4)!
+0.199: flowop_define: Can't malloc flowop
+0.199: Out of shared memory (4)!
+0.199: flowop_define: Can't malloc flowop
+0.199: Out of shared memory (4)!
+0.199: flowop_define: Can't malloc flowop
+0.199: Out of shared memory (4)!
+0.199: flowop_define: Can't malloc flowop
+0.199: Out of shared memory (4)!
+0.199: flowop_define: Can't malloc flowop
+0.199: Out of shared memory (4)!
+0.199: flowop_define: Can't malloc flowop
+0.199: Out of shared memory (4)!
+0.199: flowop_define: Can't malloc flowop
+0.199: Out of shared memory (4)!
+0.199: flowop_define: Can't malloc flowop
+0.199: Out of shared memory (4)!
+0.199: flowop_define: Can't malloc flowop
+0.199: Out of shared memory (4)!
+0.199: flowop_define: Can't malloc flowop
+0.199: Out of shared memory (4)!
+0.199: flowop_define: Can't malloc flowop
+0.199: Out of shared memory (4)!
+0.199: flowop_define: Can't malloc flowop
+0.199: Out of shared memory (4)!
+0.199: flowop_define: Can't malloc flowop
+0.199: Out of shared memory (4)!
+0.200: flowop_define: Can't malloc flowop
+0.200: Out of shared memory (4)!
+0.200: flowop_define: Can't malloc flowop
+0.200: Out of shared memory (4)!
+0.200: flowop_define: Can't malloc flowop
+0.200: Out of shared memory (4)!
+0.200: flowop_define: Can't malloc flowop
+0.200: Out of shared memory (4)!
+0.200: flowop_define: Can't malloc flowop
+0.200: Out of shared memory (4)!
+0.200: flowop_define: Can't malloc flowop
+0.200: Out of shared memory (4)!
+0.200: flowop_define: Can't malloc flowop
+0.200: Out of shared memory (4)!
+0.200: flowop_define: Can't malloc flowop
+0.200: Out of shared memory (4)!
+0.200: flowop_define: Can't malloc flowop
+0.200: Out of shared memory (4)!
+0.200: flowop_define: Can't malloc flowop
+0.200: Out of shared memory (4)!
+0.200: flowop_define: Can't malloc flowop
+0.200: Out of shared memory (4)!
+0.200: flowop_define: Can't malloc flowop
+0.200: Out of shared memory (4)!
+0.200: flowop_define: Can't malloc flowop
+0.200: Out of shared memory (4)!
+0.200: flowop_define: Can't malloc flowop
+0.200: Out of shared memory (4)!
+0.200: flowop_define: Can't malloc flowop
+0.200: Out of shared memory (4)!
+0.200: flowop_define: Can't malloc flowop
+0.200: Out of shared memory (4)!
+0.200: flowop_define: Can't malloc flowop
+0.200: Out of shared memory (4)!
+0.200: flowop_define: Can't malloc flowop
+0.201: Out of shared memory (4)!
+0.201: flowop_define: Can't malloc flowop
+0.201: Out of shared memory (4)!
+0.201: flowop_define: Can't malloc flowop
+0.201: Out of shared memory (4)!
+0.201: flowop_define: Can't malloc flowop
+0.201: Out of shared memory (4)!
+0.201: flowop_define: Can't malloc flowop
+0.201: Out of shared memory (4)!
+0.201: flowop_define: Can't malloc flowop
+0.201: Out of shared memory (4)!
+0.201: flowop_define: Can't malloc flowop
+0.201: Out of shared memory (4)!
+0.201: flowop_define: Can't malloc flowop
+0.201: Out of shared memory (4)!
+0.201: flowop_define: Can't malloc flowop
+0.201: Out of shared memory (4)!
+0.201: flowop_define: Can't malloc flowop
+0.201: Out of shared memory (4)!
+0.201: flowop_define: Can't malloc flowop
+0.201: Out of shared memory (4)!
+0.201: flowop_define: Can't malloc flowop
+2742.584: NO VALID RESULTS! Filebench run terminated prematurely around line 77
