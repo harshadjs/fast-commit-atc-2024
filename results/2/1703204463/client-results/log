@@ -1,0 +1,27 @@
+
+
+==== Start experiment of filebench-webserver with 40 ====
+==== Format 10.132.0.26 on /mnt ====
+umount: /mnt: not mounted.
+This is a NFS Client, using 10.132.0.26 IP address
+Waiting for NFS Server...
+umount: /mnt: not mounted.
+mount.nfs: requested NFS version or transport protocol is not supported
+umount: /mnt: not mounted.
+mount.nfs: requested NFS version or transport protocol is not supported
+umount: /mnt: not mounted.
+mount.nfs: requested NFS version or transport protocol is not supported
+umount: /mnt: not mounted.
+mount.nfs: requested NFS version or transport protocol is not supported
+umount: /mnt: not mounted.
+mount.nfs: requested NFS version or transport protocol is not supported
+umount: /mnt: not mounted.
+mount.nfs: requested NFS version or transport protocol is not supported
+umount: /mnt: not mounted.
+mount.nfs: requested NFS version or transport protocol is not supported
+umount: /mnt: not mounted.
+Connected.
+==== Format complete ====
+==== Run workload ====
+cat: /proc/fs/jbd2/2.0.26-8/info: No such file or directory
+0.000000/0.000000 => -nan

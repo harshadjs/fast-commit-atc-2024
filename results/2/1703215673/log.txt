@@ -1,0 +1,8 @@
+[87901.795021] nfsd: last server has exited, flushing export cache
+[87902.124737] EXT4-fs (sdb): unmounting filesystem.
+[87910.668857] XFS (sdb): Mounting V5 Filesystem
+[87910.686896] XFS (sdb): Ending clean mount
+[87910.695388] xfs filesystem being mounted at /mnt supports timestamps until 2038 (0x7fffffff)
+[87911.947023] NFSD: Using UMH upcall client tracking operations.
+[87911.952994] NFSD: starting 90-second grace period (net f0000000)
+[87912.066933] sh (67057): drop_caches: 3
