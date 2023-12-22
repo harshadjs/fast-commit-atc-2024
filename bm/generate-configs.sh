@@ -15,10 +15,10 @@ DATA_DEV="/dev/nvme0n1"
 #JOURNAL_DEV=("none" "/dev/nvme0n3")
 JOURNAL_DEV=("none")
 SERVER_IP="10.132.0.21"
-NUM_WORKLOAD_THREADS=(10 20 40 80)
+NUM_WORKLOAD_THREADS=(10 20 40 80 0)
 
 FILESYSTEMS=("XFS" "EXT4FC" "EXT4")
-WORKLOADS=("filebench-varmail" "filebench-varmail-split16")
+WORKLOADS=("filebench-varmail" "filebench-varmail-split16" "filebench-webserver" "filebench-fileserver" "postmark")
 
 for workload in ${WORKLOADS[@]}; do
 	echo $workload
@@ -35,6 +35,15 @@ NFS_ID=0
 
 for workload in ${WORKLOADS[@]}; do
 	for num_threads in ${NUM_WORKLOAD_THREADS[@]}; do
+		if [ "$workload" == "postmark" ]; then
+			if [ "$num_threads" != "0" ]; then
+				continue
+			fi
+		else
+			if [ "$num_threads" == "0" ]; then
+				continue
+			fi
+		fi
 		for journal in ${JOURNAL_DEV[@]}; do
 			for fs in ${FILESYSTEMS[@]}; do
 				# Generate common first
