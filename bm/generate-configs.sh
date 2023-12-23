@@ -17,7 +17,7 @@ JOURNAL_DEV=("none")
 SERVER_IP="10.132.0.21"
 NUM_WORKLOAD_THREADS=(10 20 40 80 0)
 
-FILESYSTEMS=("XFS" "EXT4FC" "EXT4")
+FILESYSTEMS=("F2FS" "XFS" "EXT4FC" "EXT4")
 WORKLOADS=("kernel-compile" "filebench-varmail" "filebench-varmail-split16" "filebench-webserver" "filebench-fileserver" "postmark")
 
 for workload in ${WORKLOADS[@]}; do
@@ -44,6 +44,7 @@ for workload in ${WORKLOADS[@]}; do
 				continue
 			fi
 		fi
+
 		for journal in ${JOURNAL_DEV[@]}; do
 			for fs in ${FILESYSTEMS[@]}; do
 				# Generate common first
