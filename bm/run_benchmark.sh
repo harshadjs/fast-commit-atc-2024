@@ -478,7 +478,7 @@ select_workload()
 	esac
 	debug ${UNIQ_OUTDIR} ${num_threads} ${dev}
 	if [ "$NFS_CLIENT" == "1" ]; then
-		touch ${MNT}/${STOP_FILE}
+		touch ${MNT}/${STOP_FILE}.${NFS_CLIENT_ID}
 		while [ ! -f ${MNT}/${NFS_SERVER_DONE} ]; do
 			sleep 1
 		done
