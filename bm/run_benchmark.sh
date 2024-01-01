@@ -88,7 +88,7 @@ pre_run_workload()
 	sync && sh -c 'echo 3 > /proc/sys/vm/drop_caches'
 	dmesg -c > ${UNIQ_OUTDIR}/log.txt
 	iostat > ${UNIQ_OUTDIR}/iostat_before.dat
-	iostat -x -y 5 > ${UNIQ_OUTDIR}/iostat.dat&
+	iostat -x -y -p 1 > ${UNIQ_OUTDIR}/iostat.dat&
 	cp ~/fast-commit-override.sh ${UNIQ_OUTDIR}/config
 }
 
@@ -450,7 +450,14 @@ select_workload()
 		"kernel-compile")
 			bash workloads/kernel-compile/run.sh $MNT
 			;;
-
+		"create-empty")
+			touch $MNT/file
+			sync $MNT/file
+			;;
+		"create-empty-and-append")
+			echo "t" > $MNT/file
+			sync $MNT/file
+			;;
 	esac
 	debug ${UNIQ_OUTDIR} ${num_threads} ${dev}
 	if [ "$NFS_CLIENT" == "1" ]; then
