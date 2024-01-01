@@ -81,17 +81,7 @@ pre_run_workload()
 		exportfs -a
 		ifconfig
 		/usr/sbin/rpc.nfsd $num_threads
-		iter=0
-		if [ "$NUM_CLIENTS" != "" ]; then
-			while [ $iter -lt $NUM_CLIENTS ]; do
-				while [ ! -f ${MNT}/${START_FILE}.$iter ]; do
-					touch $MNT/$START_FILE.$iter
-				done
-				iter=$((iter+1))
-			done
-		else
-			touch $MNT/$START_FILE
-		fi
+
 		export BENCHMARK="noop"
 	fi
 
@@ -101,6 +91,17 @@ pre_run_workload()
 	iostat > ${UNIQ_OUTDIR}/iostat_before.dat
 	iostat -x -y -p 1 > ${UNIQ_OUTDIR}/iostat.dat&
 	cp ~/fast-commit-override.sh ${UNIQ_OUTDIR}/config
+	if [ "$NFS_SERVER" == "1" ]; then
+		iter=0
+		if [ "$NUM_CLIENTS" != "" ]; then
+			while [ $iter -lt $NUM_CLIENTS ]; do
+				touch $MNT/$START_FILE$iter
+				iter=$((iter+1))
+			done
+		else
+			touch $MNT/$START_FILE
+		fi
+	fi
 }
 
 
