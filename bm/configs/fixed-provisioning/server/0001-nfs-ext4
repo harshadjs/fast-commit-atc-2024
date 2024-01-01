@@ -1,0 +1,5 @@
+dev=/dev/sdb1
+FS=EXT4
+# JOURNAL_DEV=/dev/sdb2
+NFS_SERVER=1
+BENCHMARK=noop

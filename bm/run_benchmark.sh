@@ -17,6 +17,7 @@ EXP_DIR=/home/harshads/cjfs/experiment
 ROCKSDB_DIR=benchmark/rocksdb
 DB_BENCH=${ROCKSDB_DIR}/db_bench
 STOP_FILE=stop
+NFS_SERVER_DONE=server_done
 START_FILE=start
 OUTDIR=~/results
 
@@ -443,9 +444,25 @@ select_workload()
 				> ${UNIQ_OUTDIR}/result_${num_process}.dat
 			;;
 		"noop")
-			while [ ! -f ${MNT}/${STOP_FILE} ]; do
-				sleep 1
-			done
+			if [ "$NUM_CLIENTS" != "" ]; then
+				iter=0
+				while [ $iter -lt $NUM_CLIENTS ]; do
+					while [ ! -f ${MNT}/${STOP_FILE}.$iter ]; do
+						sleep 1
+					done
+					iter=$((iter+1))
+				done
+			else
+				while [ ! -f ${MNT}/${STOP_FILE} ]; do
+					sleep 1
+				done
+			fi
+			;;
+		"fio-read")
+			fio --name=read_bandwidth_test  --filename=/mnt/fio --filesize=1G  \
+				--time_based=1 --ramp_time=5s --runtime=50s  --ioengine=libaio \
+				--direct=1 --verify=0 --randrepeat=0  --bs=1M --iodepth=4 --rw=read \
+				--numjobs=1 > ${UNIQ_OUTDIR}/result.dat;
 			;;
 		"kernel-compile")
 			bash workloads/kernel-compile/run.sh $MNT
@@ -462,15 +479,31 @@ select_workload()
 	debug ${UNIQ_OUTDIR} ${num_threads} ${dev}
 	if [ "$NFS_CLIENT" == "1" ]; then
 		touch ${MNT}/${STOP_FILE}
+		while [ ! -f ${MNT}/${NFS_SERVER_DONE} ]; do
+			sleep 1
+		done
 		cp -r ${UNIQ_OUTDIR} ${MNT}/results.tmp
-		mv ${MNT}/results.tmp ${MNT}/results
+		mv ${MNT}/results.tmp ${MNT}/results.$NFS_CLIENT_ID
 		umount /mnt
 	fi
 	if [ "$NFS_SERVER" == "1" ]; then
-		while [ ! -d ${MNT}/results ]; do
-			sleep 1
-		done
-		cp -r ${MNT}/results ${UNIQ_OUTDIR}/client-results
+		touch ${MNT}/${NFS_SERVER_DONE}
+		if [ "$NUM_CLIENTS" != "" ]; then
+			# Multiclient Test
+			iter=0
+			while [ $iter -lt $NUM_CLIENTS ]; do
+				while [ ! -d ${MNT}/results.$iter ]; do
+					sleep 1
+				done
+				cp -r ${MNT}/results.$iter ${UNIQ_OUTDIR}/client-results.$iter
+				iter=$((iter+1))
+			done
+		else
+			while [ ! -d ${MNT}/results ]; do
+				sleep 1
+			done
+			cp -r ${MNT}/results ${UNIQ_OUTDIR}/client-results
+		fi
 	fi
 	CURDIR=$(pwd)
 	cp parse.sh ${UNIQ_OUTDIR}
