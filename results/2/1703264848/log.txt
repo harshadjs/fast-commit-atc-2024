@@ -1,3 +1,0 @@
-[137072.853047] EXT4-fs (sdb): unmounting filesystem.
-[137101.788585] EXT4-fs (sdb): mounted filesystem with ordered data mode. Quota mode: none.
-[137101.860440] sh (137572): drop_caches: 3

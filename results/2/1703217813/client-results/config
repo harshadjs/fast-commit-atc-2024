@@ -1,4 +1,0 @@
-dev=10.132.0.26
-NFS_CLIENT=1
-BENCHMARK=filebench-fileserver
-NUM_THREADS=80
