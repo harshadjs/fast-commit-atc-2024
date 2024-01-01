@@ -1,6 +1,0 @@
-dev=/dev/nvme0n1
-FS=XFS
-JOURNAL_DEV=
-NFS_SERVER=0
-BENCHMARK=filebench-varmail-split16
-NUM_THREADS=20
