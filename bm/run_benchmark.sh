@@ -34,12 +34,12 @@ lockstat_off() {
 
 nfs_client_start() {
 	echo "Waiting for NFS Server..."
-	while [ ! -f ${MNT}/${START_FILE} ]; do
+	while [ ! -f ${MNT}/${START_FILE}$NFS_CLIENT_ID ]; do
 		umount $MNT
 		sleep 1
 		mount -t nfs ${NFS_CLIENT_OPS} ${dev}:/mnt $MNT
 	done
-	rm ${MNT}/${START_FILE}
+	rm ${MNT}/${START_FILE}$NFS_CLIENT_ID
 	echo "Connected."
 }
 
@@ -81,7 +81,17 @@ pre_run_workload()
 		exportfs -a
 		ifconfig
 		/usr/sbin/rpc.nfsd $num_threads
-		touch $MNT/$START_FILE
+		iter=0
+		if [ "$NUM_CLIENTS" != "" ]; then
+			while [ $iter -lt $NUM_CLIENTS ]; do
+				while [ ! -f ${MNT}/${START_FILE}.$iter ]; do
+					touch $MNT/$START_FILE.$iter
+				done
+				iter=$((iter+1))
+			done
+		else
+			touch $MNT/$START_FILE
+		fi
 		export BENCHMARK="noop"
 	fi
 
@@ -444,19 +454,13 @@ select_workload()
 				> ${UNIQ_OUTDIR}/result_${num_process}.dat
 			;;
 		"noop")
-			if [ "$NUM_CLIENTS" != "" ]; then
-				iter=0
-				while [ $iter -lt $NUM_CLIENTS ]; do
-					while [ ! -f ${MNT}/${STOP_FILE}.$iter ]; do
-						sleep 1
-					done
-					iter=$((iter+1))
-				done
-			else
-				while [ ! -f ${MNT}/${STOP_FILE} ]; do
+			iter=0
+			while [ $iter -lt $NUM_CLIENTS ]; do
+				while [ ! -f ${MNT}/${STOP_FILE}.$iter ]; do
 					sleep 1
 				done
-			fi
+				iter=$((iter+1))
+			done
 			;;
 		"fio-read")
 			fio --name=read_bandwidth_test  --filename=/mnt/fio --filesize=1G  \
@@ -488,22 +492,14 @@ select_workload()
 	fi
 	if [ "$NFS_SERVER" == "1" ]; then
 		touch ${MNT}/${NFS_SERVER_DONE}
-		if [ "$NUM_CLIENTS" != "" ]; then
-			# Multiclient Test
-			iter=0
-			while [ $iter -lt $NUM_CLIENTS ]; do
-				while [ ! -d ${MNT}/results.$iter ]; do
-					sleep 1
-				done
-				cp -r ${MNT}/results.$iter ${UNIQ_OUTDIR}/client-results.$iter
-				iter=$((iter+1))
-			done
-		else
-			while [ ! -d ${MNT}/results ]; do
+		iter=0
+		while [ $iter -lt $NUM_CLIENTS ]; do
+			while [ ! -d ${MNT}/results.$iter ]; do
 				sleep 1
 			done
-			cp -r ${MNT}/results ${UNIQ_OUTDIR}/client-results
-		fi
+			cp -r ${MNT}/results.$iter ${UNIQ_OUTDIR}/client-results.$iter
+			iter=$((iter+1))
+		done
 	fi
 	CURDIR=$(pwd)
 	cp parse.sh ${UNIQ_OUTDIR}
