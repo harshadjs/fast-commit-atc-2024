@@ -24,7 +24,7 @@
 #
 
 set $dir=/mnt
-set $nfiles=1000
+set $nfiles=10000
 set $meandirwidth=1000000
 set $filesize=cvar(type=cvar-gamma,parameters=mean:16384;gamma:1.5)
 set $nthreads=20
@@ -55,4 +55,4 @@ define process name=filereader,instances=1
 
 echo  "Varmail Version 3.0 personality successfully loaded"
 
-run 60
+run 60000
