@@ -1,0 +1,40 @@
+
+
+==== Start experiment of filebench-varmail with 40 ====
+==== Format /dev/sdb1 on /mnt ====
+umount: /mnt: not mounted.
+F2FS File system
+umount: /dev/sdb1: not mounted.
+umount: /mnt: not mounted.
+
+	F2FS-tools: mkfs.f2fs Ver: 1.14.0 (2020-08-24)
+
+Info: Disable heap-based policy
+Info: Debug level = 0
+Info: Trim is enabled
+Info: [/dev/sdb1] Disk Model: PersistentDisk  
+Info: Segments per section = 1
+Info: Sections per zone = 1
+Info: sector size = 512
+Info: total sectors = 2147483648 (1048576 MB)
+Info: zone aligned segment0 blkaddr: 512
+Info: format version with
+  "Linux version 5.19.0-rc5-xfstests-perf-00988-g8c6b42dcd7f8 (harshads@harshads.c.googlers.com) (gcc (Debian 13.2.0-5) 13.2.0, GNU ld (GNU Binutils for Debian) 2.41) #106 SMP PREEMPT_DYNAMIC Mon Jan 1 21:16:07 UTC 2024"
+Info: [/dev/sdb1] Discarding device
+Info: This device doesn't support BLKSECDISCARD
+Info: Discarded 1048576 MB
+Info: Overprovision ratio = 0.200%
+Info: Overprovision segments = 2051 (GC reserved = 1007)
+Info: format successful
+==== Format complete ====
+==== Run workload ====
+cat: /proc/fs/jbd2/sdb2/info: No such file or directory
+0.000000/0.000000 => -nan
+./parse.sh: line 49: syntax error near unexpected token `else'
+./parse.sh: line 49: `else'
+==== Workload complete ====
+==== End the experiment ====
+
+
+awk: cannot open /root/results/summary_total (No such file or directory)
+Find results in: /root/results/1704199150

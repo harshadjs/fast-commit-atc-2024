@@ -1,0 +1,4 @@
+[55305.811803] XFS (sdb1): Mounting V5 Filesystem
+[55305.831032] XFS (sdb1): Ending clean mount
+[55305.839547] xfs filesystem being mounted at /mnt supports timestamps until 2038 (0x7fffffff)
+[55305.886145] sh (52411): drop_caches: 3

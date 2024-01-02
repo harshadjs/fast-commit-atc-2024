@@ -1,0 +1,31 @@
+
+
+==== Start experiment of filebench-varmail with 10 ====
+==== Format /dev/sdb1 on /mnt ====
+umount: /mnt: not mounted.
+umount: /dev/sdb1: not mounted.
+umount: /mnt: not mounted.
+meta-data=/dev/sdb1              isize=512    agcount=4, agsize=67108864 blks
+         =                       sectsz=4096  attr=2, projid32bit=1
+         =                       crc=1        finobt=1, sparse=1, rmapbt=0
+         =                       reflink=1    bigtime=0
+data     =                       bsize=4096   blocks=268435456, imaxpct=5
+         =                       sunit=0      swidth=0 blks
+naming   =version 2              bsize=4096   ascii-ci=0, ftype=1
+log      =/dev/sdb2              bsize=4096   blocks=262144, version=2
+         =                       sectsz=4096  sunit=1 blks, lazy-count=1
+realtime =none                   extsz=4096   blocks=0, rtextents=0
+Discarding blocks...Done.
+Discarding blocks...Done.
+==== Format complete ====
+==== Run workload ====
+cat: /proc/fs/jbd2/sdb2/info: No such file or directory
+0.000000/0.000000 => -nan
+./parse.sh: line 49: syntax error near unexpected token `else'
+./parse.sh: line 49: `else'
+==== Workload complete ====
+==== End the experiment ====
+
+
+awk: cannot open /root/results/summary_total (No such file or directory)
+Find results in: /root/results/1704197047

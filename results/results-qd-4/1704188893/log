@@ -1,0 +1,26 @@
+
+
+==== Start experiment of filebench-varmail with 10 ====
+==== Format /dev/sdb1 on /mnt ====
+umount: /mnt: not mounted.
+umount: /dev/sdb1: not mounted.
+umount: /mnt: not mounted.
+mke2fs 1.46.2 (28-Feb-2021)
+Discarding device blocks:   4096/262144             done                            
+Creating filesystem with 262144 4k blocks and 0 inodes
+Filesystem UUID: 40086f25-80ee-46ed-82b0-76d3b4db8be8
+Superblock backups stored on blocks: 
+
+Zeroing journal device:   1024/262144             
+mke2fs 1.46.2 (28-Feb-2021)
+==== Format complete ====
+==== Run workload ====
+0.000000/0.000000 => -nan
+./parse.sh: line 49: syntax error near unexpected token `else'
+./parse.sh: line 49: `else'
+==== Workload complete ====
+==== End the experiment ====
+
+
+awk: cannot open /root/results/summary_total (No such file or directory)
+Find results in: /root/results/1704188893
