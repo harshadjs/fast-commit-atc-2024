@@ -1,0 +1,5 @@
+[ 9748.823220] nfsd: last server has exited, flushing export cache
+[ 9748.873302] EXT4-fs (nvme0n1p1): unmounting filesystem.
+[ 9752.517900] F2FS-fs (nvme0n1p1): Found nat_bits in checkpoint
+[ 9752.638795] F2FS-fs (nvme0n1p1): Mounted with checkpoint version = 400e3e7d
+[ 9752.680143] sh (13839): drop_caches: 3

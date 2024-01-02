@@ -1,0 +1,46 @@
+
+
+==== Start experiment of noop with 64 ====
+==== Format /dev/nvme0n1p1 on /mnt ====
+umount: /mnt: not mounted.
+umount: /dev/nvme0n1p1: not mounted.
+umount: /mnt: not mounted.
+mke2fs 1.46.2 (28-Feb-2021)
+Discarding device blocks:   4096/262144             done                            
+Creating filesystem with 262144 4k blocks and 0 inodes
+Filesystem UUID: df4fc3c3-f5c0-4006-8665-d44dfc4d93de
+Superblock backups stored on blocks: 
+
+Zeroing journal device:   1024/262144 29696/262144130048/262144230400/262144             
+mke2fs 1.46.2 (28-Feb-2021)
+==== Format complete ====
+This is a NFS Sever, with 64 threads.
+enp0s5: flags=4163<UP,BROADCAST,RUNNING,MULTICAST>  mtu 1460
+        inet 10.132.15.204  netmask 255.255.255.255  broadcast 10.132.15.204
+        inet6 fe80::4001:aff:fe84:fcc  prefixlen 64  scopeid 0x20<link>
+        ether 42:01:0a:84:0f:cc  txqueuelen 1000  (Ethernet)
+        RX packets 5899190  bytes 8198223613 (7.6 GiB)
+        RX errors 0  dropped 0  overruns 0  frame 0
+        TX packets 5814884  bytes 1518680370 (1.4 GiB)
+        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
+
+lo: flags=73<UP,LOOPBACK,RUNNING>  mtu 65536
+        inet 127.0.0.1  netmask 255.0.0.0
+        inet6 ::1  prefixlen 128  scopeid 0x10<host>
+        loop  txqueuelen 1000  (Local Loopback)
+        RX packets 12  bytes 1020 (1020.0 B)
+        RX errors 0  dropped 0  overruns 0  frame 0
+        TX packets 12  bytes 1020 (1020.0 B)
+        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
+
+==== Run workload ====
+0.000000/0.000000 => -nan
+./parse.sh: line 38: cd: client-results: No such file or directory
+./parse.sh: line 49: syntax error near unexpected token `else'
+./parse.sh: line 49: `else'
+==== Workload complete ====
+==== End the experiment ====
+
+
+awk: cannot open /root/results/summary_total (No such file or directory)
+Find results in: /root/results/1704187712
