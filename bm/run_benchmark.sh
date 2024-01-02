@@ -463,10 +463,10 @@ select_workload()
 				iter=$((iter+1))
 			done
 			;;
-		"fio-read")
-			fio --name=read_bandwidth_test  --filename=/mnt/fio --filesize=1G  \
+		"fio-write")
+			fio --name=write_bandwidth_test  --filename=/mnt/fio --filesize=100M  \
 				--time_based=1 --ramp_time=5s --runtime=50s  --ioengine=libaio \
-				--direct=1 --verify=0 --randrepeat=0  --bs=1M --iodepth=4 --rw=read \
+				--direct=1 --verify=0 --randrepeat=0  --bs=1M --iodepth=4 --rw=write \
 				--numjobs=1 > ${UNIQ_OUTDIR}/result.dat;
 			;;
 		"kernel-compile")
