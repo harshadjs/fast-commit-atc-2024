@@ -14,12 +14,12 @@ CLIENT_DIR="${PREFIX}/client"
 SERVER_DIR="${PREFIX}/server"
 DATA_DEV="/dev/sdb1"
 JOURNAL_DEV=("/dev/sdb2")
-SERVER_IP="10.132.15.204"
+SERVER_IP="10.132.15.207"
 NUM_WORKLOAD_THREADS=(40 0)
 
 FILESYSTEMS=("F2FS" "XFS" "EXT4FC" "EXT4")
 # WORKLOADS=("kernel-compile" "filebench-varmail" "filebench-varmail-split16" "filebench-webserver" "filebench-fileserver" "postmark")
-WORKLOADS=("filebench-varmail" "postmark" "compilebench")
+WORKLOADS=("filebench-varmail" "postmark" "compilebench" "dbench" "fsmark")
 
 for workload in ${WORKLOADS[@]}; do
 	echo $workload
