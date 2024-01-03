@@ -9,7 +9,7 @@
 # BENCHMARK=filebench-varmail
 # NFS_CLIENT_OPS=-o async
 
-PREFIX="configs/scaling"
+PREFIX="."
 CLIENT_DIR="${PREFIX}/client"
 SERVER_DIR="${PREFIX}/server"
 DATA_DEV="/dev/nvme0n1p1"
@@ -82,3 +82,6 @@ for workload in ${WORKLOADS[@]}; do
 		done
 	done
 done
+
+rm $SERVER_DIR/0*
+rm $CLIENT_DIR/*
