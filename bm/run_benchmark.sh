@@ -22,6 +22,7 @@ START_FILE=start
 OUTDIR=~/results
 
 CONFIGS_DIR=$1
+NFS_SERVER_IP_ADDRESS=$2
 
 lockstat_on() {
 	echo 1 > /proc/sys/kernel/lock_stat
@@ -37,7 +38,7 @@ nfs_client_start() {
 	while [ ! -f ${MNT}/${START_FILE}$NFS_CLIENT_ID ]; do
 		umount $MNT
 		sleep 1
-		mount -t nfs ${NFS_CLIENT_OPS} ${dev}:/mnt $MNT
+		mount -t nfs ${NFS_CLIENT_OPS} ${NFS_SERVER_IP_ADDRESS}:/mnt $MNT
 	done
 	rm ${MNT}/${START_FILE}$NFS_CLIENT_ID
 	echo "Connected."
@@ -53,7 +54,7 @@ pre_run_workload()
 	umount $MNT
 
 	if [ "${NFS_CLIENT}" == "1" ]; then
-		echo "This is a NFS Client, using $dev IP address"
+		echo "This is a NFS Client, using $NFS_SERVER_IP_ADDRESS IP address"
 		nfs_client_start
 	elif [ "${FS}" == "XFS" ]; then
 		sudo bash mkxfs.sh $dev $MNT $JOURNAL_DEV
