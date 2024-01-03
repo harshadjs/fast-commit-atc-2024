@@ -1,0 +1,158 @@
+
+
+==== Start experiment of compilebench with 0 ====
+==== Format 10.132.15.207 on /mnt ====
+umount: /mnt: not mounted.
+This is a NFS Client, using 10.132.15.207 IP address
+Waiting for NFS Server...
+umount: /mnt: not mounted.
+mount.nfs: requested NFS version or transport protocol is not supported
+umount: /mnt: not mounted.
+mount.nfs: requested NFS version or transport protocol is not supported
+umount: /mnt: not mounted.
+mount.nfs: requested NFS version or transport protocol is not supported
+umount: /mnt: not mounted.
+mount.nfs: requested NFS version or transport protocol is not supported
+umount: /mnt: not mounted.
+mount.nfs: requested NFS version or transport protocol is not supported
+umount: /mnt: not mounted.
+Connected.
+==== Format complete ====
+==== Run workload ====
+using working directory /mnt, 30 intial dirs 100 runs
+native unpatched native-0 222MB in 67.49 seconds (3.29 MB/s)
+native patched native-0 109MB in 20.16 seconds (5.44 MB/s)
+native patched compiled native-0 691MB in 10.61 seconds (65.18 MB/s)
+create dir kernel-0 222MB in 68.87 seconds (3.23 MB/s)
+create dir kernel-1 222MB in 68.65 seconds (3.24 MB/s)
+create dir kernel-2 222MB in 79.11 seconds (2.81 MB/s)
+create dir kernel-3 222MB in 67.58 seconds (3.29 MB/s)
+create dir kernel-4 222MB in 68.77 seconds (3.23 MB/s)
+create dir kernel-5 222MB in 72.04 seconds (3.09 MB/s)
+create dir kernel-6 222MB in 64.90 seconds (3.43 MB/s)
+create dir kernel-7 222MB in 70.20 seconds (3.17 MB/s)
+create dir kernel-8 222MB in 70.72 seconds (3.14 MB/s)
+create dir kernel-9 222MB in 70.73 seconds (3.14 MB/s)
+create dir kernel-10 222MB in 69.89 seconds (3.18 MB/s)
+create dir kernel-11 222MB in 69.22 seconds (3.21 MB/s)
+create dir kernel-12 222MB in 71.49 seconds (3.11 MB/s)
+create dir kernel-13 222MB in 70.96 seconds (3.13 MB/s)
+create dir kernel-14 222MB in 72.36 seconds (3.07 MB/s)
+create dir kernel-15 222MB in 72.33 seconds (3.07 MB/s)
+create dir kernel-16 222MB in 71.92 seconds (3.09 MB/s)
+create dir kernel-17 222MB in 71.41 seconds (3.11 MB/s)
+create dir kernel-18 222MB in 69.37 seconds (3.21 MB/s)
+create dir kernel-19 222MB in 67.19 seconds (3.31 MB/s)
+create dir kernel-20 222MB in 70.66 seconds (3.15 MB/s)
+create dir kernel-21 222MB in 68.39 seconds (3.25 MB/s)
+create dir kernel-22 222MB in 68.88 seconds (3.23 MB/s)
+create dir kernel-23 222MB in 72.30 seconds (3.08 MB/s)
+create dir kernel-24 222MB in 69.44 seconds (3.20 MB/s)
+create dir kernel-25 222MB in 69.09 seconds (3.22 MB/s)
+create dir kernel-26 222MB in 69.15 seconds (3.22 MB/s)
+create dir kernel-27 222MB in 69.73 seconds (3.19 MB/s)
+create dir kernel-28 222MB in 69.12 seconds (3.22 MB/s)
+create dir kernel-29 222MB in 68.78 seconds (3.23 MB/s)
+patch dir kernel-7 109MB in 34.15 seconds (3.21 MB/s)
+compile dir kernel-7 691MB in 10.55 seconds (65.55 MB/s)
+compile dir kernel-14 680MB in 12.30 seconds (55.34 MB/s)
+patch dir kernel-14 691MB in 12.53 seconds (55.20 MB/s)
+read dir kernel-7 in 10.64 86.44 MB/s
+read dir kernel-10 in 8.37 26.57 MB/s
+create dir kernel-3116 222MB in 67.99 seconds (3.27 MB/s)
+clean kernel-7 691MB in 3.38 seconds (204.61 MB/s)
+read dir kernel-6 in 8.11 27.42 MB/s
+stat dir kernel-2 in 0.71 seconds
+compile dir kernel-2 680MB in 12.43 seconds (54.76 MB/s)
+clean kernel-14 691MB in 3.80 seconds (182.00 MB/s)
+clean kernel-2 680MB in 4.53 seconds (150.25 MB/s)
+patch dir kernel-2 109MB in 21.82 seconds (5.03 MB/s)
+stat dir kernel-2 in 0.76 seconds
+create dir kernel-6231 222MB in 69.03 seconds (3.22 MB/s)
+delete kernel-8 in 26.47 seconds
+compile dir kernel-2 691MB in 11.08 seconds (62.42 MB/s)
+create dir kernel-70151 222MB in 70.56 seconds (3.15 MB/s)
+clean kernel-2 691MB in 3.57 seconds (193.72 MB/s)
+create dir kernel-78184 222MB in 71.62 seconds (3.10 MB/s)
+compile dir kernel-7 691MB in 10.82 seconds (63.92 MB/s)
+create dir kernel-64250 222MB in 70.24 seconds (3.17 MB/s)
+delete kernel-12 in 25.91 seconds
+stat dir kernel-2 in 0.75 seconds
+patch dir kernel-70151 109MB in 21.35 seconds (5.14 MB/s)
+stat dir kernel-7 in 0.73 seconds
+stat dir kernel-78184 in 0.72 seconds
+compile dir kernel-2 691MB in 10.92 seconds (63.33 MB/s)
+compile dir kernel-26 680MB in 12.53 seconds (54.32 MB/s)
+stat dir kernel-7 in 0.71 seconds
+create dir kernel-2717 222MB in 69.85 seconds (3.18 MB/s)
+delete kernel-26 in 30.74 seconds
+stat dir kernel-2 in 0.89 seconds
+compile dir kernel-14 691MB in 10.87 seconds (63.62 MB/s)
+compile dir kernel-70151 691MB in 10.76 seconds (64.27 MB/s)
+create dir kernel-55376 222MB in 70.65 seconds (3.15 MB/s)
+stat dir kernel-22 in 0.76 seconds
+delete kernel-55376 in 26.06 seconds
+patch dir kernel-27 109MB in 22.43 seconds (4.89 MB/s)
+patch dir kernel-64250 109MB in 22.50 seconds (4.87 MB/s)
+read dir kernel-6231 in 8.07 27.56 MB/s
+patch dir kernel-9 109MB in 21.53 seconds (5.09 MB/s)
+stat dir kernel-14 in 0.80 seconds
+read dir kernel-29 in 8.23 27.02 MB/s
+create dir kernel-57327 222MB in 69.08 seconds (3.22 MB/s)
+stat dir kernel-14 in 0.80 seconds
+compile dir kernel-27 691MB in 10.82 seconds (63.92 MB/s)
+create dir kernel-64334 222MB in 69.58 seconds (3.20 MB/s)
+patch dir kernel-1 109MB in 21.30 seconds (5.15 MB/s)
+create dir kernel-16056 222MB in 68.54 seconds (3.24 MB/s)
+clean kernel-7 691MB in 3.48 seconds (198.73 MB/s)
+delete kernel-27 in 30.28 seconds
+create dir kernel-51614 222MB in 68.98 seconds (3.22 MB/s)
+clean kernel-14 691MB in 3.39 seconds (204.01 MB/s)
+delete kernel-64250 in 26.14 seconds
+stat dir kernel-2 in 0.80 seconds
+clean kernel-70151 691MB in 3.30 seconds (209.57 MB/s)
+delete kernel-14 in 26.88 seconds
+read dir kernel-2 in 10.28 89.47 MB/s
+create dir kernel-24150 222MB in 66.97 seconds (3.32 MB/s)
+read dir kernel-9 in 8.56 26.65 MB/s
+patch dir kernel-19 109MB in 21.42 seconds (5.12 MB/s)
+clean kernel-2 691MB in 3.30 seconds (209.57 MB/s)
+compile dir kernel-18 680MB in 12.23 seconds (55.65 MB/s)
+compile dir kernel-2 691MB in 10.55 seconds (65.55 MB/s)
+delete kernel-2 in 29.84 seconds
+delete kernel-70151 in 26.86 seconds
+stat dir kernel-1 in 0.73 seconds
+read dir kernel-18 in 10.29 87.76 MB/s
+clean kernel-18 680MB in 4.27 seconds (159.40 MB/s)
+compile dir kernel-17 680MB in 12.34 seconds (55.16 MB/s)
+read dir kernel-17 in 10.56 85.51 MB/s
+stat dir kernel-18 in 0.71 seconds
+stat dir kernel-64334 in 0.66 seconds
+delete kernel-24150 in 25.82 seconds
+delete kernel-17 in 29.78 seconds
+stat dir kernel-1 in 0.65 seconds
+compile dir kernel-7 691MB in 10.60 seconds (65.24 MB/s)
+patch dir kernel-16 109MB in 21.58 seconds (5.08 MB/s)
+stat dir kernel-7 in 0.73 seconds
+create dir kernel-82195 222MB in 67.03 seconds (3.32 MB/s)
+delete kernel-82195 in 25.65 seconds
+stat dir kernel-3 in 0.72 seconds
+patch dir kernel-2717 109MB in 20.98 seconds (5.23 MB/s)
+patch dir kernel-5 109MB in 33.41 seconds (3.28 MB/s)
+read dir kernel-2717 in 8.45 27.00 MB/s
+delete kernel-29 in 25.86 seconds
+clean kernel-7 691MB in 3.40 seconds (203.41 MB/s)
+read dir kernel-4 in 7.91 28.11 MB/s
+stat dir kernel-78184 in 0.62 seconds
+patch dir kernel-0 109MB in 20.62 seconds (5.32 MB/s)
+patch dir kernel-3 109MB in 33.16 seconds (3.31 MB/s)
+create dir kernel-30226 222MB in 66.53 seconds (3.34 MB/s)
+read dir kernel-19 in 8.48 26.90 MB/s
+read dir kernel-9 in 8.48 26.90 MB/s
+delete kernel-5 in 26.18 seconds
+read dir kernel-7 in 8.16 27.96 MB/s
+patch dir kernel-57327 109MB in 23.56 seconds (4.65 MB/s)
+read dir kernel-11 in 8.19 27.15 MB/s
+/home/harshads/fast-commit-stuff/bm
+cat: /proc/fs/jbd2/2.15.207-8/info: No such file or directory
+0.000000/0.000000 => -nan

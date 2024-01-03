@@ -1,0 +1,14 @@
+
+run complete:
+==========================================================================
+intial create total runs 30 avg 3.82 MB/s (user 0.43s sys 1.59s)
+create total runs 14 avg 3.86 MB/s (user 0.43s sys 1.54s)
+patch total runs 15 avg 10.71 MB/s (user 0.17s sys 0.90s)
+compile total runs 14 avg 69.30 MB/s (user 0.05s sys 0.64s)
+clean total runs 10 avg 312.15 MB/s (user 0.01s sys 0.12s)
+read tree total runs 11 avg 28.06 MB/s (user 0.26s sys 1.12s)
+read compiled tree total runs 4 avg 91.44 MB/s (user 0.28s sys 1.65s)
+delete tree total runs 10 avg 15.23 seconds (user 0.16s sys 0.61s)
+delete compiled tree total runs 4 avg 17.49 seconds (user 0.18s sys 0.68s)
+stat tree total runs 11 avg 0.69 seconds (user 0.09s sys 0.17s)
+stat compiled tree total runs 7 avg 0.73 seconds (user 0.10s sys 0.18s)
