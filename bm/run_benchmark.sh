@@ -473,7 +473,9 @@ select_workload()
 			bash workloads/kernel-compile/run.sh $MNT
 			;;
 		"compilebench")
-			../compilebench-0.6/compilebench -D $MNT > ${UNIQ_OUTDIR}/result.dat
+                        cd ../compilebench-0.6
+			python2 ./compilebench -D $MNT > ${UNIQ_OUTDIR}/result.dat
+                        cd -
 			;;
 		"create-empty")
 			touch $MNT/file
