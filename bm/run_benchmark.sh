@@ -321,14 +321,17 @@ select_workload()
 			cd $CURDIR
 			systemctl stop mysqld
 			;;
-		"dbench-client")
+		"dbench")
 			num_process=${num_threads}
 			DURATION=60
 			WORKLOAD=benchmark/dbench/loadfiles/client.txt
 			echo "./${DBENCH} ${num_process} -t ${DURATION} -c ${WORKLOAD} -D ${MNT} --sync-dir \
-				> ${UNIQ_OUTDIR}/result_${num_process}.dat;"
+				> ${UNIQ_OUTDIR}/result.dat;"
 			./${DBENCH} ${num_process} -t ${DURATION} -c ${WORKLOAD} -D ${MNT} --sync-dir \
-				> ${UNIQ_OUTDIR}/result_${num_process}.dat;
+				> ${UNIQ_OUTDIR}/result.dat;
+			;;
+		"fsmark")
+			fs_mark -t ${num_threads} -n 500 -s 524288 -w 8192 -d $MNT > ${UNIQ_OUTDIR}/result.dat
 			;;
 		"ycsb-load")
 			CURDIR=$(pwd)
