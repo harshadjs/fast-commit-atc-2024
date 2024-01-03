@@ -19,7 +19,7 @@ NUM_WORKLOAD_THREADS=(40 0)
 
 FILESYSTEMS=("F2FS" "XFS" "EXT4FC" "EXT4")
 # WORKLOADS=("kernel-compile" "filebench-varmail" "filebench-varmail-split16" "filebench-webserver" "filebench-fileserver" "postmark")
-WORKLOADS=("filebench-varmail" "postmark" "compilebench")
+WORKLOADS=("filebench-varmail" "postmark" "compilebench" "fileserver")
 
 for workload in ${WORKLOADS[@]}; do
 	echo $workload
@@ -86,5 +86,5 @@ for workload in ${WORKLOADS[@]}; do
 	done
 done
 
-rm server/5*
+rm server/0*
 rm client/*
