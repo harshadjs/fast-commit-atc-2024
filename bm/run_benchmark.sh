@@ -325,9 +325,9 @@ select_workload()
 			num_process=${num_threads}
 			DURATION=60
 			WORKLOAD=benchmark/dbench/loadfiles/client.txt
-			echo "./${DBENCH} ${num_process} -t ${DURATION} -c ${WORKLOAD} -D ${MNT} --sync-dir \
+			echo "dbench ${num_process} -t ${DURATION} -c ${WORKLOAD} -D ${MNT} --sync-dir \
 				> ${UNIQ_OUTDIR}/result.dat;"
-			./${DBENCH} ${num_process} -t ${DURATION} -c ${WORKLOAD} -D ${MNT} --sync-dir \
+			dbench ${num_process} -t ${DURATION} -c ${WORKLOAD} -D ${MNT} --sync-dir \
 				> ${UNIQ_OUTDIR}/result.dat;
 			;;
 		"fsmark")
