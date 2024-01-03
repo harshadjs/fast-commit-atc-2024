@@ -9,7 +9,7 @@
 # BENCHMARK=filebench-varmail
 # NFS_CLIENT_OPS=-o async
 
-PREFIX="configs/localssd-perf"
+PREFIX="."
 CLIENT_DIR="${PREFIX}/client"
 SERVER_DIR="${PREFIX}/server"
 DATA_DEV="/dev/nvme0n1p1"
@@ -19,7 +19,7 @@ NUM_WORKLOAD_THREADS=(40 0)
 
 FILESYSTEMS=("F2FS" "XFS" "EXT4FC" "EXT4")
 # WORKLOADS=("kernel-compile" "filebench-varmail" "filebench-varmail-split16" "filebench-webserver" "filebench-fileserver" "postmark")
-WORKLOADS=("filebench-varmail" "postmark")
+WORKLOADS=("filebench-varmail" "postmark" "compilebench")
 
 for workload in ${WORKLOADS[@]}; do
 	echo $workload
@@ -76,9 +76,15 @@ for workload in ${WORKLOADS[@]}; do
 				echo "NFS_CLIENT_ID=0" >> $CLIENT_DIR/$NFS_FILENAME
 				echo "BENCHMARK=$workload" >> $CLIENT_DIR/$NFS_FILENAME
 				echo "NUM_THREADS=$num_threads" >> $CLIENT_DIR/$NFS_FILENAME
+				if [ "$workload" == "postmark" ]; then
+					rm $SERVER_DIR/$LOCAL_FILENAME
+				fi
 				ID=$((ID+1))
 				NFS_ID=$((NFS_ID+1))
 			done
 		done
 	done
 done
+
+rm server/5*
+rm client/*
