@@ -472,6 +472,9 @@ select_workload()
 		"kernel-compile")
 			bash workloads/kernel-compile/run.sh $MNT
 			;;
+		"compilebench")
+			../compilebench-0.6/compilebench -D $MNT > ${UNIQ_OUTDIR}/result.dat
+			;;
 		"create-empty")
 			touch $MNT/file
 			sync $MNT/file

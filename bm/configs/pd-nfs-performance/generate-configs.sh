@@ -9,7 +9,7 @@
 # BENCHMARK=filebench-varmail
 # NFS_CLIENT_OPS=-o async
 
-PREFIX="configs/pd-perf"
+PREFIX="."
 CLIENT_DIR="${PREFIX}/client"
 SERVER_DIR="${PREFIX}/server"
 DATA_DEV="/dev/sdb1"
@@ -37,7 +37,7 @@ NFS_ID=0
 
 for workload in ${WORKLOADS[@]}; do
 	for num_threads in ${NUM_WORKLOAD_THREADS[@]}; do
-		if [ "$workload" == "postmark" -o "$workload" == "kernel-compile" ]; then
+		if [ "$workload" == "postmark" -o "$workload" == "kernel-compile" -o "$workload" == "compilebench" ]; then
 			if [ "$num_threads" != "0" ]; then
 				continue
 			fi
@@ -82,3 +82,5 @@ for workload in ${WORKLOADS[@]}; do
 		done
 	done
 done
+
+rm server/5*
