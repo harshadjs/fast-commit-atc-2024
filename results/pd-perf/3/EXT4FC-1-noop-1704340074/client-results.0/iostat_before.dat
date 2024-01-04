@@ -1,0 +1,13 @@
+Linux 5.10.0-26-cloud-amd64 (harshads-do-not-delete-a1) 	01/04/24 	_x86_64_	(32 CPU)
+
+avg-cpu:  %user   %nice %system %iowait  %steal   %idle
+           0.04    0.00    0.07    1.04    0.00   98.85
+
+Device             tps    kB_read/s    kB_wrtn/s    kB_dscd/s    kB_read    kB_wrtn    kB_dscd
+nvme0n1           0.02         0.40         0.00         0.00       2092          0          0
+nvme0n2           0.02         0.40         0.00         0.00       2092          0          0
+nvme0n3           0.02         0.40         0.00         0.00       2092          0          0
+nvme0n4           0.02         0.40         0.00         0.00       2092          0          0
+sda               9.37        63.73       224.40        32.32     335178    1180201     169968
+
+

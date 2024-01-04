@@ -1,0 +1,97 @@
+dbench version 4.00 - Copyright Andrew Tridgell 1999-2004
+
+Running for 60 seconds with load 'benchmark/dbench/loadfiles/client.txt' and minimum warmup 12 secs
+38 of 40 processes prepared for launch   0 sec
+40 of 40 processes prepared for launch   0 sec
+releasing clients
+  29        61   108.23 MB/sec  warmup   1 sec  latency 950.213 ms
+  40       111    98.35 MB/sec  warmup   2 sec  latency 164.382 ms
+  40       158    88.27 MB/sec  warmup   3 sec  latency 168.085 ms
+  40       204    80.51 MB/sec  warmup   4 sec  latency 119.674 ms
+  40       246    75.28 MB/sec  warmup   5 sec  latency 156.943 ms
+  40       291    71.92 MB/sec  warmup   6 sec  latency 132.460 ms
+  40       339    69.86 MB/sec  warmup   7 sec  latency 132.893 ms
+  40       383    68.15 MB/sec  warmup   8 sec  latency 141.677 ms
+  40       425    66.73 MB/sec  warmup   9 sec  latency 124.285 ms
+  40       467    65.31 MB/sec  warmup  10 sec  latency 165.381 ms
+  40       513    65.19 MB/sec  warmup  11 sec  latency 143.664 ms
+  40       623    53.25 MB/sec  execute   1 sec  latency 191.892 ms
+  40       797    45.46 MB/sec  execute   2 sec  latency 143.000 ms
+  40      1000    41.81 MB/sec  execute   3 sec  latency 63.266 ms
+  40      1131    38.06 MB/sec  execute   4 sec  latency 75.250 ms
+  40      1323    41.91 MB/sec  execute   5 sec  latency 49.821 ms
+  40      1541    46.16 MB/sec  execute   6 sec  latency 67.075 ms
+  40      1759    40.61 MB/sec  execute   7 sec  latency 70.155 ms
+  40      2018    36.89 MB/sec  execute   8 sec  latency 75.794 ms
+  40      2215    35.01 MB/sec  execute   9 sec  latency 107.456 ms
+  40      2354    34.40 MB/sec  execute  10 sec  latency 91.669 ms
+  40      2469    33.70 MB/sec  execute  11 sec  latency 80.907 ms
+  40      2739    40.25 MB/sec  execute  12 sec  latency 271.452 ms
+  40      2784    39.37 MB/sec  execute  13 sec  latency 1271.645 ms
+  40      2784    36.56 MB/sec  execute  14 sec  latency 2271.798 ms
+  40      2784    34.12 MB/sec  execute  15 sec  latency 3272.008 ms
+  40      2784    31.99 MB/sec  execute  16 sec  latency 4272.240 ms
+  40      2784    30.11 MB/sec  execute  17 sec  latency 5272.471 ms
+  40      2784    28.43 MB/sec  execute  18 sec  latency 6272.683 ms
+  40      2784    26.94 MB/sec  execute  19 sec  latency 7272.888 ms
+  40      2784    25.59 MB/sec  execute  20 sec  latency 8273.106 ms
+  40      2784    24.37 MB/sec  execute  21 sec  latency 9273.316 ms
+  40      2784    23.26 MB/sec  execute  22 sec  latency 10273.516 ms
+  40      2784    22.25 MB/sec  execute  23 sec  latency 11273.755 ms
+  40      2784    21.32 MB/sec  execute  24 sec  latency 12273.972 ms
+  40      2784    20.47 MB/sec  execute  25 sec  latency 13274.174 ms
+  40      2784    19.68 MB/sec  execute  26 sec  latency 14274.387 ms
+  40      2784    18.95 MB/sec  execute  27 sec  latency 15274.636 ms
+  40      2784    18.28 MB/sec  execute  28 sec  latency 16274.823 ms
+  40      2784    17.65 MB/sec  execute  29 sec  latency 17275.058 ms
+  40      2784    17.06 MB/sec  execute  30 sec  latency 18275.255 ms
+  40      2784    16.51 MB/sec  execute  31 sec  latency 19275.436 ms
+  40      2784    15.99 MB/sec  execute  32 sec  latency 20275.674 ms
+  40      2784    15.51 MB/sec  execute  33 sec  latency 21275.894 ms
+  40      2784    15.05 MB/sec  execute  34 sec  latency 22276.084 ms
+  40      2784    14.62 MB/sec  execute  35 sec  latency 23276.305 ms
+  40      2784    14.22 MB/sec  execute  36 sec  latency 24276.503 ms
+  40      2784    13.83 MB/sec  execute  37 sec  latency 25276.691 ms
+  40      2824    13.76 MB/sec  execute  38 sec  latency 26193.869 ms
+  40      3098    15.62 MB/sec  execute  39 sec  latency 26340.893 ms
+  40      3395    16.96 MB/sec  execute  40 sec  latency 115.884 ms
+  40      3462    16.64 MB/sec  execute  41 sec  latency 138.075 ms
+  40      3792    19.45 MB/sec  execute  42 sec  latency 109.339 ms
+  40      4193    19.57 MB/sec  execute  43 sec  latency 134.771 ms
+  40      4403    19.65 MB/sec  execute  44 sec  latency 76.889 ms
+  40      4635    20.26 MB/sec  execute  45 sec  latency 49.122 ms
+  40      4755    20.40 MB/sec  execute  46 sec  latency 130.595 ms
+  40      4938    20.59 MB/sec  execute  47 sec  latency 77.908 ms
+  40      5176    21.76 MB/sec  execute  48 sec  latency 73.207 ms
+  40      5370    21.50 MB/sec  execute  49 sec  latency 64.795 ms
+  40      5631    21.38 MB/sec  execute  50 sec  latency 60.300 ms
+  40      5800    21.27 MB/sec  execute  51 sec  latency 86.348 ms
+  40      5965    21.64 MB/sec  execute  52 sec  latency 107.123 ms
+  40      6095    22.06 MB/sec  execute  53 sec  latency 94.626 ms
+  40      6390    23.53 MB/sec  execute  54 sec  latency 64.111 ms
+  40      6602    24.62 MB/sec  execute  55 sec  latency 85.798 ms
+  40      6894    25.39 MB/sec  execute  56 sec  latency 109.687 ms
+  40      7052    26.23 MB/sec  execute  57 sec  latency 122.580 ms
+  40      7285    27.05 MB/sec  execute  58 sec  latency 93.088 ms
+  40      7634    27.17 MB/sec  execute  59 sec  latency 87.355 ms
+  40  cleanup  60 sec
+   0  cleanup  60 sec
+
+ Operation      Count    AvgLat    MaxLat
+ ----------------------------------------
+ NTCreateX      50330     6.258   168.658
+ Close          37103     7.563   176.194
+ Rename          2148    26.311   122.576
+ Unlink         10081    17.574   158.486
+ Qpathinfo      45900     2.266    98.086
+ Qfileinfo       8293    18.721   128.947
+ Qfsinfo         8628     1.739    74.834
+ Sfileinfo       4316    21.469   117.069
+ Find           17652     3.382   104.033
+ WriteX         26728     0.019     0.557
+ ReadX          78707     0.101    56.300
+ LockX            160  6551.814 26340.886
+ UnlockX          160     1.374    47.461
+ Flush           3966    22.114    96.615
+
+Throughput 27.1713 MB/sec (sync dirs)  40 clients  40 procs  max_latency=26340.893 ms
