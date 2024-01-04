@@ -332,7 +332,7 @@ select_workload()
 				> ${UNIQ_OUTDIR}/result.dat;
 			;;
 		"fsmark")
-			fs_mark -t ${num_threads} -n 500 -s 524288 -w 8192 -d $MNT > ${UNIQ_OUTDIR}/result.dat
+			fs_mark -t ${num_threads} -n 10000 -s 16384 -w 8192 -d $MNT > ${UNIQ_OUTDIR}/result.dat
 			;;
 		"ycsb-load")
 			CURDIR=$(pwd)
