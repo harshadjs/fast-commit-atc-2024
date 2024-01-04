@@ -323,13 +323,7 @@ select_workload()
 			systemctl stop mysqld
 			;;
 		"dbench")
-			num_process=${num_threads}
-			DURATION=60
-			WORKLOAD=benchmark/dbench/loadfiles/client.txt
-			echo "dbench ${num_process} -t ${DURATION} -c ${WORKLOAD} -D ${MNT} --sync-dir \
-				> ${UNIQ_OUTDIR}/result.dat;"
-			dbench ${num_process} -t ${DURATION} -c ${WORKLOAD} -D ${MNT} --sync-dir \
-				> ${UNIQ_OUTDIR}/result.dat;
+			dbench -c /usr/share/dbench/client.txt -D $MNT -t 60 $num_threads
 			;;
 		"fsmark")
 			fs_mark -t ${num_threads} -n 10000 -s 16384 -w 8192 -d $MNT > ${UNIQ_OUTDIR}/result.dat
