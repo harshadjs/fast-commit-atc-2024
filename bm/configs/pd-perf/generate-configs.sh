@@ -13,13 +13,13 @@ PREFIX="."
 CLIENT_DIR="${PREFIX}/client"
 SERVER_DIR="${PREFIX}/server"
 DATA_DEV="/dev/sdb1"
-JOURNAL_DEV=("/dev/sdb2")
+JOURNAL_DEV=("empty")
 SERVER_IP="10.132.15.207"
 NUM_WORKLOAD_THREADS=(40 0)
 
-FILESYSTEMS=("F2FS" "XFS" "EXT4FC" "EXT4")
+FILESYSTEMS=("EXT4" "EXT4FC" "XFS")
 # WORKLOADS=("kernel-compile" "filebench-varmail" "filebench-varmail-split16" "filebench-webserver" "filebench-fileserver" "postmark")
-WORKLOADS=("filebench-varmail" "filebench-fileserver" "postmark" "compilebench" "dbench" "fsmark")
+WORKLOADS=("filebench-varmail" "filebench-fileserver" "postmark" "dbench" "fsmark")
 
 for workload in ${WORKLOADS[@]}; do
 	echo $workload
@@ -48,6 +48,9 @@ for workload in ${WORKLOADS[@]}; do
 		fi
 
 		for journal in ${JOURNAL_DEV[@]}; do
+			if [ "$journal" == "empty" ]; then
+				journal=""
+			fi
 			for fs in ${FILESYSTEMS[@]}; do
 				# Generate common first
 				LOCAL_FILENAME=$(printf "%03d" $ID)
