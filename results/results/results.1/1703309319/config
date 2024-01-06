@@ -1,0 +1,6 @@
+dev=/dev/sdb
+FS=EXT4
+JOURNAL_DEV=
+NFS_SERVER=0
+BENCHMARK=filebench-webserver
+NUM_THREADS=40

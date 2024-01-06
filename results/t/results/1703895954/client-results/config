@@ -1,0 +1,4 @@
+dev=10.132.15.200
+NFS_CLIENT=1
+BENCHMARK=filebench-varmail
+NUM_THREADS=10

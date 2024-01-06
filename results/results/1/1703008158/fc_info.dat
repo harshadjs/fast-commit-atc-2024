@@ -1,0 +1,17 @@
+fc stats:
+252908 commits
+1047 ineligible
+264525 numblks
+246us avg_commit_time
+1540476 num_dentries_per_commit
+2245981 num_inodes_per_commit
+Ineligible reasons:
+"Extended attributes changed":	0
+"Cross rename":	0
+"Journal flag changed":	0
+"Insufficient memory":	0
+"Swap boot":	0
+"Resize":	0
+"Dir renamed":	0
+"Falloc range op":	0
+"Data journalling":	0

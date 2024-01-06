@@ -1,0 +1,2 @@
+[18192.090592] EXT4-fs (sdb): mounted filesystem with ordered data mode. Quota mode: none.
+[18192.127344] sh (76643): drop_caches: 3

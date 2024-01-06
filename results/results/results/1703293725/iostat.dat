@@ -1,0 +1,26 @@
+Linux 5.19.0-rc5-xfstests-perf-00986-g953948f2acf6 (harshads-do-not-delete-m5) 	12/23/23 	_x86_64_	(32 CPU)
+
+
+avg-cpu:  %user   %nice %system %iowait  %steal   %idle
+           0.00    0.00    0.86    1.42    0.00   97.72
+
+Device            r/s     rkB/s   rrqm/s  %rrqm r_await rareq-sz     w/s     wkB/s   wrqm/s  %wrqm w_await wareq-sz     d/s     dkB/s   drqm/s  %drqm d_await dareq-sz     f/s f_await  aqu-sz  %util
+sda              7.00    204.80    22.80  76.51   10.97    29.26    0.00      0.00     2.00 100.00    0.00     0.00    0.00      0.00     0.00   0.00    0.00     0.00    0.00    0.00    0.08   3.80
+sdb              0.60      2.40     0.00   0.00    1.00     4.00 1157.40  13444.00  1680.20  59.21    0.40    11.62    0.00      0.00     0.00   0.00    0.00     0.00  957.20    0.05    0.51  62.20
+
+
+avg-cpu:  %user   %nice %system %iowait  %steal   %idle
+           0.00    0.00    6.13    0.01    0.00   93.87
+
+Device            r/s     rkB/s   rrqm/s  %rrqm r_await rareq-sz     w/s     wkB/s   wrqm/s  %wrqm w_await wareq-sz     d/s     dkB/s   drqm/s  %drqm d_await dareq-sz     f/s f_await  aqu-sz  %util
+sda              0.00      0.00     0.00   0.00    0.00     0.00    0.40      9.60     0.20  33.33    1.00    24.00    0.00      0.00     0.00   0.00    0.00     0.00    0.40    0.00    0.00   0.08
+sdb              0.00      0.00     0.00   0.00    0.00     0.00   67.40      0.00     0.00   0.00    0.03     0.00    0.00      0.00     0.00   0.00    0.00     0.00   67.40    0.03    0.00   0.28
+
+
+avg-cpu:  %user   %nice %system %iowait  %steal   %idle
+           0.00    0.00    5.59    0.03    0.00   94.39
+
+Device            r/s     rkB/s   rrqm/s  %rrqm r_await rareq-sz     w/s     wkB/s   wrqm/s  %wrqm w_await wareq-sz     d/s     dkB/s   drqm/s  %drqm d_await dareq-sz     f/s f_await  aqu-sz  %util
+sda              0.80     23.20     5.00  86.21   24.00    29.00    4.40     20.80     0.60  12.00   20.50     4.73    0.00      0.00     0.00   0.00    0.00     0.00    1.40    0.00    0.11   1.32
+sdb              0.00      0.00     0.00   0.00    0.00     0.00    0.00      0.00     0.00   0.00    0.00     0.00    0.00      0.00     0.00   0.00    0.00     0.00    0.00    0.00    0.00   0.00
+

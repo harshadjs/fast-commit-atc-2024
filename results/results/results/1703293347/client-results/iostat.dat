@@ -1,0 +1,18 @@
+Linux 5.10.0-26-cloud-amd64 (harshads-do-not-delete-m6) 	12/23/23 	_x86_64_	(32 CPU)
+
+
+avg-cpu:  %user   %nice %system %iowait  %steal   %idle
+           0.23    0.00    3.78    0.77    0.00   95.22
+
+Device            r/s     rkB/s   rrqm/s  %rrqm r_await rareq-sz     w/s     wkB/s   wrqm/s  %wrqm w_await wareq-sz     d/s     dkB/s   drqm/s  %drqm d_await dareq-sz     f/s f_await  aqu-sz  %util
+sda             34.00    981.60    66.60  66.20    6.45    28.87    2.40     21.60     3.00  55.56    1.67     9.00    0.00      0.00     0.00   0.00    0.00     0.00    0.00    0.00    0.22  11.84
+sdb              0.00      0.00     0.00   0.00    0.00     0.00    0.00      0.00     0.00   0.00    0.00     0.00    0.00      0.00     0.00   0.00    0.00     0.00    0.00    0.00    0.00   0.00
+
+
+avg-cpu:  %user   %nice %system %iowait  %steal   %idle
+           0.78    0.00   14.40    0.13    0.00   84.69
+
+Device            r/s     rkB/s   rrqm/s  %rrqm r_await rareq-sz     w/s     wkB/s   wrqm/s  %wrqm w_await wareq-sz     d/s     dkB/s   drqm/s  %drqm d_await dareq-sz     f/s f_await  aqu-sz  %util
+sda              0.20      0.80     0.00   0.00    1.00     4.00   44.00   8675.20     2.60   5.58    6.26   197.16    0.00      0.00     0.00   0.00    0.00     0.00    0.40    0.00    0.28   4.56
+sdb              0.00      0.00     0.00   0.00    0.00     0.00    0.00      0.00     0.00   0.00    0.00     0.00    0.00      0.00     0.00   0.00    0.00     0.00    0.00    0.00    0.00   0.00
+

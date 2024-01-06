@@ -1,0 +1,10 @@
+Linux 5.18.18-CJFS-xfstests-perf (harshads-do-not-delete-m1) 	12/23/23 	_x86_64_	(32 CPU)
+
+
+avg-cpu:  %user   %nice %system %iowait  %steal   %idle
+           1.11    0.00   12.21    1.26    0.00   85.42
+
+Device            r/s     rkB/s   rrqm/s  %rrqm r_await rareq-sz     w/s     wkB/s   wrqm/s  %wrqm w_await wareq-sz     d/s     dkB/s   drqm/s  %drqm d_await dareq-sz     f/s f_await  aqu-sz  %util
+sda             17.00    489.60    36.20  68.05    7.21    28.80    7.60    849.60     3.20  29.63    3.00   111.79    0.00      0.00     0.00   0.00    0.00     0.00    0.20    1.00    0.15   6.86
+sdb            363.00   1452.00     0.00   0.00 1369.83     4.00    0.00      0.00     0.00   0.00    0.00     0.00    0.00      0.00     0.00   0.00    0.00     0.00    0.00    0.00  497.25  58.20
+

@@ -1,0 +1,10 @@
+Linux 5.19.0-rc5-xfstests-perf-00986-g953948f2acf6 (harshads-do-not-delete-server-2) 	12/22/23 	_x86_64_	(32 CPU)
+
+avg-cpu:  %user   %nice %system %iowait  %steal   %idle
+           0.01    0.00    0.08    0.15    0.00   99.76
+
+Device             tps    kB_read/s    kB_wrtn/s    kB_dscd/s    kB_read    kB_wrtn    kB_dscd
+sda               3.52        24.49        25.20         7.28    2131656    2193532     633680
+sdb             186.62        31.13     16015.43   3997834.58    2709857 1394000668 347975919728
+
+
