@@ -1,0 +1,26 @@
+fc stats:
+268299 commits (130334 skipped)
+1053 ineligible
+268299 numblks
+501 avg_commit_time
+time breakdown:
+	total: 124083873
+	begin_time: 1653
+	perform_time: 1192864
+		lock_updates_time: 10034
+		mark_inodes_committing: 280
+		flush_data_time: 652
+		dentry_commit_time: 137511
+		write_inodes_time: 211363
+		tail_write_time: 515618
+	wait_bufs_time: 122652257
+Ineligible reasons:
+"Extended attributes changed":	0
+"Cross rename":	0
+"Journal flag changed":	0
+"Insufficient memory":	0
+"Swap boot":	0
+"Resize":	0
+"Dir renamed":	0
+"Falloc range op":	0
+"Data journalling":	0
