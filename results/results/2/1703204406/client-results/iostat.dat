@@ -1,0 +1,30 @@
+Linux 5.10.0-26-cloud-amd64 (harshads-do-not-delete-client-2) 	12/22/23 	_x86_64_	(32 CPU)
+
+
+avg-cpu:  %user   %nice %system %iowait  %steal   %idle
+           0.01    0.00    0.07    0.30    0.00   99.62
+
+Device            r/s     rkB/s   rrqm/s  %rrqm r_await rareq-sz     w/s     wkB/s   wrqm/s  %wrqm w_await wareq-sz     d/s     dkB/s   drqm/s  %drqm d_await dareq-sz     f/s f_await  aqu-sz  %util
+sda             12.00    437.60    12.20  50.41    7.95    36.47    1.80     68.00     2.60  59.09    2.89    37.78    0.00      0.00     0.00   0.00    0.00     0.00    0.40    0.00    0.10   7.52
+
+
+avg-cpu:  %user   %nice %system %iowait  %steal   %idle
+           0.43    0.00    5.09    0.21    0.00   94.27
+
+Device            r/s     rkB/s   rrqm/s  %rrqm r_await rareq-sz     w/s     wkB/s   wrqm/s  %wrqm w_await wareq-sz     d/s     dkB/s   drqm/s  %drqm d_await dareq-sz     f/s f_await  aqu-sz  %util
+sda              0.20      0.80     0.00   0.00    0.00     4.00   35.20   8423.20     2.00   5.38    7.16   239.30    0.00      0.00     0.00   0.00    0.00     0.00    0.00    0.00    0.25   4.08
+
+
+avg-cpu:  %user   %nice %system %iowait  %steal   %idle
+           0.79    0.00   15.02    0.00    0.00   84.19
+
+Device            r/s     rkB/s   rrqm/s  %rrqm r_await rareq-sz     w/s     wkB/s   wrqm/s  %wrqm w_await wareq-sz     d/s     dkB/s   drqm/s  %drqm d_await dareq-sz     f/s f_await  aqu-sz  %util
+sda              0.00      0.00     0.00   0.00    0.00     0.00    0.60      8.80     0.60  50.00    4.33    14.67    0.00      0.00     0.00   0.00    0.00     0.00    0.40    0.00    0.00   0.40
+
+
+avg-cpu:  %user   %nice %system %iowait  %steal   %idle
+           1.12    0.00   10.43    0.04    0.00   88.40
+
+Device            r/s     rkB/s   rrqm/s  %rrqm r_await rareq-sz     w/s     wkB/s   wrqm/s  %wrqm w_await wareq-sz     d/s     dkB/s   drqm/s  %drqm d_await dareq-sz     f/s f_await  aqu-sz  %util
+sda              0.00      0.00     0.00   0.00    0.00     0.00   10.20   1722.40     0.80   7.27    5.76   168.86    0.00      0.00     0.00   0.00    0.00     0.00    0.40    0.50    0.06   1.36
+

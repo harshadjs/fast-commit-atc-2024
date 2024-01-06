@@ -1,0 +1,29 @@
+Filebench Version 1.5-alpha3
+0.000: Allocated 177MB of shared memory
+0.065: Varmail Version 3.0 personality successfully loaded
+0.065: Populating and pre-allocating filesets
+0.068: bigfileset populated: 1000 files, avg. dir. width = 1000000, avg. dir. depth = 0.5, 0 leafdirs, 14.959MB total size
+0.068: Removing bigfileset tree (if exists)
+0.072: Pre-allocating directories in bigfileset tree
+0.074: Pre-allocating files in bigfileset tree
+1.271: Waiting for pre-allocation to finish (in case of a parallel pre-allocation)
+1.271: Population and pre-allocation of filesets completed
+1.271: Starting 1 filereader instances
+2.276: Running...
+1037.357: Run took 1035 seconds...
+1037.364: Per-Operation Breakdown
+closefile4           769357ops      743ops/s   0.0mb/s    0.180ms/op [0.077ms - 5.184ms]
+readfile4            769357ops      743ops/s  11.6mb/s    0.010ms/op [0.002ms - 1.614ms]
+openfile4            769358ops      743ops/s   0.0mb/s    0.492ms/op [0.097ms - 36.330ms]
+closefile3           769359ops      743ops/s   0.0mb/s    0.195ms/op [0.001ms - 2.465ms]
+fsyncfile3           769359ops      743ops/s   0.0mb/s    0.683ms/op [0.001ms - 5.539ms]
+appendfilerand3      769359ops      743ops/s   5.8mb/s    0.012ms/op [0.002ms - 1.071ms]
+readfile3            769359ops      743ops/s  11.5mb/s    0.011ms/op [0.002ms - 3.945ms]
+openfile3            769359ops      743ops/s   0.0mb/s    0.479ms/op [0.094ms - 16.747ms]
+closefile2           769359ops      743ops/s   0.0mb/s    0.195ms/op [0.001ms - 9.446ms]
+fsyncfile2           769360ops      743ops/s   0.0mb/s    0.692ms/op [0.001ms - 4.324ms]
+appendfilerand2      769360ops      743ops/s   5.8mb/s    0.016ms/op [0.001ms - 2.812ms]
+createfile2          769402ops      743ops/s   0.0mb/s   53.696ms/op [0.492ms - 175.424ms]
+deletefile1          769437ops      743ops/s   0.0mb/s   50.914ms/op [0.304ms - 175.459ms]
+1037.364: IO Summary: 10001785 ops 9662.810 ops/s 1487/1487 rd/wr  34.7mb/s 8.276ms/op
+1037.364: Shutting down processes

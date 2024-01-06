@@ -1,0 +1,5 @@
+dev=/dev/sdb
+FS=XFS
+JOURNAL_DEV=
+NFS_SERVER=1
+NUM_THREADS=64

@@ -1,0 +1,6 @@
+dev=/dev/sdb
+FS=XFS
+JOURNAL_DEV=
+NFS_SERVER=0
+BENCHMARK=kernel-compile
+NUM_THREADS=0
