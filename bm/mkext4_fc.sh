@@ -3,6 +3,7 @@
 dev=$1
 MNT=$2
 JOURNAL_DEV=$3
+AGING=1
 
 if [ "${dev}" = "ramdisk" ]
 then
@@ -21,8 +22,13 @@ else
 	        mkfs.ext4 -F -O journal_dev -b 4096 $JOURNAL_DEV 262144
 		JOURNAL_DEV_FLAGS="-J device=$JOURNAL_DEV"
 	fi
-        mkfs.ext4 -F -O fast_commit -E lazy_journal_init=0,lazy_itable_init=0 ${JOURNAL_DEV_FLAGS} -J fast_commit_size=256 ${dev} > /dev/null
-
+	# Temp aging
+	if [ "$AGING" == "1" ]; then
+	    qemu-img convert -O raw /home/harshads/images/ext4_100g_80_fscked.qcow2 ${dev}
+	    tune2fs -O fast_commit ${dev}
+	else
+            mkfs.ext4 -F -O fast_commit -E lazy_journal_init=0,lazy_itable_init=0 ${JOURNAL_DEV_FLAGS} -J fast_commit_size=256 ${dev} > /dev/null
+	fi
 	mount -t ext4 ${dev} ${MNT} > /dev/null
 	sync
 fi
