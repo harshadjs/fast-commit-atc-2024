@@ -1,0 +1,26 @@
+[102568.260849] device-mapper: uevent: version 1.0.3
+[102568.265826] device-mapper: ioctl: 4.43.0-ioctl (2020-10-01) initialised: dm-devel@redhat.com
+[102569.552520] SGI XFS with ACLs, security attributes, realtime, quota, no debug enabled
+[102569.682139] raid6: avx512x4 gen() 18914 MB/s
+[102569.754129] raid6: avx512x4 xor()  7624 MB/s
+[102569.826123] raid6: avx512x2 gen() 18810 MB/s
+[102569.898119] raid6: avx512x2 xor() 25162 MB/s
+[102569.970108] raid6: avx512x1 gen() 18824 MB/s
+[102570.042101] raid6: avx512x1 xor() 22622 MB/s
+[102570.114096] raid6: avx2x4   gen() 18795 MB/s
+[102570.186090] raid6: avx2x4   xor()  7464 MB/s
+[102570.258080] raid6: avx2x2   gen() 18736 MB/s
+[102570.330073] raid6: avx2x2   xor() 16786 MB/s
+[102570.402068] raid6: avx2x1   gen() 14279 MB/s
+[102570.474061] raid6: avx2x1   xor() 16339 MB/s
+[102570.546053] raid6: sse2x4   gen() 10099 MB/s
+[102570.618045] raid6: sse2x4   xor()  6326 MB/s
+[102570.690040] raid6: sse2x2   gen() 11291 MB/s
+[102570.762033] raid6: sse2x2   xor()  6772 MB/s
+[102570.834027] raid6: sse2x1   gen() 10099 MB/s
+[102570.906016] raid6: sse2x1   xor()  5240 MB/s
+[102570.910489] raid6: using algorithm avx512x4 gen() 18914 MB/s
+[102570.916348] raid6: .... xor() 7624 MB/s, rmw enabled
+[102570.921517] raid6: using avx512x2 recovery algorithm
+[102570.937484] xor: automatically using best checksumming function   avx       
+[102571.009164] Btrfs loaded, crc32c=crc32c-intel

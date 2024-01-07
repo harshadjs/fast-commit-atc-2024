@@ -1,0 +1,22 @@
+PostMark v1.51 : 8/14/01
+Reading configuration from file 'workloads/postmark'
+Creating files...Done
+Performing transactions..........Done
+Deleting files...Done
+Time:
+	287 seconds total
+	275 seconds of transactions (363 per second)
+
+Files:
+	54987 created (191 per second)
+		Creation alone: 5000 files (714 per second)
+		Mixed with transactions: 49987 files (181 per second)
+	50016 read (181 per second)
+	49528 appended (180 per second)
+	54987 deleted (191 per second)
+		Deletion alone: 4974 files (994 per second)
+		Mixed with transactions: 50013 files (181 per second)
+
+Data:
+	319.01 megabytes read (1.11 megabytes per second)
+	352.76 megabytes written (1.23 megabytes per second)
