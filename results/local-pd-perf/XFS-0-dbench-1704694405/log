@@ -1,0 +1,135 @@
+
+
+==== Start experiment of dbench with 40 ====
+==== Format /dev/sdb1 on /mnt ====
+umount: /mnt: not mounted.
+mkxfs.sh: line 1: 1#!/bin/sh: No such file or directory
+umount: /dev/sdb1: not mounted.
+umount: /mnt: not mounted.
+meta-data=/dev/sdb1              isize=512    agcount=4, agsize=6553600 blks
+         =                       sectsz=4096  attr=2, projid32bit=1
+         =                       crc=1        finobt=1, sparse=1, rmapbt=0
+         =                       reflink=1    bigtime=0
+data     =                       bsize=4096   blocks=26214400, imaxpct=25
+         =                       sunit=0      swidth=0 blks
+naming   =version 2              bsize=4096   ascii-ci=0, ftype=1
+log      =internal log           bsize=4096   blocks=12800, version=2
+         =                       sectsz=4096  sunit=1 blks, lazy-count=1
+realtime =none                   extsz=4096   blocks=0, rtextents=0
+Discarding blocks...Done.
+==== Format complete ====
+==== Run workload ====
+dbench version 4.00 - Copyright Andrew Tridgell 1999-2004
+
+Running for 60 seconds with load '/usr/share/dbench/client.txt' and minimum warmup 12 secs
+failed to create barrier semaphore 
+38 of 40 processes prepared for launch   0 sec
+40 of 40 processes prepared for launch   0 sec
+releasing clients
+  40      4285  1615.63 MB/sec  warmup   1 sec  latency 57.839 ms
+  40      7815  1189.55 MB/sec  warmup   2 sec  latency 56.367 ms
+  40     11352  1047.69 MB/sec  warmup   3 sec  latency 56.825 ms
+  40     14696   965.96 MB/sec  warmup   4 sec  latency 59.924 ms
+  40     18148   921.73 MB/sec  warmup   5 sec  latency 61.556 ms
+  40     21439   885.13 MB/sec  warmup   6 sec  latency 48.440 ms
+  40     24599   855.93 MB/sec  warmup   7 sec  latency 54.478 ms
+  40     27992   836.80 MB/sec  warmup   8 sec  latency 48.355 ms
+  40     31024   815.48 MB/sec  warmup   9 sec  latency 62.289 ms
+  40     33952   799.10 MB/sec  warmup  10 sec  latency 48.734 ms
+  40     37053   787.70 MB/sec  warmup  11 sec  latency 58.056 ms
+  40     43748   741.80 MB/sec  execute   1 sec  latency 50.228 ms
+  40     47214   745.55 MB/sec  execute   2 sec  latency 50.001 ms
+  40     50530   737.59 MB/sec  execute   3 sec  latency 60.490 ms
+  40     53542   714.53 MB/sec  execute   4 sec  latency 57.931 ms
+  40     56656   705.22 MB/sec  execute   5 sec  latency 49.816 ms
+  40     59834   696.28 MB/sec  execute   6 sec  latency 63.731 ms
+  40     63138   698.14 MB/sec  execute   7 sec  latency 48.251 ms
+  40     66159   696.06 MB/sec  execute   8 sec  latency 53.103 ms
+  40     69277   692.82 MB/sec  execute   9 sec  latency 62.282 ms
+  40     72618   696.83 MB/sec  execute  10 sec  latency 64.329 ms
+  40     75943   699.16 MB/sec  execute  11 sec  latency 63.043 ms
+  40     79149   698.13 MB/sec  execute  12 sec  latency 66.990 ms
+  40     82331   696.97 MB/sec  execute  13 sec  latency 58.769 ms
+  40     85405   694.20 MB/sec  execute  14 sec  latency 64.207 ms
+  40     88623   692.53 MB/sec  execute  15 sec  latency 68.104 ms
+  40     91502   688.44 MB/sec  execute  16 sec  latency 70.084 ms
+  40     94338   685.29 MB/sec  execute  17 sec  latency 53.156 ms
+  40     97629   686.41 MB/sec  execute  18 sec  latency 59.916 ms
+  40    100929   688.62 MB/sec  execute  19 sec  latency 53.575 ms
+  40    104164   688.94 MB/sec  execute  20 sec  latency 54.769 ms
+  40    107439   689.83 MB/sec  execute  21 sec  latency 50.886 ms
+  40    110006   681.95 MB/sec  execute  22 sec  latency 167.484 ms
+  40    110006   652.30 MB/sec  execute  23 sec  latency 1167.644 ms
+  40    110023   625.32 MB/sec  execute  24 sec  latency 2167.781 ms
+  40    110029   600.37 MB/sec  execute  25 sec  latency 3161.903 ms
+  40    110029   577.28 MB/sec  execute  26 sec  latency 4162.042 ms
+  40    110029   555.90 MB/sec  execute  27 sec  latency 5162.237 ms
+  40    112070   552.67 MB/sec  execute  28 sec  latency 5422.064 ms
+  40    115345   558.16 MB/sec  execute  29 sec  latency 55.854 ms
+  40    118638   563.28 MB/sec  execute  30 sec  latency 49.985 ms
+  40    121790   566.89 MB/sec  execute  31 sec  latency 50.066 ms
+  40    124779   568.85 MB/sec  execute  32 sec  latency 49.057 ms
+  40    127636   569.69 MB/sec  execute  33 sec  latency 53.296 ms
+  40    130682   572.74 MB/sec  execute  34 sec  latency 59.929 ms
+  40    133684   575.06 MB/sec  execute  35 sec  latency 50.646 ms
+  40    136882   578.58 MB/sec  execute  36 sec  latency 57.953 ms
+  40    140099   581.89 MB/sec  execute  37 sec  latency 55.972 ms
+  40    143240   584.30 MB/sec  execute  38 sec  latency 55.384 ms
+  40    146276   585.48 MB/sec  execute  39 sec  latency 49.230 ms
+  40    149472   588.25 MB/sec  execute  40 sec  latency 56.929 ms
+  40    152591   590.11 MB/sec  execute  41 sec  latency 49.714 ms
+  40    155632   592.10 MB/sec  execute  42 sec  latency 50.916 ms
+  40    158754   593.83 MB/sec  execute  43 sec  latency 60.247 ms
+  40    162051   596.73 MB/sec  execute  44 sec  latency 53.762 ms
+  40    165401   599.56 MB/sec  execute  45 sec  latency 53.310 ms
+  40    168581   601.57 MB/sec  execute  46 sec  latency 48.131 ms
+  40    171690   603.05 MB/sec  execute  47 sec  latency 58.818 ms
+  40    174450   602.30 MB/sec  execute  48 sec  latency 53.792 ms
+  40    177291   602.58 MB/sec  execute  49 sec  latency 47.192 ms
+  40    180300   603.67 MB/sec  execute  50 sec  latency 51.123 ms
+  40    183413   605.13 MB/sec  execute  51 sec  latency 56.572 ms
+  40    186666   607.05 MB/sec  execute  52 sec  latency 49.298 ms
+  40    189848   608.59 MB/sec  execute  53 sec  latency 54.677 ms
+  40    192861   609.14 MB/sec  execute  54 sec  latency 50.946 ms
+  40    195902   609.66 MB/sec  execute  55 sec  latency 60.491 ms
+  40    198869   610.48 MB/sec  execute  56 sec  latency 56.885 ms
+  40    201773   610.76 MB/sec  execute  57 sec  latency 60.844 ms
+  40    205093   612.81 MB/sec  execute  58 sec  latency 58.169 ms
+  40    205788   604.64 MB/sec  execute  59 sec  latency 774.628 ms
+  40  cleanup  60 sec
+   0  cleanup  60 sec
+
+ Operation      Count    AvgLat    MaxLat
+ ----------------------------------------
+ NTCreateX    1165526     0.010    31.299
+ Close         855686     0.002     0.547
+ Rename         49420     0.019     0.295
+ Unlink        235700     0.023    18.106
+ Qpathinfo    1057383     0.003     0.297
+ Qfileinfo     184316     0.001     0.085
+ Qfsinfo       193892     0.008     0.461
+ Sfileinfo      95070     0.006     0.328
+ Find          408633     0.010     0.379
+ WriteX        576037     0.014     0.505
+ ReadX        1828815     0.003     0.265
+ LockX           3800     0.002     0.047
+ UnlockX         3800     0.001     0.019
+ Flush          81768    28.727  5422.057
+
+Throughput 604.64 MB/sec  40 clients  40 procs  max_latency=5422.064 ms
+cat: /proc/fs/jbd2/sdb1-8/info: No such file or directory
+0.000000/0.000000 => -nan
+Usage: grep [OPTION]... PATTERNS [FILE]...
+Try 'grep --help' for more information.
+Usage: grep [OPTION]... PATTERNS [FILE]...
+Try 'grep --help' for more information.
+Usage: grep [OPTION]... PATTERNS [FILE]...
+Try 'grep --help' for more information.
+./parse.sh: line 49: syntax error near unexpected token `else'
+./parse.sh: line 49: `else'
+==== Workload complete ====
+==== End the experiment ====
+
+
+awk: cannot open /root/results/summary_total (No such file or directory)
+Find results in: /root/results/XFS-0-dbench-1704694405
