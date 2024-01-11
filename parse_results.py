@@ -44,7 +44,7 @@ def parse_iostat(iostat, config_dict):
 
 	print("%s,%s,%s,%f,%f,%f,%f,%f,%f" %
        		(config_dict["ID"], config_dict["FS"], config_dict["BENCHMARK"],
-	  	sum(iops_array), sum(j_iops_array), sum(bw_array),  sum(j_bw_array),
+	  	sum(iops_array), max(iops_array), sum(bw_array),  max(bw_array),
 		sum(f_array), sum(f_await_array)))
 
 ## 5458042.730000,557857.210000, 6
