@@ -478,6 +478,9 @@ select_workload()
 			python2 ./compilebench -D $MNT > ${UNIQ_OUTDIR}/result.dat
                         cd -
 			;;
+		"fsyncbm")
+			fsync_bm /mnt/file 100 4096 $NUM_THREADS
+			;;
 		"create-empty")
 			touch $MNT/file
 			sync $MNT/file
