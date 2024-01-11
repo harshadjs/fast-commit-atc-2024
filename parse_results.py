@@ -10,6 +10,8 @@ def log(str):
 def get_main_dev(partition):
 	if partition == "/dev/sdb1":
 		return "/dev/sdb"
+	if partition == "/dev/nvme0n1p1":
+		return "/dev/nvme0n1"
 	return ""
 
 def parse_iostat(iostat, config_dict):
