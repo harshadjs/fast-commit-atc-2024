@@ -1,0 +1,4 @@
+[  869.607126] XFS (nvme0n1p1): Mounting V5 Filesystem
+[  869.621949] XFS (nvme0n1p1): Ending clean mount
+[  869.628003] xfs filesystem being mounted at /mnt supports timestamps until 2038 (0x7fffffff)
+[  869.698744] sh (5055): drop_caches: 3
