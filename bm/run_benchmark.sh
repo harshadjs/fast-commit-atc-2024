@@ -58,9 +58,12 @@ pre_run_workload()
 		nfs_client_start
 	elif [ "${FS}" == "XFS" ]; then
 		sudo bash mkxfs.sh $dev $MNT $JOURNAL_DEV
-	elif [ "${FS}" == "EXT4FC" ];then
+	elif [ "${FS}" == "EXT4FC" ]; then
 		echo "Fast Commits!"
 		sudo bash mkext4_fc.sh $dev $MNT $JOURNAL_DEV
+	elif [ "${FS}" == "EXT4ASYNC" ]; then
+		echo "Async Journaling"
+		sudo bash mkext4_async.sh $dev $MNT $JOURNAL_DEV
 	elif [ "${FS}" == "F2FS" ];then
 		echo "F2FS File system"
 		sudo bash mkf2fs.sh $dev $MNT $JOURNAL_DEV

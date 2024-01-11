@@ -15,11 +15,11 @@ SERVER_DIR="${PREFIX}/server"
 DATA_DEV="/dev/nvme0n1p1"
 JOURNAL_DEV=("/dev/nvme0n1p2")
 SERVER_IP="10.132.15.204"
-NUM_WORKLOAD_THREADS=(10 20 40 80)
+NUM_WORKLOAD_THREADS=(1 5 10 20 40 0)
 
-FILESYSTEMS=("F2FS" "XFS" "EXT4FC" "EXT4")
+FILESYSTEMS=("EXT4" "EXT4FC" "EXT4SYNC" "XFS")
 # WORKLOADS=("kernel-compile" "filebench-varmail" "filebench-varmail-split16" "filebench-webserver" "filebench-fileserver" "postmark")
-WORKLOADS=("filebench-varmail")
+WORKLOADS=("filebench-varmail" "fsmark")
 
 for workload in ${WORKLOADS[@]}; do
 	echo $workload

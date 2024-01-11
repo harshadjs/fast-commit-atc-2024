@@ -3,7 +3,7 @@
 dev=$1
 MNT=$2
 JOURNAL_DEV=$3
-AGING=1
+AGING=0
 
 if [ "${dev}" = "ramdisk" ]
 then

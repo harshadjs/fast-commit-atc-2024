@@ -15,9 +15,9 @@ SERVER_DIR="${PREFIX}/server"
 DATA_DEV="/dev/sdb1"
 JOURNAL_DEV=("empty")
 SERVER_IP="10.132.15.207"
-NUM_WORKLOAD_THREADS=(40 0)
+NUM_WORKLOAD_THREADS=(1 5 10 20 0)
 
-FILESYSTEMS=("EXT4" "EXT4FC" "XFS")
+FILESYSTEMS=("EXT4" "EXT4FC" "EXT4ASYNC" "XFS")
 # WORKLOADS=("kernel-compile" "filebench-varmail" "filebench-varmail-split16" "filebench-webserver" "filebench-fileserver" "postmark")
 WORKLOADS=("filebench-varmail" "filebench-fileserver" "postmark" "dbench" "fsmark")
 

@@ -3,7 +3,7 @@
 umount $1 > /dev/null
 umount $2 > /dev/null
 JOURNAL_DEV=$3
-AGING=1
+AGING=0
 
 if [ "$JOURNAL_DEV" != "" ]; then
 	JRNL_MKFS="-l logdev=$JOURNAL_DEV,size=1G"

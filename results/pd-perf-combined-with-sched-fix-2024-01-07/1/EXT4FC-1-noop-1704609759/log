@@ -1,0 +1,9 @@
+
+
+==== Start experiment of noop with 64 ====
+==== Format /dev/sdb1 on /mnt ====
+umount: /mnt: not mounted.
+Fast Commits!
+umount: /dev/sdb1: not mounted.
+umount: /mnt: not mounted.
+mkext4_fc.sh: line 27: qemu-img: command not found
