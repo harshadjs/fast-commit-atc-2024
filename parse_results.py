@@ -1,3 +1,4 @@
+#!/bin/python3
 import os
 import sys
 
@@ -53,6 +54,10 @@ def parse_iostat(iostat, config_dict):
 
 
 def should_filter_out(config_dict, filter):
+	if config_dict["BENCHMARK"] == "compilebench":
+		return True
+	if config_dict["BENCHMARK"] == "kernel-compile":
+		return True
 	if filter == "all":
 		return False
 	if filter == config_dict["FS"]:
