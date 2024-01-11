@@ -1,0 +1,3 @@
+[ 5326.222534] EXT4-fs (nvme0n1p1): unmounting filesystem.
+[ 5335.448635] EXT4-fs (nvme0n1p1): mounted filesystem with ordered data mode. Quota mode: none.
+[ 5335.478277] sh (18547): drop_caches: 3
