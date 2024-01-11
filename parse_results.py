@@ -42,9 +42,9 @@ def parse_iostat(iostat, config_dict):
 				j_iops_array.append(float(iostat_stats[7]))
 				j_bw_array.append(float(iostat_stats[8]))
 
-	print("%s,%s,%s,%f,%f,%f,%f,%f,%f" %
-       		(config_dict["ID"], config_dict["FS"], config_dict["BENCHMARK"],
-	  	sum(iops_array), max(iops_array), sum(bw_array),  max(bw_array),
+	print("%s,%s,%s,%s,%f,%f,%f,%f,%f,%f" %
+		(config_dict["ID"].split("/")[-1], config_dict["FS"], config_dict["BENCHMARK"], config_dict["NUM_THREADS"],
+		sum(iops_array), sum(j_iops_array), sum(bw_array),  sum(j_bw_array),
 		sum(f_array), sum(f_await_array)))
 
 ## 5458042.730000,557857.210000, 6
@@ -94,15 +94,21 @@ def parse_dir(dir, filter):
 					val = config_var[1]
 				if config_var[0] == "BENCHMARK":
 					config_dict[config_var[0]] = val
+				if config_var[0] == "NUM_THREADS":
+					config_dict[config_var[0]] = val
 	if should_filter_out(config_dict, filter):
 		return
 	parse_iostat(dir + "/iostat.dat", config_dict)
 
 
 print(sys.argv[1])
+filter = "all"
+if len(sys.argv) == 3:
+	filter = sys.argv[2]
+print("ID,FS,Benchmark,Threads,IOs,Journal IOs,KB,Journal KB,Flushes,Flush_wait")
 for path in os.listdir(sys.argv[1]):
 	full_path = os.getcwd() + "/" + sys.argv[1] + "/" + path
 	if not os.path.isdir(full_path):
 		continue
-	parse_dir(full_path, sys.argv[2])
+	parse_dir(full_path, filter)
 
