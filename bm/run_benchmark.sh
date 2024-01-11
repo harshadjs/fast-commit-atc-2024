@@ -479,7 +479,7 @@ select_workload()
                         cd -
 			;;
 		"fsyncbm")
-			fsync_bm /mnt/file 100 4096 $NUM_THREADS
+			fsync_bm /mnt/file 100 4096 $NUM_THREADS > ${UNIQ_OUTDIR}/result.dat
 			;;
 		"create-empty")
 			touch $MNT/file
