@@ -1,0 +1,20 @@
+[  983.308284] INFO: task jbd2flush/sdb1-:1622 blocked for more than 245 seconds.
+[  983.315673]       Not tainted 5.18.18-CJFS-xfstests-perf #1
+[  983.321366] "echo 0 > /proc/sys/kernel/hung_task_timeout_secs" disables this message.
+[  983.329310] task:jbd2flush/sdb1- state:D stack:    0 pid: 1622 ppid:     2 flags:0x00004000
+[  983.337804] Call Trace:
+[  983.340453]  <TASK>
+[  983.342686]  __schedule+0x259/0x6d0
+[  983.347664]  ? commit_timeout+0x10/0x10
+[  983.352995]  schedule+0x5d/0xe0
+[  983.357634]  kjournald2flush+0x16b/0x1a0
+[  983.363065]  ? destroy_sched_domains_rcu+0x30/0x30
+[  983.369365]  kthread+0xe6/0x110
+[  983.372627]  ? kthread_exit+0x30/0x30
+[  983.377784]  ret_from_fork+0x1f/0x30
+[  983.382880]  </TASK>
+[ 1019.804470] nfsd: last server has exited, flushing export cache
+[ 1020.791487] EXT4-fs (sdb1): mounted filesystem with ordered data mode. Quota mode: none.
+[ 1022.117445] NFSD: Using UMH upcall client tracking operations.
+[ 1022.123418] NFSD: starting 90-second grace period (net f0000000)
+[ 1022.165615] sh (3703): drop_caches: 3

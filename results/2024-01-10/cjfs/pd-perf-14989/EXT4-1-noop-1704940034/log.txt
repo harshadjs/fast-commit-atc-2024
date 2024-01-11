@@ -1,0 +1,35 @@
+[ 1351.913937] INFO: task jbd2flush/sdb1-:1622 blocked for more than 614 seconds.
+[ 1351.921325]       Not tainted 5.18.18-CJFS-xfstests-perf #1
+[ 1351.927023] "echo 0 > /proc/sys/kernel/hung_task_timeout_secs" disables this message.
+[ 1351.934978] task:jbd2flush/sdb1- state:D stack:    0 pid: 1622 ppid:     2 flags:0x00004000
+[ 1351.943496] Call Trace:
+[ 1351.947448]  <TASK>
+[ 1351.951049]  __schedule+0x259/0x6d0
+[ 1351.956050]  ? commit_timeout+0x10/0x10
+[ 1351.961378]  schedule+0x5d/0xe0
+[ 1351.966022]  kjournald2flush+0x16b/0x1a0
+[ 1351.971438]  ? destroy_sched_domains_rcu+0x30/0x30
+[ 1351.977752]  kthread+0xe6/0x110
+[ 1351.982386]  ? kthread_exit+0x30/0x30
+[ 1351.987553]  ret_from_fork+0x1f/0x30
+[ 1351.992633]  </TASK>
+[ 1351.996333] INFO: task jbd2flush/sdb1-:2721 blocked for more than 245 seconds.
+[ 1352.005070]       Not tainted 5.18.18-CJFS-xfstests-perf #1
+[ 1352.012139] "echo 0 > /proc/sys/kernel/hung_task_timeout_secs" disables this message.
+[ 1352.020094] task:jbd2flush/sdb1- state:D stack:    0 pid: 2721 ppid:     2 flags:0x00004000
+[ 1352.028575] Call Trace:
+[ 1352.032507]  <TASK>
+[ 1352.036108]  __schedule+0x259/0x6d0
+[ 1352.041126]  ? commit_timeout+0x10/0x10
+[ 1352.046461]  schedule+0x5d/0xe0
+[ 1352.051098]  kjournald2flush+0x16b/0x1a0
+[ 1352.056520]  ? destroy_sched_domains_rcu+0x30/0x30
+[ 1352.062815]  kthread+0xe6/0x110
+[ 1352.067637]  ? kthread_exit+0x30/0x30
+[ 1352.072793]  ret_from_fork+0x1f/0x30
+[ 1352.077882]  </TASK>
+[ 1376.074706] nfsd: last server has exited, flushing export cache
+[ 1377.165783] EXT4-fs (sdb1): mounted filesystem with ordered data mode. Quota mode: none.
+[ 1378.404121] NFSD: Using UMH upcall client tracking operations.
+[ 1378.410092] NFSD: starting 90-second grace period (net f0000000)
+[ 1378.445464] sh (4630): drop_caches: 3

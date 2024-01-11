@@ -1,0 +1,15 @@
+[  860.439476] INFO: task jbd2flush/sdb1-:1622 blocked for more than 122 seconds.
+[  860.446845]       Not tainted 5.18.18-CJFS-xfstests-perf #1
+[  860.452540] "echo 0 > /proc/sys/kernel/hung_task_timeout_secs" disables this message.
+[  860.460491] task:jbd2flush/sdb1- state:D stack:    0 pid: 1622 ppid:     2 flags:0x00004000
+[  860.468995] Call Trace:
+[  860.472945]  <TASK>
+[  860.476545]  __schedule+0x259/0x6d0
+[  860.481536]  ? commit_timeout+0x10/0x10
+[  860.486866]  schedule+0x5d/0xe0
+[  860.491508]  kjournald2flush+0x16b/0x1a0
+[  860.496933]  ? destroy_sched_domains_rcu+0x30/0x30
+[  860.503232]  kthread+0xe6/0x110
+[  860.507899]  ? kthread_exit+0x30/0x30
+[  860.513058]  ret_from_fork+0x1f/0x30
+[  860.518140]  </TASK>

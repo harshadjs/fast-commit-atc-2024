@@ -1,0 +1,45 @@
+[ 1474.785537] INFO: task jbd2flush/sdb1-:1622 blocked for more than 737 seconds.
+[ 1474.792937]       Not tainted 5.18.18-CJFS-xfstests-perf #1
+[ 1474.798632] "echo 0 > /proc/sys/kernel/hung_task_timeout_secs" disables this message.
+[ 1474.806579] task:jbd2flush/sdb1- state:D stack:    0 pid: 1622 ppid:     2 flags:0x00004000
+[ 1474.815048] Call Trace:
+[ 1474.817637]  <TASK>
+[ 1474.819862]  __schedule+0x259/0x6d0
+[ 1474.824863]  ? commit_timeout+0x10/0x10
+[ 1474.828824]  schedule+0x5d/0xe0
+[ 1474.833464]  kjournald2flush+0x16b/0x1a0
+[ 1474.837504]  ? destroy_sched_domains_rcu+0x30/0x30
+[ 1474.842415]  kthread+0xe6/0x110
+[ 1474.845673]  ? kthread_exit+0x30/0x30
+[ 1474.850824]  ret_from_fork+0x1f/0x30
+[ 1474.854516]  </TASK>
+[ 1474.856829] INFO: task jbd2flush/sdb1-:2721 blocked for more than 368 seconds.
+[ 1474.865545]       Not tainted 5.18.18-CJFS-xfstests-perf #1
+[ 1474.871240] "echo 0 > /proc/sys/kernel/hung_task_timeout_secs" disables this message.
+[ 1474.879195] task:jbd2flush/sdb1- state:D stack:    0 pid: 2721 ppid:     2 flags:0x00004000
+[ 1474.887661] Call Trace:
+[ 1474.890222]  <TASK>
+[ 1474.893809]  __schedule+0x259/0x6d0
+[ 1474.897412]  ? commit_timeout+0x10/0x10
+[ 1474.901364]  schedule+0x5d/0xe0
+[ 1474.906000]  kjournald2flush+0x16b/0x1a0
+[ 1474.910050]  ? destroy_sched_domains_rcu+0x30/0x30
+[ 1474.916324]  kthread+0xe6/0x110
+[ 1474.919587]  ? kthread_exit+0x30/0x30
+[ 1474.924733]  ret_from_fork+0x1f/0x30
+[ 1474.928424]  </TASK>
+[ 1597.650905] INFO: task jbd2flush/sdb1-:1622 blocked for more than 860 seconds.
+[ 1597.658275]       Not tainted 5.18.18-CJFS-xfstests-perf #1
+[ 1597.663967] "echo 0 > /proc/sys/kernel/hung_task_timeout_secs" disables this message.
+[ 1597.671917] task:jbd2flush/sdb1- state:D stack:    0 pid: 1622 ppid:     2 flags:0x00004000
+[ 1597.680421] Call Trace:
+[ 1597.682990]  <TASK>
+[ 1597.686592]  __schedule+0x259/0x6d0
+[ 1597.691595]  ? commit_timeout+0x10/0x10
+[ 1597.696935]  schedule+0x5d/0xe0
+[ 1597.700200]  kjournald2flush+0x16b/0x1a0
+[ 1597.705616]  ? destroy_sched_domains_rcu+0x30/0x30
+[ 1597.710532]  kthread+0xe6/0x110
+[ 1597.715175]  ? kthread_exit+0x30/0x30
+[ 1597.718956]  ret_from_fork+0x1f/0x30
+[ 1597.724062]  </TASK>

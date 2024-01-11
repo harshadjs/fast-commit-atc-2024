@@ -1,0 +1,14 @@
+Linux 5.18.18-CJFS-xfstests-perf (harshads-do-not-delete-c0) 	01/11/24 	_x86_64_	(32 CPU)
+
+avg-cpu:  %user   %nice %system %iowait  %steal   %idle
+           0.03    0.00    0.57    1.41    0.00   97.99
+
+Device             tps    kB_read/s    kB_wrtn/s    kB_dscd/s    kB_read    kB_wrtn    kB_dscd
+nvme0n1           0.16         5.11         0.00         0.00       5220          0          0
+nvme0n2           0.09         2.05         0.00         0.00       2092          0          0
+nvme0n3           0.09         2.05         0.00         0.00       2092          0          0
+nvme0n4           0.09         2.05         0.00         0.00       2092          0          0
+sda               8.83       189.57        30.79         1.58     193826      31480       1612
+sdb            2512.26        10.94     26615.68    307662.70      11181   27213472  314572800
+
+
