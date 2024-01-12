@@ -1,0 +1,27 @@
+
+
+==== Start experiment of filebench-fileserver-10m with 5 ====
+==== Format /dev/nvme0n1p1 on /mnt ====
+umount: /mnt: not mounted.
+./run_benchmark.sh: line 59: umonut: command not found
+umount: /dev/nvme0n1p1: not mounted.
+umount: /server: not mounted.
+mke2fs 1.46.2 (28-Feb-2021)
+Discarding device blocks:   4096/262144             done                            
+Creating filesystem with 262144 4k blocks and 0 inodes
+Filesystem UUID: 888a7bc2-25d0-4acc-b198-50a8a5d6c714
+Superblock backups stored on blocks: 
+
+Zeroing journal device:   1024/262144 78848/262144179200/262144             
+mke2fs 1.46.2 (28-Feb-2021)
+==== Format complete ====
+This is a LOCAL NFS Sever.
+Mounting localhost:/server on /mnt
+==== Run workload ====
+0.000000/0.000000 => -nan
+==== Workload complete ====
+==== End the experiment ====
+
+
+awk: cannot open /root/results/summary_total (No such file or directory)
+Find results in: /root/results/EXT4-0-filebench-fileserver-10m-1705041137
