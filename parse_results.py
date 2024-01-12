@@ -3,7 +3,7 @@ import os
 import sys
 import numpy as np
 
-debug = False
+debug = True
 
 def log(str):
 	if debug:
@@ -17,7 +17,7 @@ def get_main_dev(partition):
 	return ""
 
 def parse_results(dir):
-
+	pass
 
 def parse(dir, config_dict):
 	# print(config_dict)
@@ -52,7 +52,7 @@ def parse(dir, config_dict):
 				j_iops_array.append(float(iostat_stats[7]))
 				j_bw_array.append(float(iostat_stats[8]))
 	
-	(app_tput, time, )
+	# (app_tput, time, )
 	print("%s,%s,%s,%s,%f,%f,%f,%f,%f,%f,%f,%f," %
 		(config_dict["ID"].split("/")[-1], config_dict["FS"], config_dict["BENCHMARK"], config_dict["NUM_THREADS"],
 		sum(iops_array), sum(j_iops_array), sum(bw_array),  sum(j_bw_array),
@@ -110,7 +110,7 @@ def parse_dir(dir, filter):
 					config_dict[config_var[0]] = val
 	if should_filter_out(config_dict, filter):
 		return
-	parse(dir + "/iostat.dat", config_dict)
+	parse(dir, config_dict)
 
 
 print(sys.argv[1])
@@ -122,5 +122,6 @@ for path in os.listdir(sys.argv[1]):
 	full_path = os.getcwd() + "/" + sys.argv[1] + "/" + path
 	if not os.path.isdir(full_path):
 		continue
+	print(full_path)
 	parse_dir(full_path, filter)
 
