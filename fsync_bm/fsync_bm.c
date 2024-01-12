@@ -42,6 +42,13 @@ int main(int argc, char *argv[])
 			printf("Error during open\n");
 			return -1;
 		}
+		if (i % fsync_frequency == 0) {
+			num_fsyncs++;
+			if (fsync(fd) < 0) {
+				printf("Error while fsync\n");
+				return -1;
+			}
+		}
 		if (write(fd, buf, file_size) < 0) {
 			printf("Error while write: %s\n", strerror(errno));
 			return -1;
