@@ -552,9 +552,9 @@ cleanup()
 	if [ "$NFS_SERVER" == "1" -o "$LOCAL_NFS_SERVER" == "1" ]; then
 		service nfs-kernel-server stop
 	fi
-	umount $MNT
+	umount -f $MNT
 	if [ "$LOCAL_NFS_SERVER" == "1" ]; then
-		umount $LOCAL_SERVER_MNT
+		umount -f $LOCAL_SERVER_MNT
 	fi
 }
 
