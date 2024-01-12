@@ -549,7 +549,7 @@ select_workload()
 
 cleanup()
 {
-	if [ "$NFS_SERVER" == "1" -o "$LOCAL_NFS_SERVER" == "1" ]; then
+	if [ "$NFS_SERVER" == "1" ]; then
 		service nfs-kernel-server stop
 	fi
 	umount -f $MNT
