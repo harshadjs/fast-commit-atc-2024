@@ -1,5 +1,5 @@
 dev=/dev/nvme0n1p1
-FS=EXT4ASYNC
+FS=EXT4FC
 JOURNAL_DEV=/dev/nvme0n1p2
 NFS_SERVER=0
 BENCHMARK=fsyncbm

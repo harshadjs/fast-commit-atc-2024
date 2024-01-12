@@ -1,0 +1,6 @@
+dev=/dev/nvme0n1p1
+FS=XFS
+JOURNAL_DEV=/dev/nvme0n1p2
+NFS_SERVER=0
+BENCHMARK=fsyncbm
+NUM_THREADS=20
