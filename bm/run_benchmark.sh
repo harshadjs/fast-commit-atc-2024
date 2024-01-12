@@ -508,9 +508,11 @@ select_workload()
                         cd -
 			;;
 		"fsyncbm")
-			sleep 10
+			sleep 5
 			fsync_bm $MNT 10000 4096 $NUM_THREADS > ${UNIQ_OUTDIR}/result.dat
-			sleep 10
+			sleep 5
+			umount $MNT
+			sleep 5
 			;;
 		"create-empty")
 			touch $MNT/file
