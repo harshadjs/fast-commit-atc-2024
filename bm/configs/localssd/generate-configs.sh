@@ -13,13 +13,13 @@ PREFIX="."
 CLIENT_DIR="${PREFIX}/client"
 SERVER_DIR="${PREFIX}/server"
 DATA_DEV="/dev/nvme0n1p1"
-JOURNAL_DEV=("empty")
+JOURNAL_DEV=("empty" "/dev/nvme0n1p2")
 SERVER_IP="10.132.15.204"
 NUM_WORKLOAD_THREADS=(1 5 10 20 40 0)
 
 FILESYSTEMS=("EXT4" "EXT4FC" "EXT4ASYNC" "XFS")
 # WORKLOADS=("kernel-compile" "filebench-varmail" "filebench-varmail-split16" "filebench-webserver" "filebench-fileserver" "postmark")
-WORKLOADS=("filebench-varmail" "fsmark")
+WORKLOADS=("filebench-varmail" "filebench-varmail-10m" "fsmark")
 
 for workload in ${WORKLOADS[@]}; do
 	echo $workload
@@ -45,6 +45,10 @@ for workload in ${WORKLOADS[@]}; do
 			if [ "$num_threads" == "0" ]; then
 				continue
 			fi
+		fi
+
+		if [ "$workload" == "filebench-varmail-10m" -a "$NUM_THREADS" != "5" ]; then
+			continue
 		fi
 
 		for journal in ${JOURNAL_DEV[@]}; do
@@ -90,4 +94,6 @@ for workload in ${WORKLOADS[@]}; do
 done
 
 rm server/0*
+rm server/1*
+
 rm client/*
