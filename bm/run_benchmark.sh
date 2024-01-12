@@ -511,7 +511,8 @@ select_workload()
 			sleep 5
 			fsync_bm $MNT 1024 4096 $NUM_THREADS > ${UNIQ_OUTDIR}/result.dat
 			sleep 5
-			umount $MNT
+			fsfreeze -f $MNT
+			fsfreeze -u $MNT
 			sleep 5
 			;;
 		"create-empty")
