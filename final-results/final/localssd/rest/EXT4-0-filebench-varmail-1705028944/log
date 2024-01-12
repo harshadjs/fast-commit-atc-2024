@@ -1,0 +1,25 @@
+
+
+==== Start experiment of filebench-varmail with 40 ====
+==== Format /dev/nvme0n1p1 on /mnt ====
+umount: /mnt: not mounted.
+umount: /server: not mounted.
+umount: /dev/nvme0n1p1: not mounted.
+umount: /mnt: not mounted.
+mke2fs 1.46.2 (28-Feb-2021)
+Discarding device blocks:   4096/262144             done                            
+Creating filesystem with 262144 4k blocks and 0 inodes
+Filesystem UUID: bad181e2-9d66-4060-b09d-075d53fd582a
+Superblock backups stored on blocks: 
+
+Zeroing journal device:   1024/262144 27648/262144128000/262144228352/262144             
+mke2fs 1.46.2 (28-Feb-2021)
+==== Format complete ====
+==== Run workload ====
+0.000000/0.000000 => -nan
+==== Workload complete ====
+==== End the experiment ====
+
+
+awk: cannot open /root/results/summary_total (No such file or directory)
+Find results in: /root/results/EXT4-0-filebench-varmail-1705028944
