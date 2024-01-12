@@ -1,0 +1,7 @@
+dev=/dev/nvme0n1p1
+FS=EXT4ASYNC
+JOURNAL_DEV=/dev/nvme0n1p2
+NFS_SERVER=0
+BENCHMARK=filebench-fileserver
+NUM_THREADS=5
+LOCAL_NFS_SERVER=1
