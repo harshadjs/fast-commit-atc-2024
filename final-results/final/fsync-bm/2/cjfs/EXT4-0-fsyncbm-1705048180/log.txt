@@ -1,0 +1,2 @@
+[46197.943051] EXT4-fs (nvme0n1p1): mounted filesystem with ordered data mode. Quota mode: none.
+[46198.003574] sh (30749): drop_caches: 3
