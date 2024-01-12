@@ -3,7 +3,6 @@
 
 FILEBENCH_DIR=benchmark/filebench
 FILEBENCH_PERTHREADDIR_DIR=benchmark/filebench-perthreaddir
-FILEBENCH=filebench
 FILEBENCH_PERTHREADDIR=${FILEBENCH_PERTHREADDIR_DIR}/filebench
 SYSBENCH_DIR=benchmark/sysbench/src/
 SYSBENCH=sysbench
@@ -23,6 +22,11 @@ OUTDIR=~/results
 
 CONFIGS_DIR=$1
 NFS_SERVER_IP_ADDRESS=$2
+LOCAL_SERVER_MNT="/server"
+
+if [ "$LOCAL_NFS_SERVER" == "1" ]; then
+	mkdir -p $LOCAL_SERVER_MNT
+fi
 
 lockstat_on() {
 	echo 1 > /proc/sys/kernel/lock_stat
@@ -52,29 +56,33 @@ pre_run_workload()
 	# Format and Mount
 	service nfs-kernel-server stop
 	umount $MNT
-
+	umonut $LOCAL_SERVER_MNT
+	mntpt=$MNT
+	if [ "$LOCAL_NFS_SERVER" == "1" ]; then
+		mntpt=$LOCAL_SERVER_MNT
+	fi
 	if [ "${NFS_CLIENT}" == "1" ]; then
 		echo "This is a NFS Client, using $NFS_SERVER_IP_ADDRESS IP address"
 		nfs_client_start
 	elif [ "${FS}" == "XFS" ]; then
-		sudo bash mkxfs.sh $dev $MNT $JOURNAL_DEV
+		sudo bash mkxfs.sh $dev $mntpt $JOURNAL_DEV
 	elif [ "${FS}" == "EXT4FC" ]; then
 		echo "Fast Commits!"
-		sudo bash mkext4_fc.sh $dev $MNT $JOURNAL_DEV
+		sudo bash mkext4_fc.sh $dev $mntpt $JOURNAL_DEV
 	elif [ "${FS}" == "EXT4ASYNC" ]; then
 		echo "Async Journaling"
-		sudo bash mkext4_async.sh $dev $MNT $JOURNAL_DEV
+		sudo bash mkext4_async.sh $dev $mntpt $JOURNAL_DEV
 	elif [ "${FS}" == "F2FS" ];then
 		echo "F2FS File system"
-		sudo bash mkf2fs.sh $dev $MNT $JOURNAL_DEV
+		sudo bash mkf2fs.sh $dev $mntpt $JOURNAL_DEV
 	elif [ "${SPANFS}" == "1" ]; then
 		echo "SpanFS Mode!"
-		sudo bash mkspanfs.sh $dev $MNT $domain
+		sudo bash mkspanfs.sh $dev $mntpt $domain
 	elif [ "${NOBARRIER}" == "1" ]; then
 		echo "Asynchronous Commit with Checksum!"
-		sudo bash mkext4_nobarrier.sh $dev $MNT
+		sudo bash mkext4_nobarrier.sh $dev $mntpt
 	else
-		sudo bash mkext4.sh $dev $MNT $JOURNAL_DEV
+		sudo bash mkext4.sh $dev $mntpt $JOURNAL_DEV
 	fi
 	#sudo bash mkbtrfs.sh $dev $MNT
 
@@ -85,8 +93,13 @@ pre_run_workload()
 		exportfs -a
 		ifconfig
 		/usr/sbin/rpc.nfsd $num_threads
-
 		export BENCHMARK="noop"
+	elif [ "$LOCAL_NFS_SERVER" == "1" ]; then
+		echo "This is a LOCAL NFS Sever."
+		service nfs-kernel-server restart
+		exportfs -a
+		echo "Mounting localhost:$LOCAL_SERVER_MNT on $MNT"
+		mount localhost:$LOCAL_SERVER_MNT -t nfs $MNT
 	fi
 
 
@@ -219,11 +232,19 @@ select_workload()
 
 	case $BENCHMARK in
 		"filebench-varmail")
-			${FILEBENCH} -f workloads/varmail_${num_threads}.f \
+			bin/filebench -f workloads/varmail_${num_threads}.f \
+				> ${UNIQ_OUTDIR}/result.dat;
+			;;
+		"filebench-varmail-1m")
+			bin/filebench_1m -f workloads/varmail_${num_threads}_long.f \
+				> ${UNIQ_OUTDIR}/result.dat;
+			;;
+		"filebench-varmail-1m")
+			bin/filebench_10m -f workloads/varmail_${num_threads}_long.f \
 				> ${UNIQ_OUTDIR}/result.dat;
 			;;
 		"filebench-varmail-split16")
-			${FILEBENCH} -f workloads/varmail_split16_${num_threads}.f \
+			filebench -f workloads/varmail_split16_${num_threads}.f \
 				> ${UNIQ_OUTDIR}/result.dat;
 			;;
 		"filebench-varmail-perthreaddir")
@@ -232,15 +253,23 @@ select_workload()
 				> ${UNIQ_OUTDIR}/result.dat;
 			;;
 		"filebench-fileserver")
-			${FILEBENCH} -f workloads/fileserver_${num_threads}.f \
+			bin/filebench -f workloads/fileserver_${num_threads}.f \
+				> ${UNIQ_OUTDIR}/result.dat;
+			;;
+		"filebench-fileserver-1m")
+			bin/filebench_1m -f workloads/fileserver_${num_threads}_long.f \
+				> ${UNIQ_OUTDIR}/result.dat;
+			;;
+		"filebench-fileserver-10m")
+			bin/filebench_10m -f workloads/fileserver_${num_threads}_long.f \
 				> ${UNIQ_OUTDIR}/result.dat;
 			;;
 		"filebench-webserver")
-			${FILEBENCH} -f workloads/webserver_${num_threads}.f \
+			filebench -f workloads/webserver_${num_threads}.f \
 				> ${UNIQ_OUTDIR}/result.dat;
 			;;
 		"filebench-networkfs")
-			${FILEBENCH} -f workloads/networkfs_${num_threads}.f \
+			filebench -f workloads/networkfs_${num_threads}.f \
 				> ${UNIQ_OUTDIR}/result.dat;
 			;;
 		"postmark")
@@ -500,7 +529,7 @@ select_workload()
 		done
 		cp -r ${UNIQ_OUTDIR} ${MNT}/results.tmp
 		mv ${MNT}/results.tmp ${MNT}/results.$NFS_CLIENT_ID
-		umount /mnt
+		umount $MNT
 	fi
 	if [ "$NFS_SERVER" == "1" ]; then
 		touch ${MNT}/${NFS_SERVER_DONE}
@@ -514,18 +543,19 @@ select_workload()
 		done
 	fi
 	CURDIR=$(pwd)
-	cp parse.sh ${UNIQ_OUTDIR}
 	cd ${UNIQ_OUTDIR}
-	./parse.sh $UNIQUE_ID >> ~/global-summary
 	cd ${CURDIR}
 }
 
 cleanup()
 {
-	if [ "$NFS_SERVER" == "1" ]; then
+	if [ "$NFS_SERVER" == "1" -o "$LOCAL_NFS_SERVER" == "1" ]; then
 		service nfs-kernel-server stop
 	fi
-	umount /mnt
+	umount $MNT
+	if [ "$LOCAL_NFS_SERVER" == "1" ]; then
+		umount $LOCAL_SERVER_MNT
+	fi
 }
 
 run_bench()
