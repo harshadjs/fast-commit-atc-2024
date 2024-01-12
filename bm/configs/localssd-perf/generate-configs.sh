@@ -17,7 +17,7 @@ JOURNAL_DEV=("empty")
 SERVER_IP="10.132.15.204"
 NUM_WORKLOAD_THREADS=(1 5 10 20 40 0)
 
-FILESYSTEMS=("EXT4" "EXT4FC" "EXT4SYNC" "XFS")
+FILESYSTEMS=("EXT4" "EXT4FC" "EXT4ASYNC" "XFS")
 # WORKLOADS=("kernel-compile" "filebench-varmail" "filebench-varmail-split16" "filebench-webserver" "filebench-fileserver" "postmark")
 WORKLOADS=("filebench-varmail" "fsmark")
 

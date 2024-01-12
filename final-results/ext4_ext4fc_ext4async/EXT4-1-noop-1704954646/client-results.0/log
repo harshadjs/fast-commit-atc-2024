@@ -1,0 +1,114 @@
+
+
+==== Start experiment of dbench with 1 ====
+==== Format 10.132.15.207 on /mnt ====
+umount: /mnt: not mounted.
+This is a NFS Client, using 10.132.15.213 IP address
+Waiting for NFS Server...
+umount: /mnt: not mounted.
+mount.nfs: requested NFS version or transport protocol is not supported
+umount: /mnt: not mounted.
+mount.nfs: requested NFS version or transport protocol is not supported
+umount: /mnt: not mounted.
+Connected.
+==== Format complete ====
+==== Run workload ====
+dbench version 4.00 - Copyright Andrew Tridgell 1999-2004
+
+Running for 60 seconds with load '/usr/share/dbench/client.txt' and minimum warmup 12 secs
+0 of 1 processes prepared for launch   0 sec
+1 of 1 processes prepared for launch   0 sec
+releasing clients
+   1      2586    28.96 MB/sec  warmup   1 sec  latency 7.671 ms
+   1      2784    15.98 MB/sec  warmup   2 sec  latency 971.301 ms
+   1      2784    10.66 MB/sec  warmup   3 sec  latency 1971.412 ms
+   1      2784     7.99 MB/sec  warmup   4 sec  latency 2971.547 ms
+   1      2784     6.39 MB/sec  warmup   5 sec  latency 3971.709 ms
+   1      2784     5.33 MB/sec  warmup   6 sec  latency 4971.856 ms
+   1      2784     4.57 MB/sec  warmup   7 sec  latency 5971.998 ms
+   1      2784     4.00 MB/sec  warmup   8 sec  latency 6972.139 ms
+   1      2784     3.55 MB/sec  warmup   9 sec  latency 7972.253 ms
+   1      2784     3.20 MB/sec  warmup  10 sec  latency 8972.349 ms
+   1      2784     2.91 MB/sec  warmup  11 sec  latency 9972.494 ms
+   1      2784     0.00 MB/sec  execute   1 sec  latency 11972.746 ms
+   1      2784     0.00 MB/sec  execute   2 sec  latency 12972.883 ms
+   1      2784     0.00 MB/sec  execute   3 sec  latency 13972.997 ms
+   1      2784     0.00 MB/sec  execute   4 sec  latency 14973.122 ms
+   1      2784     0.00 MB/sec  execute   5 sec  latency 15973.281 ms
+   1      2784     0.00 MB/sec  execute   6 sec  latency 16973.439 ms
+   1      2784     0.00 MB/sec  execute   7 sec  latency 17973.573 ms
+   1      2784     0.00 MB/sec  execute   8 sec  latency 18973.699 ms
+   1      2784     0.00 MB/sec  execute   9 sec  latency 19973.854 ms
+   1      2784     0.00 MB/sec  execute  10 sec  latency 20974.022 ms
+   1      2784     0.00 MB/sec  execute  11 sec  latency 21974.138 ms
+   1      2784     0.00 MB/sec  execute  12 sec  latency 22974.276 ms
+   1      2784     0.00 MB/sec  execute  13 sec  latency 23974.438 ms
+   1      2784     0.00 MB/sec  execute  14 sec  latency 24974.592 ms
+   1      2784     0.00 MB/sec  execute  15 sec  latency 25974.714 ms
+   1      2784     0.00 MB/sec  execute  16 sec  latency 26974.864 ms
+   1      2784     0.00 MB/sec  execute  17 sec  latency 27974.997 ms
+   1      2784     0.00 MB/sec  execute  18 sec  latency 28975.126 ms
+   1      2784     0.00 MB/sec  execute  19 sec  latency 29975.239 ms
+   1      2784     0.00 MB/sec  execute  20 sec  latency 30975.374 ms
+   1      2784     0.00 MB/sec  execute  21 sec  latency 31975.543 ms
+   1      2784     0.00 MB/sec  execute  22 sec  latency 32975.688 ms
+   1      2784     0.00 MB/sec  execute  23 sec  latency 33975.833 ms
+   1      2784     0.00 MB/sec  execute  24 sec  latency 34975.952 ms
+   1      2784     0.00 MB/sec  execute  25 sec  latency 35976.086 ms
+   1      2784     0.00 MB/sec  execute  26 sec  latency 36976.202 ms
+   1      2784     0.00 MB/sec  execute  27 sec  latency 37976.363 ms
+   1      2784     0.00 MB/sec  execute  28 sec  latency 38976.561 ms
+   1      2784     0.00 MB/sec  execute  29 sec  latency 39976.689 ms
+   1      2784     0.00 MB/sec  execute  30 sec  latency 40976.836 ms
+   1      2784     0.00 MB/sec  execute  31 sec  latency 41976.967 ms
+   1      2784     0.00 MB/sec  execute  32 sec  latency 42977.104 ms
+   1      2784     0.00 MB/sec  execute  33 sec  latency 43977.257 ms
+   1      2784     0.00 MB/sec  execute  34 sec  latency 44977.413 ms
+   1      2784     0.00 MB/sec  execute  35 sec  latency 45977.592 ms
+   1      2784     0.00 MB/sec  execute  36 sec  latency 46977.749 ms
+   1      2784     0.00 MB/sec  execute  37 sec  latency 47977.912 ms
+   1      2784     0.00 MB/sec  execute  38 sec  latency 48978.016 ms
+   1      2784     0.00 MB/sec  execute  39 sec  latency 49978.142 ms
+   1      2784     0.00 MB/sec  execute  40 sec  latency 50978.312 ms
+   1      2784     0.00 MB/sec  execute  41 sec  latency 51978.487 ms
+   1      2784     0.00 MB/sec  execute  42 sec  latency 52978.674 ms
+   1      2784     0.00 MB/sec  execute  43 sec  latency 53978.815 ms
+   1      2784     0.00 MB/sec  execute  44 sec  latency 54978.926 ms
+   1      2784     0.00 MB/sec  execute  45 sec  latency 55979.072 ms
+   1      4484     0.19 MB/sec  execute  46 sec  latency 56487.765 ms
+   1      8156     0.62 MB/sec  execute  47 sec  latency 3.683 ms
+   1     11823     1.01 MB/sec  execute  48 sec  latency 3.814 ms
+   1     15657     1.44 MB/sec  execute  49 sec  latency 3.943 ms
+   1     19338     1.80 MB/sec  execute  50 sec  latency 3.919 ms
+   1     23204     2.14 MB/sec  execute  51 sec  latency 4.319 ms
+   1     27061     2.47 MB/sec  execute  52 sec  latency 3.653 ms
+   1     30820     2.81 MB/sec  execute  53 sec  latency 3.834 ms
+   1     34433     3.13 MB/sec  execute  54 sec  latency 4.093 ms
+   1     38111     3.42 MB/sec  execute  55 sec  latency 4.024 ms
+   1     41830     3.76 MB/sec  execute  56 sec  latency 3.706 ms
+   1     45595     4.05 MB/sec  execute  57 sec  latency 4.037 ms
+   1     49367     4.33 MB/sec  execute  58 sec  latency 4.535 ms
+   1     53218     4.65 MB/sec  execute  59 sec  latency 3.737 ms
+   1  cleanup  60 sec
+   0  cleanup  60 sec
+
+ Operation      Count    AvgLat    MaxLat
+ ----------------------------------------
+ NTCreateX       9330     0.404     2.367
+ Close           6857     0.433     5.114
+ Rename           398     1.349     1.989
+ Unlink          1885     1.135     1.727
+ Qpathinfo       8464     0.116     1.956
+ Qfileinfo       1481     0.963     2.146
+ Qfsinfo         1572     0.080     0.213
+ Sfileinfo        750     1.094     2.939
+ Find            3291     0.192     0.575
+ WriteX          4637     0.014     0.064
+ ReadX          14856     0.008     0.364
+ LockX             32  1765.324 56487.751
+ UnlockX           32     0.084     0.183
+ Flush            653     1.237     2.488
+
+Throughput 4.646 MB/sec  1 clients  1 procs  max_latency=56487.765 ms
+cat: /proc/fs/jbd2/2.15.207-8/info: No such file or directory
+0.000000/0.000000 => -nan

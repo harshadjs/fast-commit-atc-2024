@@ -1,0 +1,57 @@
+
+
+==== Start experiment of noop with 64 ====
+==== Format /dev/sdb1 on /mnt ====
+umount: /mnt: not mounted.
+mkxfs.sh: line 1: 1#!/bin/sh: No such file or directory
+umount: /dev/sdb1: not mounted.
+umount: /mnt: not mounted.
+meta-data=/dev/sdb1              isize=512    agcount=4, agsize=6553600 blks
+         =                       sectsz=4096  attr=2, projid32bit=1
+         =                       crc=1        finobt=1, sparse=1, rmapbt=0
+         =                       reflink=1    bigtime=0
+data     =                       bsize=4096   blocks=26214400, imaxpct=25
+         =                       sunit=0      swidth=0 blks
+naming   =version 2              bsize=4096   ascii-ci=0, ftype=1
+log      =internal log           bsize=4096   blocks=12800, version=2
+         =                       sectsz=4096  sunit=1 blks, lazy-count=1
+realtime =none                   extsz=4096   blocks=0, rtextents=0
+Discarding blocks...Done.
+==== Format complete ====
+This is a NFS Sever, with 64 threads.
+enp0s5: flags=4163<UP,BROADCAST,RUNNING,MULTICAST>  mtu 1460
+        inet 10.132.15.213  netmask 255.255.255.255  broadcast 10.132.15.213
+        inet6 fe80::4001:aff:fe84:fd5  prefixlen 64  scopeid 0x20<link>
+        ether 42:01:0a:84:0f:d5  txqueuelen 1000  (Ethernet)
+        RX packets 54902535  bytes 264586515168 (246.4 GiB)
+        RX errors 0  dropped 0  overruns 0  frame 0
+        TX packets 51449202  bytes 18989014690 (17.6 GiB)
+        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
+
+lo: flags=73<UP,LOOPBACK,RUNNING>  mtu 65536
+        inet 127.0.0.1  netmask 255.0.0.0
+        inet6 ::1  prefixlen 128  scopeid 0x10<host>
+        loop  txqueuelen 1000  (Local Loopback)
+        RX packets 12  bytes 1020 (1020.0 B)
+        RX errors 0  dropped 0  overruns 0  frame 0
+        TX packets 12  bytes 1020 (1020.0 B)
+        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
+
+==== Run workload ====
+cat: /proc/fs/jbd2/sdb1-8/info: No such file or directory
+0.000000/0.000000 => -nan
+Usage: grep [OPTION]... PATTERNS [FILE]...
+Try 'grep --help' for more information.
+Usage: grep [OPTION]... PATTERNS [FILE]...
+Try 'grep --help' for more information.
+Usage: grep [OPTION]... PATTERNS [FILE]...
+Try 'grep --help' for more information.
+./parse.sh: line 38: cd: client-results: No such file or directory
+./parse.sh: line 49: syntax error near unexpected token `else'
+./parse.sh: line 49: `else'
+==== Workload complete ====
+==== End the experiment ====
+
+
+awk: cannot open /root/results/summary_total (No such file or directory)
+Find results in: /root/results/XFS-1-noop-1704954340
