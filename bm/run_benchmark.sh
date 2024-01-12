@@ -554,6 +554,7 @@ cleanup()
 	fi
 	umount -f $MNT
 	if [ "$LOCAL_NFS_SERVER" == "1" ]; then
+		service nfs-kernel-server stop
 		umount -f $LOCAL_SERVER_MNT
 	fi
 }
