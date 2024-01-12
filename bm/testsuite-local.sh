@@ -2,8 +2,14 @@
 
 ID=$RANDOM
 
-./run_benchmark.sh configs/localssd-perf/server/
-mv ~/results/ ~/localssd-perf-$ID
+rm -rf ~/results
 
-echo "Results are in ~/localssd-perf-$ID"
+./run_benchmark.sh configs/localssd/server/
+mv ~/results/ ~/localssd-$ID
 
+echo "Results are in ~/localssd-$ID"
+
+./run_benchmark configs/nfs+localssd/server
+mv ~/results ~/nfs+localssd-$ID
+
+echo "Results are in ~/localssd-$ID and ~/nfs+localssd-$ID"
