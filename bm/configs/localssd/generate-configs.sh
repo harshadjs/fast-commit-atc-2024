@@ -47,6 +47,10 @@ for workload in ${WORKLOADS[@]}; do
 			fi
 		fi
 
+		if [ "$workload" == "filebench-varmail-10m" -a "$NUM_THREADS" != "5" ]; then
+			continue
+		fi
+
 		for journal in ${JOURNAL_DEV[@]}; do
 			if [ "$journal" == "empty" ]; then
 				journal=""
