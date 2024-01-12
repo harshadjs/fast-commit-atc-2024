@@ -1,0 +1,6 @@
+dev=/dev/nvme0n1p1
+FS=EXT4
+JOURNAL_DEV=/dev/nvme0n1p2
+NFS_SERVER=0
+BENCHMARK=filebench-varmail-10m
+NUM_THREADS=10
