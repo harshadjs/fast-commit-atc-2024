@@ -1,0 +1,33 @@
+
+
+==== Start experiment of fsyncbm with 1 ====
+==== Format /dev/nvme0n1p1 on /mnt ====
+umount: /mnt: not mounted.
+./run_benchmark.sh: line 59: umonut: command not found
+mkxfs.sh: line 1: 1#!/bin/sh: No such file or directory
+umount: /dev/nvme0n1p1: not mounted.
+umount: /mnt: not mounted.
+meta-data=/dev/nvme0n1p1         isize=512    agcount=4, agsize=6553600 blks
+         =                       sectsz=4096  attr=2, projid32bit=1
+         =                       crc=1        finobt=1, sparse=1, rmapbt=0
+         =                       reflink=1    bigtime=0
+data     =                       bsize=4096   blocks=26214400, imaxpct=25
+         =                       sunit=0      swidth=0 blks
+naming   =version 2              bsize=4096   ascii-ci=0, ftype=1
+log      =/dev/nvme0n1p2         bsize=4096   blocks=262144, version=2
+         =                       sectsz=4096  sunit=1 blks, lazy-count=1
+realtime =none                   extsz=4096   blocks=0, rtextents=0
+Discarding blocks...Done.
+Discarding blocks...Done.
+==== Format complete ====
+==== Run workload ====
+./run_benchmark.sh: line 512: fsync_bm: command not found
+cat: /proc/fs/jbd2/nvme0n1p2/info: No such file or directory
+0.000000/0.000000 => -nan
+==== Workload complete ====
+==== End the experiment ====
+
+
+awk: cannot open /root/results/summary_total (No such file or directory)
+Find results in: /root/results/XFS-0-fsyncbm-1705047731
+umount: /mnt: not mounted.
