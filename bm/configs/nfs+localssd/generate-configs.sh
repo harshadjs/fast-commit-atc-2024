@@ -20,7 +20,7 @@ LOCAL_NFS_SERVER=1
 
 FILESYSTEMS=("EXT4" "EXT4FC" "EXT4ASYNC" "XFS")
 # WORKLOADS=("kernel-compile" "filebench-varmail" "filebench-varmail-split16" "filebench-webserver" "filebench-fileserver" "postmark")
-WORKLOADS=("filebench-varmail" "fsmark" "postmark" "fsmark" "filebench-fileserver" "filebench-varmail-10m" "filebench-fileserver-10m")
+WORKLOADS=("filebench-varmail-1m" "fsmark" "postmark" "filebench-fileserver-1m")
 
 for workload in ${WORKLOADS[@]}; do
 	echo $workload
