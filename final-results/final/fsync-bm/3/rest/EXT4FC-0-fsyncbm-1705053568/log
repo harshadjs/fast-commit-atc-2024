@@ -1,0 +1,27 @@
+
+
+==== Start experiment of fsyncbm with 256 ====
+==== Format /dev/nvme0n1p1 on /mnt ====
+umount: /mnt: not mounted.
+./run_benchmark.sh: line 59: umonut: command not found
+Fast Commits!
+umount: /dev/nvme0n1p1: not mounted.
+umount: /mnt: not mounted.
+mke2fs 1.46.2 (28-Feb-2021)
+Discarding device blocks:   4096/262144             done                            
+Creating filesystem with 262144 4k blocks and 0 inodes
+Filesystem UUID: 2073234d-bedd-419f-8239-e1b91875aa1b
+Superblock backups stored on blocks: 
+
+Zeroing journal device:   1024/262144 11264/262144110592/262144210944/262144             
+mke2fs 1.46.2 (28-Feb-2021)
+==== Format complete ====
+==== Run workload ====
+./run_benchmark.sh: line 512: fsync_bm: command not found
+0.000000/0.000000 => -nan
+==== Workload complete ====
+==== End the experiment ====
+
+
+awk: cannot open /root/results/summary_total (No such file or directory)
+Find results in: /root/results/EXT4FC-0-fsyncbm-1705053568
