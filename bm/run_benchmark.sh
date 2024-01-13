@@ -239,7 +239,7 @@ select_workload()
 			bin/filebench_1m -f workloads/varmail_${num_threads}_long.f \
 				> ${UNIQ_OUTDIR}/result.dat;
 			;;
-		"filebench-varmail-1m")
+		"filebench-varmail-10m")
 			bin/filebench_10m -f workloads/varmail_${num_threads}_long.f \
 				> ${UNIQ_OUTDIR}/result.dat;
 			;;

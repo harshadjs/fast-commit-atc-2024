@@ -27,7 +27,7 @@ else
 	else
 	    mkfs.ext4 $JOURNAL_DEV_FLAGS -F -E lazy_journal_init=0,lazy_itable_init=0 ${dev} > /dev/null
 	fi
-	mount -t ext4 ${dev} ${MNT} > /dev/null
+	mount -O journal_async_commit -t ext4 ${dev} ${MNT} > /dev/null
 	sync
 fi
 
