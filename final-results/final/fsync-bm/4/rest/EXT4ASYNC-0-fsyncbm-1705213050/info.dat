@@ -1,0 +1,16 @@
+1024 transactions (1024 requested), each up to 32768 blocks
+total: 
+  0ms waiting for transaction
+  7058us request delay
+  26us running transaction
+  353us transaction was being locked
+  10us flushing data (in ordered mode)
+  15413us ph1 logging transaction
+  108690us ph2 logging transaction
+  125918us ph3 logging transaction
+  1194us ph4 logging transaction
+  237us average transaction commit time
+  2 handles per transaction
+  4 blocks per transaction
+  6 logged blocks per transaction
+  274771 actual time
