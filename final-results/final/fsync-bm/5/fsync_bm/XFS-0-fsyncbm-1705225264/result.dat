@@ -1,0 +1,2 @@
+Creating 1024 files of size 4096 each, fsync after 4 files
+512 fsyncs issued, total time 0.032579 seconds

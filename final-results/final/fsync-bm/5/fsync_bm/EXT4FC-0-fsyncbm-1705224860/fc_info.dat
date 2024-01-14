@@ -1,0 +1,130 @@
+fc stats:
+1008 commits (0 skipped):
+	16 ineligible
+	16 failed
+	0 empty
+Commit type breakdown:
+	1008 fua
+	0 fua+preflush
+	0 multiblock
+1008 numblks
+1008 real_numblks
+0 flushes
+85 avg_commit_time
+time breakdown:
+	total: 79722
+	begin_time: 0
+	perform_time: 7465
+		lock_updates_time: 0
+		mark_inodes_committing: 0
+		flush_data_time: 0
+		dentry_commit_time: 383
+		write_inodes_time: 724
+		tail_write_time: 4985
+	wait_bufs_time: 71298
+Ineligible reasons:
+"Extended attributes changed":	0
+"Cross rename":	0
+"Journal flag changed":	0
+"Insufficient memory":	0
+"Swap boot":	0
+"Resize":	0
+"Dir renamed":	0
+"Falloc range op":	0
+"Data journalling":	0
+fsync: 
+62,31
+63,92
+64,96
+65,89
+66,67
+67,43
+68,49
+69,31
+70,14
+71,17
+72,6
+73,6
+74,4
+75,18
+76,32
+77,36
+78,37
+79,25
+80,15
+81,14
+82,6
+83,4
+84,4
+85,5
+86,17
+87,25
+88,28
+89,26
+90,18
+91,15
+92,9
+93,8
+94,3
+95,5
+96,3
+97,6
+98,4
+99,7
+100,2
+101,1
+102,2
+103,7
+104,3
+105,2
+106,2
+107,1
+108,3
+109,3
+110,4
+111,2
+112,3
+113,3
+114,5
+115,7
+116,4
+117,4
+118,1
+119,3
+120,2
+121,2
+122,5
+123,1
+125,2
+126,3
+128,2
+132,1
+135,1
+136,1
+138,1
+139,1
+141,1
+147,1
+148,1
+151,1
+153,1
+157,1
+176,1
+287,1
+289,1
+294,1
+296,1
+305,1
+308,1
+315,1
+321,1
+322,1
+330,1
+332,1
+345,1
+363,1
+426,1
+480,1
+547,1
+624,1
+1710,1
