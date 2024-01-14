@@ -1,0 +1,3 @@
+[ 1088.664139] NFS: SECINFO: security flavor 390003 is not supported
+[ 1088.670379] NFS: SECINFO: security flavor 390004 is not supported
+[ 1088.676598] NFS: SECINFO: security flavor 390005 is not supported
