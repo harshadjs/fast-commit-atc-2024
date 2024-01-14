@@ -13,7 +13,7 @@ PREFIX="."
 CLIENT_DIR="${PREFIX}/client"
 SERVER_DIR="${PREFIX}/server"
 DATA_DEV="/dev/sdb1"
-JOURNAL_DEV=("empty")
+JOURNAL_DEV=("empty" "/dev/sdb2")
 SERVER_IP="10.132.15.207"
 NUM_WORKLOAD_THREADS=(5 0)
 
