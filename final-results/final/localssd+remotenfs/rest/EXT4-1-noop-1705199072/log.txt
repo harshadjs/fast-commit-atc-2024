@@ -1,0 +1,6 @@
+[ 1918.540065] nfsd: last server has exited, flushing export cache
+[ 1918.582857] EXT4-fs (nvme0n1p1): unmounting filesystem.
+[ 1925.805146] EXT4-fs (nvme0n1p1): mounted filesystem with ordered data mode. Quota mode: none.
+[ 1927.178694] NFSD: Using UMH upcall client tracking operations.
+[ 1927.184666] NFSD: starting 90-second grace period (net f0000000)
+[ 1927.279164] sh (4530): drop_caches: 3

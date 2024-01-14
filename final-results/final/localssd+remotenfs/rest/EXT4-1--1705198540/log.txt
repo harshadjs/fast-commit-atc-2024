@@ -1,0 +1,9 @@
+[ 1096.660999] NFS: SECINFO: security flavor 390003 is not supported
+[ 1096.667266] NFS: SECINFO: security flavor 390004 is not supported
+[ 1096.673473] NFS: SECINFO: security flavor 390005 is not supported
+[ 1378.928776] nfsd: last server has exited, flushing export cache
+[ 1379.002974] EXT4-fs (nvme0n1p1): unmounting filesystem.
+[ 1394.080973] EXT4-fs (nvme0n1p1): mounted filesystem with ordered data mode. Quota mode: none.
+[ 1395.382241] NFSD: Using UMH upcall client tracking operations.
+[ 1395.388216] NFSD: starting 90-second grace period (net f0000000)
+[ 1395.461361] sh (3288): drop_caches: 3
