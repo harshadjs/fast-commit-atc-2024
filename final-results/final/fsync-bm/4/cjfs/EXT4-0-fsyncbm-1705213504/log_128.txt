@@ -1,0 +1,30 @@
+[  491.836527] INFO: task jbd2flush/nvme0:1590 blocked for more than 368 seconds.
+[  491.843899]       Not tainted 5.18.18-CJFS-xfstests-perf #1
+[  491.849582] "echo 0 > /proc/sys/kernel/hung_task_timeout_secs" disables this message.
+[  491.857531] task:jbd2flush/nvme0 state:D stack:    0 pid: 1590 ppid:     2 flags:0x00004000
+[  491.865992] Call Trace:
+[  491.868589]  <TASK>
+[  491.872187]  __schedule+0x259/0x6d0
+[  491.877183]  ? commit_timeout+0x10/0x10
+[  491.882513]  schedule+0x5d/0xe0
+[  491.887150]  kjournald2flush+0x16b/0x1a0
+[  491.892572]  ? destroy_sched_domains_rcu+0x30/0x30
+[  491.898857]  kthread+0xe6/0x110
+[  491.903492]  ? kthread_exit+0x30/0x30
+[  491.908645]  ret_from_fork+0x1f/0x30
+[  491.913717]  </TASK>
+[  491.917399] INFO: task jbd2flush/nvme0:1673 blocked for more than 368 seconds.
+[  491.926111]       Not tainted 5.18.18-CJFS-xfstests-perf #1
+[  491.933176] "echo 0 > /proc/sys/kernel/hung_task_timeout_secs" disables this message.
+[  491.942497] task:jbd2flush/nvme0 state:D stack:    0 pid: 1673 ppid:     2 flags:0x00004000
+[  491.952343] Call Trace:
+[  491.956283]  <TASK>
+[  491.959876]  __schedule+0x259/0x6d0
+[  491.964859]  ? commit_timeout+0x10/0x10
+[  491.970189]  schedule+0x5d/0xe0
+[  491.974822]  kjournald2flush+0x16b/0x1a0
+[  491.980253]  ? destroy_sched_domains_rcu+0x30/0x30
+[  491.986534]  kthread+0xe6/0x110
+[  491.991169]  ? kthread_exit+0x30/0x30
+[  491.996332]  ret_from_fork+0x1f/0x30
+[  492.001390]  </TASK>
