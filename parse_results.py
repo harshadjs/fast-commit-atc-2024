@@ -53,10 +53,10 @@ def parse(dir, config_dict):
 				j_bw_array.append(float(iostat_stats[8]))
 	
 	# (app_tput, time, )
-	print("%s,%s,%s,%s,%f,%f,%f,%f,%f,%f,%f,%f," %
+	print("%s,%s,%s,%s,%f,%f,%f,%f,%f,%f" %
 		(config_dict["ID"].split("/")[-1], config_dict["FS"], config_dict["BENCHMARK"], config_dict["NUM_THREADS"],
 		sum(iops_array), sum(j_iops_array), sum(bw_array),  sum(j_bw_array),
-		sum(f_array), sum(f_await_array), np.percentile(iops_array, 95), np.percentile(bw_array, 95)))
+		sum(f_array), sum(f_await_array)))
 
 def should_filter_out(config_dict, filter):
 	if config_dict["BENCHMARK"] == "compilebench":
@@ -122,6 +122,5 @@ for path in os.listdir(sys.argv[1]):
 	full_path = os.getcwd() + "/" + sys.argv[1] + "/" + path
 	if not os.path.isdir(full_path):
 		continue
-	print(full_path)
 	parse_dir(full_path, filter)
 
