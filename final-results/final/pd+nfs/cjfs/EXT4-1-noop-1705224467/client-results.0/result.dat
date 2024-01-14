@@ -1,0 +1,11 @@
+
+#  fs_mark  -t  5  -n  10000  -s  16384  -w  8192  -d  /mnt 
+#	Version 3.3, 5 thread(s) starting at Sun Jan 14 09:27:50 2024
+#	Sync method: INBAND FSYNC: fsync() per file in write loop.
+#	Directories:  no subdirectories used
+#	File names: 40 bytes long, (16 initial bytes of time stamp with 24 random bytes at end of name)
+#	Files info: size 16384 bytes, written with an IO size of 8192 bytes per write
+#	App overhead is time in microseconds spent in the test not doing file writing related system calls.
+
+FSUse%        Count         Size    Files/sec     App Overhead
+     5        50000        16384       1034.2           316135
