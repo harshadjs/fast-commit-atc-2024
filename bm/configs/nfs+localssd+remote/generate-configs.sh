@@ -13,14 +13,14 @@ PREFIX="."
 CLIENT_DIR="${PREFIX}/client"
 SERVER_DIR="${PREFIX}/server"
 DATA_DEV="/dev/nvme0n1p1"
-JOURNAL_DEV=("empty" "/dev/nvme0n1p2")
+JOURNAL_DEV=("empty")
 SERVER_IP="10.132.15.204"
 NUM_WORKLOAD_THREADS=(5 0)
 LOCAL_NFS_SERVER=0
 
 FILESYSTEMS=("EXT4" "EXT4FC" "EXT4ASYNC" "XFS")
 # WORKLOADS=("kernel-compile" "filebench-varmail" "filebench-varmail-split16" "filebench-webserver" "filebench-fileserver" "postmark")
-WORKLOADS=("filebench-varmail" "fsmark" "postmark" "fsmark" "filebench-fileserver" "filebench-varmail-10m" "filebench-fileserver-10m")
+WORKLOADS=("filebench-varmail" "fsmark" "postmark" "filebench-fileserver-1m")
 
 for workload in ${WORKLOADS[@]}; do
 	echo $workload
@@ -95,4 +95,3 @@ for workload in ${WORKLOADS[@]}; do
 done
 
 rm server/5*
-rm client/*
