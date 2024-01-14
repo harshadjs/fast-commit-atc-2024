@@ -1,2 +1,7 @@
 #!/bin/bash
-./run_benchmark.sh configs/pd-perf/client/ $1
+ID=$RANDOM
+rm -rf ~/results
+
+./run_benchmark.sh configs/nfs+localssd+remote/client $1
+mv ~/results ~/nfs+localssd+remote-$ID
+echo "Results are in ~/nfs+localssd+remote-$ID"
