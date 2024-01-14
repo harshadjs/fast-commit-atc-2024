@@ -1,0 +1,5 @@
+[16962.698730] EXT4-fs (nvme0n1p1): unmounting filesystem.
+[16967.980332] XFS (nvme0n1p1): Mounting V5 Filesystem
+[16967.994272] XFS (nvme0n1p1): Ending clean mount
+[16968.001138] xfs filesystem being mounted at /mnt supports timestamps until 2038 (0x7fffffff)
+[16968.061707] sh (16433): drop_caches: 3
