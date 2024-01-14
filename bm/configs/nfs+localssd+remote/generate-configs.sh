@@ -13,14 +13,14 @@ PREFIX="."
 CLIENT_DIR="${PREFIX}/client"
 SERVER_DIR="${PREFIX}/server"
 DATA_DEV="/dev/nvme0n1p1"
-JOURNAL_DEV=("empty")
+JOURNAL_DEV=("empty" "/dev/nvme0n1p2")
 SERVER_IP="10.132.15.204"
 NUM_WORKLOAD_THREADS=(5 0)
 LOCAL_NFS_SERVER=0
 
 FILESYSTEMS=("EXT4" "EXT4FC" "EXT4ASYNC" "XFS")
 # WORKLOADS=("kernel-compile" "filebench-varmail" "filebench-varmail-split16" "filebench-webserver" "filebench-fileserver" "postmark")
-WORKLOADS=("filebench-varmail-1m" "fsmark" "postmark" "filebench-fileserver-1m" "filebench-varmail" "filebench-webserver")
+WORKLOADS=("filebench-varmail-1m" "fsmark" "postmark" "filebench-fileserver-1m")
 
 for workload in ${WORKLOADS[@]}; do
 	echo $workload
