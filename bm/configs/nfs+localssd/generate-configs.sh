@@ -16,7 +16,7 @@ DATA_DEV="/dev/nvme0n1p1"
 JOURNAL_DEV=("empty" "/dev/nvme0n1p2")
 SERVER_IP="10.132.15.204"
 NUM_WORKLOAD_THREADS=(5 0)
-LOCAL_NFS_SERVER=1
+LOCAL_NFS_SERVER=0
 
 FILESYSTEMS=("EXT4" "EXT4FC" "EXT4ASYNC" "XFS")
 # WORKLOADS=("kernel-compile" "filebench-varmail" "filebench-varmail-split16" "filebench-webserver" "filebench-fileserver" "postmark")
@@ -94,5 +94,4 @@ for workload in ${WORKLOADS[@]}; do
 	done
 done
 
-rm server/0*
-rm client/*
+rm server/5*

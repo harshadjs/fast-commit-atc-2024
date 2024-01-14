@@ -2,6 +2,9 @@
 ID=$RANDOM
 rm -rf ~/results
 
-./run_benchmark.sh configs/nfs+localssd+remote/client $1
-mv ~/results ~/nfs+localssd+remote-$ID
-echo "Results are in ~/nfs+localssd+remote-$ID"
+echo "Running NFS+LocalSSD"
+./run_benchmark.sh configs/nfs+localssd/client $1
+
+echo "Running NFS+LocalSSD"
+./run_benchmark.sh configs/nfs+pd/client $1
+
