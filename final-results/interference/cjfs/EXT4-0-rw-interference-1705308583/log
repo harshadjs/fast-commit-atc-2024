@@ -1,0 +1,70 @@
+
+
+==== Start experiment of rw-interference with 40 ====
+==== Format /dev/nvme0n1p1 on /mnt ====
+umount: /mnt: not mounted.
+./run_benchmark.sh: line 59: umonut: command not found
+umount: /dev/nvme0n1p1: not mounted.
+umount: /mnt: not mounted.
+mke2fs 1.46.2 (28-Feb-2021)
+Discarding device blocks:   4096/262144             done                            
+Creating filesystem with 262144 4k blocks and 0 inodes
+Filesystem UUID: f0f0c0e8-a93a-41a9-ae69-c9dd76cde490
+Superblock backups stored on blocks: 
+
+Zeroing journal device:   1024/262144 84992/262144185344/262144             
+mke2fs 1.46.2 (28-Feb-2021)
+==== Format complete ====
+==== Run workload ====
+write_bandwidth_test: (g=0): rw=rw, bs=(R) 1024KiB-1024KiB, (W) 1024KiB-1024KiB, (T) 1024KiB-1024KiB, ioengine=libaio, iodepth=4
+fio-3.25
+Starting 1 process
+write_bandwidth_test: Laying out IO file (1 file / 5120MiB)
+
+write_bandwidth_test: (groupid=0, jobs=1): err= 0: pid=24410: Mon Jan 15 08:52:21 2024
+  read: IOPS=200, BW=200MiB/s (210MB/s)(23.5GiB/120009msec)
+    slat (usec): min=18, max=632, avg=31.40, stdev=10.88
+    clat (usec): min=386, max=41689, avg=9331.59, stdev=6151.57
+     lat (usec): min=426, max=41716, avg=9363.12, stdev=6151.07
+    clat percentiles (usec):
+     |  1.00th=[  478],  5.00th=[ 1827], 10.00th=[ 2933], 20.00th=[ 4178],
+     | 30.00th=[ 6128], 40.00th=[ 7242], 50.00th=[ 8160], 60.00th=[ 9241],
+     | 70.00th=[10683], 80.00th=[12387], 90.00th=[17957], 95.00th=[22676],
+     | 99.00th=[29492], 99.50th=[32113], 99.90th=[35914], 99.95th=[38536],
+     | 99.99th=[41681]
+   bw (  KiB/s): min=25152, max=2710759, per=100.00%, avg=212918.59, stdev=317451.15, samples=24047
+   iops        : min=   84, max=  314, avg=200.38, stdev=55.91, samples=240
+  write: IOPS=202, BW=203MiB/s (213MB/s)(23.8GiB/120009msec); 0 zone resets
+    slat (usec): min=23, max=3175, avg=86.53, stdev=40.09
+    clat (usec): min=1288, max=44498, avg=10382.77, stdev=6153.22
+     lat (usec): min=1404, max=44573, avg=10469.47, stdev=6157.71
+    clat percentiles (usec):
+     |  1.00th=[ 1647],  5.00th=[ 3130], 10.00th=[ 3982], 20.00th=[ 5211],
+     | 30.00th=[ 7111], 40.00th=[ 8291], 50.00th=[ 9241], 60.00th=[10290],
+     | 70.00th=[11731], 80.00th=[13566], 90.00th=[19006], 95.00th=[23987],
+     | 99.00th=[30802], 99.50th=[33162], 99.90th=[38536], 99.95th=[41157],
+     | 99.99th=[42730]
+   bw (  KiB/s): min=23564, max=813656, per=70.01%, avg=145384.17, stdev=108331.44, samples=24336
+   iops        : min=   92, max=  288, avg=202.78, stdev=54.18, samples=240
+  lat (usec)   : 500=0.69%, 750=0.21%, 1000=0.35%
+  lat (msec)   : 2=2.61%, 4=10.42%, 10=47.30%, 20=29.65%, 50=8.78%
+  cpu          : usr=1.29%, sys=1.29%, ctx=25078, majf=0, minf=443
+  IO depths    : 1=0.1%, 2=0.1%, 4=100.0%, 8=0.0%, 16=0.0%, 32=0.0%, >=64=0.0%
+     submit    : 0=0.0%, 4=100.0%, 8=0.0%, 16=0.0%, 32=0.0%, 64=0.0%, >=64=0.0%
+     complete  : 0=0.0%, 4=100.0%, 8=0.0%, 16=0.0%, 32=0.0%, 64=0.0%, >=64=0.0%
+     issued rwts: total=24045,24335,0,0 short=0,0,0,0 dropped=0,0,0,0
+     latency   : target=0, window=0, percentile=100.00%, depth=4
+
+Run status group 0 (all jobs):
+   READ: bw=200MiB/s (210MB/s), 200MiB/s-200MiB/s (210MB/s-210MB/s), io=23.5GiB (25.2GB), run=120009-120009msec
+  WRITE: bw=203MiB/s (213MB/s), 203MiB/s-203MiB/s (213MB/s-213MB/s), io=23.8GiB (25.5GB), run=120009-120009msec
+
+Disk stats (read/write):
+  nvme0n1: ios=53150/690865, merge=0/1194729, ticks=483216/1636837, in_queue=2138177, util=99.91%
+0.000000/0.000000 => -nan
+==== Workload complete ====
+==== End the experiment ====
+
+
+awk: cannot open /root/results/summary_total (No such file or directory)
+Find results in: /root/results/EXT4-0-rw-interference-1705308583
