@@ -358,6 +358,24 @@ select_workload()
 		"fsmark")
 			fs_mark -t ${num_threads} -n 10000 -s 16384 -w 8192 -d $MNT > ${UNIQ_OUTDIR}/result.dat
 			;;
+		"write-interference")
+			fio --name=write_bandwidth_test --filename=/$MNT/fio --filesize=5G --time_based=1 --ramp_time=2s --runtime=120m  --ioengine=libaio --direct=1 --verify=0 --randrepeat=0  --bs=1M --iodepth=4 --rw=write --numjobs=1 --write_bw_log=${UNIQ_OUTDIR}/fio-bw&
+			sleep 5s
+			fs_mark -t 1 -n 10000 -s 16384 -w 8192 -d $MNT > ${UNIQ_OUTDIR}/fsmark.out
+			sleep 80s
+			;;
+		"read-interference")
+			fio --name=write_bandwidth_test --filename=/$MNT/fio --filesize=5G --time_based=1 --ramp_time=2s --runtime=120m  --ioengine=libaio --direct=1 --verify=0 --randrepeat=0  --bs=1M --iodepth=4 --rw=write --numjobs=1 --write_bw_log=${UNIQ_OUTDIR}/fio-bw&
+			sleep 5s
+			fs_mark -t 1 -n 10000 -s 16384 -w 8192 -d $MNT > ${UNIQ_OUTDIR}/fsmark.out
+			sleep 80s
+			;;
+		"rw-interference")
+			fio --name=write_bandwidth_test --filename=/$MNT/fio --filesize=5G --time_based=1 --ramp_time=2s --runtime=120m  --ioengine=libaio --direct=1 --verify=0 --randrepeat=0  --bs=1M --iodepth=4 --rw=rw --numjobs=1 --write_bw_log=${UNIQ_OUTDIR}/fio-bw&
+			sleep 5s
+			bin/filebench -f workloads/varmail_${num_threads}.f > ${UNIQ_OUTDIR}/varmail.out
+			sleep 80s
+			;;
 		"ycsb-load")
 			CURDIR=$(pwd)
 			cd ${YCSB_DIR}
