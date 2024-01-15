@@ -1,0 +1,58 @@
+
+
+==== Start experiment of write-interference with 40 ====
+==== Format /dev/nvme0n1p1 on /mnt ====
+umount: /mnt: not mounted.
+./run_benchmark.sh: line 59: umonut: command not found
+umount: /dev/nvme0n1p1: not mounted.
+umount: /mnt: not mounted.
+mke2fs 1.46.2 (28-Feb-2021)
+Discarding device blocks:   4096/262144             done                            
+Creating filesystem with 262144 4k blocks and 0 inodes
+Filesystem UUID: 556e2fdb-cece-464f-9268-57d17ae41cb0
+Superblock backups stored on blocks: 
+
+Zeroing journal device:   1024/262144 90112/262144190464/262144             
+mke2fs 1.46.2 (28-Feb-2021)
+==== Format complete ====
+==== Run workload ====
+write_bandwidth_test: (g=0): rw=write, bs=(R) 1024KiB-1024KiB, (W) 1024KiB-1024KiB, (T) 1024KiB-1024KiB, ioengine=libaio, iodepth=4
+fio-3.25
+Starting 1 process
+write_bandwidth_test: Laying out IO file (1 file / 5120MiB)
+
+write_bandwidth_test: (groupid=0, jobs=1): err= 0: pid=29335: Mon Jan 15 08:51:33 2024
+  write: IOPS=300, BW=301MiB/s (315MB/s)(35.2GiB/120008msec); 0 zone resets
+    slat (usec): min=26, max=14388, avg=82.79, stdev=139.13
+    clat (usec): min=475, max=92343, avg=13222.81, stdev=5201.97
+     lat (usec): min=586, max=92425, avg=13305.80, stdev=5206.96
+    clat percentiles (usec):
+     |  1.00th=[ 8717],  5.00th=[ 9634], 10.00th=[ 9896], 20.00th=[10028],
+     | 30.00th=[10028], 40.00th=[10159], 50.00th=[10290], 60.00th=[11076],
+     | 70.00th=[13173], 80.00th=[20055], 90.00th=[21103], 95.00th=[21365],
+     | 99.00th=[22414], 99.50th=[26346], 99.90th=[40633], 99.95th=[86508],
+     | 99.99th=[90702]
+   bw (  KiB/s): min=11355, max=2204511, per=29.80%, avg=91723.28, stdev=65924.69, samples=36069
+   iops        : min=   70, max=  392, avg=300.54, stdev=90.17, samples=240
+  lat (usec)   : 500=0.01%, 750=0.04%, 1000=0.08%
+  lat (msec)   : 2=0.24%, 4=0.28%, 10=22.84%, 20=53.94%, 50=22.49%
+  lat (msec)   : 100=0.09%
+  cpu          : usr=1.39%, sys=1.06%, ctx=25805, majf=0, minf=348
+  IO depths    : 1=0.1%, 2=0.1%, 4=100.0%, 8=0.0%, 16=0.0%, 32=0.0%, >=64=0.0%
+     submit    : 0=0.0%, 4=100.0%, 8=0.0%, 16=0.0%, 32=0.0%, 64=0.0%, >=64=0.0%
+     complete  : 0=0.0%, 4=100.0%, 8=0.0%, 16=0.0%, 32=0.0%, 64=0.0%, >=64=0.0%
+     issued rwts: total=0,36066,0,0 short=0,0,0,0 dropped=0,0,0,0
+     latency   : target=0, window=0, percentile=100.00%, depth=4
+
+Run status group 0 (all jobs):
+  WRITE: bw=301MiB/s (315MB/s), 301MiB/s-301MiB/s (315MB/s-315MB/s), io=35.2GiB (37.8GB), run=120008-120008msec
+
+Disk stats (read/write):
+  nvme0n1: ios=47/150084, merge=0/72912, ticks=74/1603736, in_queue=1610008, util=99.96%
+0.000000/0.000000 => -nan
+==== Workload complete ====
+==== End the experiment ====
+
+
+awk: cannot open /root/results/summary_total (No such file or directory)
+Find results in: /root/results/EXT4-0-write-interference-1705308552
