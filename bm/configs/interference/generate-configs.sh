@@ -9,17 +9,17 @@
 # BENCHMARK=filebench-varmail
 # NFS_CLIENT_OPS=-o async
 
-PREFIX="configs/interference"
+PREFIX="."
 CLIENT_DIR="${PREFIX}/client"
 SERVER_DIR="${PREFIX}/server"
-DATA_DEV="/dev/sdb1"
-JOURNAL_DEV=("/dev/sdb2")
+DATA_DEV="/dev/nvme0n1p1"
+JOURNAL_DEV=("/dev/nvme0n1p2")
 SERVER_IP="10.132.15.204"
 NUM_WORKLOAD_THREADS=(40)
 
-FILESYSTEMS=("F2FS" "XFS" "EXT4FC" "EXT4")
+FILESYSTEMS=("EXT4" "EXT4FC" "XFS")
 # WORKLOADS=("kernel-compile" "filebench-varmail" "filebench-varmail-split16" "filebench-webserver" "filebench-fileserver" "postmark")
-WORKLOADS=("filebench-fileserver")
+WORKLOADS=("read-interference" "write-interference" "rw-interference")
 
 for workload in ${WORKLOADS[@]}; do
 	echo $workload
@@ -37,16 +37,6 @@ NFS_ID=0
 
 for workload in ${WORKLOADS[@]}; do
 	for num_threads in ${NUM_WORKLOAD_THREADS[@]}; do
-		if [ "$workload" == "postmark" -o "$workload" == "kernel-compile" ]; then
-			if [ "$num_threads" != "0" ]; then
-				continue
-			fi
-		else
-			if [ "$num_threads" == "0" ]; then
-				continue
-			fi
-		fi
-
 		for journal in ${JOURNAL_DEV[@]}; do
 			for fs in ${FILESYSTEMS[@]}; do
 				# Generate common first
@@ -82,3 +72,6 @@ for workload in ${WORKLOADS[@]}; do
 		done
 	done
 done
+
+rm server/0*
+rm client/*
