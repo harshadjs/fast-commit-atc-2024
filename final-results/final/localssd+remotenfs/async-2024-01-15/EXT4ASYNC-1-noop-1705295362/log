@@ -1,0 +1,38 @@
+
+
+==== Start experiment of noop with 64 ====
+==== Format /dev/nvme0n1p1 on /mnt ====
+umount: /mnt: not mounted.
+./run_benchmark.sh: line 59: umonut: command not found
+Async Journaling
+umount: /dev/nvme0n1p1: not mounted.
+umount: /mnt: not mounted.
+mke2fs 1.46.2 (28-Feb-2021)
+==== Format complete ====
+This is a NFS Sever, with 64 threads.
+enp0s5: flags=4163<UP,BROADCAST,RUNNING,MULTICAST>  mtu 1460
+        inet 10.132.15.213  netmask 255.255.255.255  broadcast 10.132.15.213
+        inet6 fe80::4001:aff:fe84:fd5  prefixlen 64  scopeid 0x20<link>
+        ether 42:01:0a:84:0f:d5  txqueuelen 1000  (Ethernet)
+        RX packets 46376038  bytes 181914971365 (169.4 GiB)
+        RX errors 0  dropped 0  overruns 0  frame 0
+        TX packets 43733331  bytes 14703935849 (13.6 GiB)
+        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
+
+lo: flags=73<UP,LOOPBACK,RUNNING>  mtu 65536
+        inet 127.0.0.1  netmask 255.0.0.0
+        inet6 ::1  prefixlen 128  scopeid 0x10<host>
+        loop  txqueuelen 1000  (Local Loopback)
+        RX packets 12  bytes 1020 (1020.0 B)
+        RX errors 0  dropped 0  overruns 0  frame 0
+        TX packets 12  bytes 1020 (1020.0 B)
+        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
+
+==== Run workload ====
+0.000000/0.000000 => -nan
+==== Workload complete ====
+==== End the experiment ====
+
+
+awk: cannot open /root/results/summary_total (No such file or directory)
+Find results in: /root/results/EXT4ASYNC-1-noop-1705295362
