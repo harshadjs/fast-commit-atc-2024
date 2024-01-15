@@ -355,14 +355,17 @@ select_workload()
 		"dbench")
 			dbench -c /usr/share/dbench/client.txt -D $MNT -t 60 $num_threads
 			;;
+		"fsmark2")
+			fs_mark -t 5 -n 100000 -s 8192 -w 4096 -d $MNT > ${UNIQ_OUTDIR}/result.dat
+			;;
 		"fsmark")
 			fs_mark -t ${num_threads} -n 10000 -s 16384 -w 8192 -d $MNT > ${UNIQ_OUTDIR}/result.dat
 			;;
 		"write-interference")
-			fio --name=write_bandwidth_test --filename=/$MNT/fio --filesize=5G --time_based=1 --ramp_time=10s --runtime=120s  --ioengine=libaio --direct=1 --verify=0 --randrepeat=0  --bs=1M --iodepth=1 --rw=write --numjobs=1 --write_bw_log=${UNIQ_OUTDIR}/fio-bw&
-			sleep 30s
-			# fs_mark -t 1 -n 10000 -s 1048576 -w 8192 -d $MNT > ${UNIQ_OUTDIR}/fsmark.out
-			bin/filebench -f workloads/varmail_10.f > ${UNIQ_OUTDIR}/varmail.out
+			fio --name=write_bandwidth_test --filename=/$MNT/fio --filesize=5G --loops=5 --ramp_time=5s --ioengine=libaio --direct=1 --verify=0 --randrepeat=0  --bs=1M --iodepth=1 --rw=write --numjobs=1 --write_bw_log=${UNIQ_OUTDIR}/fio-bw&
+			sleep 10s
+			fs_mark -t 5 -n 100000 -s 8192 -w 4096 -d $MNT > ${UNIQ_OUTDIR}/fsmark.out
+			# bin/filebench -f workloads/varmail_10.f > ${UNIQ_OUTDIR}/varmail.out
 			sleep 80s
 			;;
 		"read-interference")
