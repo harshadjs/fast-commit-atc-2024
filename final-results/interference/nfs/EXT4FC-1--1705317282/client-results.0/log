@@ -1,0 +1,55 @@
+
+
+==== Start experiment of write-interference with 40 ====
+==== Format 10.132.15.204 on /mnt ====
+umount: /mnt: not mounted.
+./run_benchmark.sh: line 59: umonut: command not found
+This is a NFS Client, using 10.132.15.211 IP address
+Waiting for NFS Server...
+umount: /mnt: not mounted.
+mount.nfs: requested NFS version or transport protocol is not supported
+umount: /mnt: not mounted.
+mount.nfs: requested NFS version or transport protocol is not supported
+umount: /mnt: not mounted.
+mount.nfs: requested NFS version or transport protocol is not supported
+umount: /mnt: not mounted.
+mount.nfs: requested NFS version or transport protocol is not supported
+umount: /mnt: not mounted.
+mount.nfs: requested NFS version or transport protocol is not supported
+umount: /mnt: not mounted.
+mount.nfs: requested NFS version or transport protocol is not supported
+umount: /mnt: not mounted.
+Connected.
+==== Format complete ====
+==== Run workload ====
+write_bandwidth_test: (g=0): rw=write, bs=(R) 1024KiB-1024KiB, (W) 1024KiB-1024KiB, (T) 1024KiB-1024KiB, ioengine=libaio, iodepth=1
+fio-3.25
+Starting 1 process
+write_bandwidth_test: Laying out IO file (1 file / 5120MiB)
+
+write_bandwidth_test: (groupid=0, jobs=1): err= 0: pid=323884: Mon Jan 15 11:17:05 2024
+  write: IOPS=373, BW=374MiB/s (392MB/s)(43.8GiB/120001msec); 0 zone resets
+    slat (usec): min=59, max=719, avg=117.03, stdev=23.84
+    clat (usec): min=1325, max=11416, avg=2555.90, stdev=1011.61
+     lat (usec): min=1447, max=11603, avg=2673.10, stdev=1011.62
+    clat percentiles (usec):
+     |  1.00th=[ 1500],  5.00th=[ 1582], 10.00th=[ 1631], 20.00th=[ 1713],
+     | 30.00th=[ 1795], 40.00th=[ 1909], 50.00th=[ 2540], 60.00th=[ 2671],
+     | 70.00th=[ 2802], 80.00th=[ 3130], 90.00th=[ 3785], 95.00th=[ 4555],
+     | 99.00th=[ 6194], 99.50th=[ 6849], 99.90th=[ 8291], 99.95th=[ 8717],
+     | 99.99th=[ 9765]
+   bw (  KiB/s): min=91846, max=791055, per=100.00%, avg=462434.36, stdev=143896.18, samples=44865
+   iops        : min=  354, max=  390, avg=373.87, stdev=12.42, samples=240
+  lat (msec)   : 2=43.78%, 4=48.95%, 10=7.26%, 20=0.01%
+  cpu          : usr=1.43%, sys=3.46%, ctx=44896, majf=0, minf=982
+  IO depths    : 1=100.0%, 2=0.0%, 4=0.0%, 8=0.0%, 16=0.0%, 32=0.0%, >=64=0.0%
+     submit    : 0=0.0%, 4=100.0%, 8=0.0%, 16=0.0%, 32=0.0%, 64=0.0%, >=64=0.0%
+     complete  : 0=0.0%, 4=100.0%, 8=0.0%, 16=0.0%, 32=0.0%, 64=0.0%, >=64=0.0%
+     issued rwts: total=0,44865,0,0 short=0,0,0,0 dropped=0,0,0,0
+     latency   : target=0, window=0, percentile=100.00%, depth=1
+
+Run status group 0 (all jobs):
+  WRITE: bw=374MiB/s (392MB/s), 374MiB/s-374MiB/s (392MB/s-392MB/s), io=43.8GiB (47.0GB), run=120001-120001msec
+cat: /proc/fs/jbd2/2.15.204-8/info: No such file or directory
+cat: /proc/fs/ext4/2.15.204/fc_info: No such file or directory
+0.000000/0.000000 => -nan
