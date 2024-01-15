@@ -1,0 +1,78 @@
+
+
+==== Start experiment of rw-interference with 40 ====
+==== Format /dev/nvme0n1p1 on /mnt ====
+umount: /mnt: not mounted.
+./run_benchmark.sh: line 59: umonut: command not found
+mkxfs.sh: line 1: 1#!/bin/sh: No such file or directory
+umount: /dev/nvme0n1p1: not mounted.
+umount: /mnt: not mounted.
+meta-data=/dev/nvme0n1p1         isize=512    agcount=4, agsize=6553600 blks
+         =                       sectsz=4096  attr=2, projid32bit=1
+         =                       crc=1        finobt=1, sparse=1, rmapbt=0
+         =                       reflink=1    bigtime=0
+data     =                       bsize=4096   blocks=26214400, imaxpct=25
+         =                       sunit=0      swidth=0 blks
+naming   =version 2              bsize=4096   ascii-ci=0, ftype=1
+log      =/dev/nvme0n1p2         bsize=4096   blocks=262144, version=2
+         =                       sectsz=4096  sunit=1 blks, lazy-count=1
+realtime =none                   extsz=4096   blocks=0, rtextents=0
+Discarding blocks...Done.
+Discarding blocks...Done.
+==== Format complete ====
+==== Run workload ====
+write_bandwidth_test: (g=0): rw=rw, bs=(R) 1024KiB-1024KiB, (W) 1024KiB-1024KiB, (T) 1024KiB-1024KiB, ioengine=libaio, iodepth=4
+fio-3.25
+Starting 1 process
+write_bandwidth_test: Laying out IO file (1 file / 5120MiB)
+
+write_bandwidth_test: (groupid=0, jobs=1): err= 0: pid=54226: Mon Jan 15 08:58:14 2024
+  read: IOPS=226, BW=226MiB/s (237MB/s)(26.5GiB/120010msec)
+    slat (usec): min=20, max=192, avg=34.53, stdev=11.08
+    clat (usec): min=289, max=73288, avg=9246.24, stdev=6034.92
+     lat (usec): min=322, max=73311, avg=9280.93, stdev=6033.95
+    clat percentiles (usec):
+     |  1.00th=[ 1172],  5.00th=[ 1942], 10.00th=[ 3785], 20.00th=[ 5538],
+     | 30.00th=[ 6915], 40.00th=[ 7635], 50.00th=[ 8225], 60.00th=[ 8979],
+     | 70.00th=[ 9765], 80.00th=[11731], 90.00th=[15401], 95.00th=[19006],
+     | 99.00th=[33817], 99.50th=[41681], 99.90th=[62129], 99.95th=[67634],
+     | 99.99th=[72877]
+   bw (  KiB/s): min=14307, max=3620398, per=74.25%, avg=172152.19, stdev=170842.90, samples=27172
+   iops        : min=  136, max=  308, avg=226.41, stdev=34.13, samples=240
+  write: IOPS=225, BW=225MiB/s (236MB/s)(26.4GiB/120010msec); 0 zone resets
+    slat (usec): min=26, max=1562, avg=89.86, stdev=29.25
+    clat (usec): min=287, max=72655, avg=8335.82, stdev=5852.94
+     lat (usec): min=337, max=72835, avg=8425.88, stdev=5849.93
+    clat percentiles (usec):
+     |  1.00th=[  474],  5.00th=[  766], 10.00th=[ 1696], 20.00th=[ 4752],
+     | 30.00th=[ 6259], 40.00th=[ 7046], 50.00th=[ 7832], 60.00th=[ 8291],
+     | 70.00th=[ 9110], 80.00th=[10552], 90.00th=[14353], 95.00th=[17433],
+     | 99.00th=[31589], 99.50th=[39584], 99.90th=[54789], 99.95th=[64750],
+     | 99.99th=[69731]
+   bw (  KiB/s): min=14432, max=3642027, per=100.00%, avg=279895.34, stdev=436608.19, samples=27028
+   iops        : min=  140, max=  272, avg=225.23, stdev=29.18, samples=240
+  lat (usec)   : 500=0.68%, 750=1.86%, 1000=1.25%
+  lat (msec)   : 2=4.47%, 4=6.54%, 10=59.48%, 20=22.03%, 50=3.48%
+  lat (msec)   : 100=0.22%
+  cpu          : usr=1.61%, sys=1.70%, ctx=40305, majf=0, minf=488
+  IO depths    : 1=0.1%, 2=0.1%, 4=100.0%, 8=0.0%, 16=0.0%, 32=0.0%, >=64=0.0%
+     submit    : 0=0.0%, 4=100.0%, 8=0.0%, 16=0.0%, 32=0.0%, 64=0.0%, >=64=0.0%
+     complete  : 0=0.0%, 4=100.0%, 8=0.0%, 16=0.0%, 32=0.0%, 64=0.0%, >=64=0.0%
+     issued rwts: total=27171,27026,0,0 short=0,0,0,0 dropped=0,0,0,0
+     latency   : target=0, window=0, percentile=100.00%, depth=4
+
+Run status group 0 (all jobs):
+   READ: bw=226MiB/s (237MB/s), 226MiB/s-226MiB/s (237MB/s-237MB/s), io=26.5GiB (28.5GB), run=120010-120010msec
+  WRITE: bw=225MiB/s (236MB/s), 225MiB/s-225MiB/s (236MB/s-236MB/s), io=26.4GiB (28.3GB), run=120010-120010msec
+
+Disk stats (read/write):
+  nvme0n1: ios=89040/805738, merge=0/774, ticks=785048/1277059, in_queue=2132353, util=99.94%
+cat: /proc/fs/jbd2/nvme0n1p2/info: No such file or directory
+cat: /proc/fs/ext4/nvme0n1p1/fc_info: No such file or directory
+0.000000/0.000000 => -nan
+==== Workload complete ====
+==== End the experiment ====
+
+
+awk: cannot open /root/results/summary_total (No such file or directory)
+Find results in: /root/results/XFS-0-rw-interference-1705308941
