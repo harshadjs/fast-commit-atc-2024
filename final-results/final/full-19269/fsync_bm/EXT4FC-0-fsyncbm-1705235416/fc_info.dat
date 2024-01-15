@@ -1,0 +1,54 @@
+fc stats:
+31 commits (0 skipped):
+	1 ineligible
+	1 failed
+	0 empty
+Commit type breakdown:
+	16 fua
+	0 fua+preflush
+	15 multiblock
+61 numblks
+61 real_numblks
+15 flushes
+96 avg_commit_time
+time breakdown:
+	total: 3095
+	begin_time: 0
+	perform_time: 612
+		lock_updates_time: 0
+		mark_inodes_committing: 0
+		flush_data_time: 0
+		dentry_commit_time: 214
+		write_inodes_time: 186
+		tail_write_time: 169
+	wait_bufs_time: 2426
+Ineligible reasons:
+"Extended attributes changed":	0
+"Cross rename":	0
+"Journal flag changed":	0
+"Insufficient memory":	0
+"Swap boot":	0
+"Resize":	0
+"Dir renamed":	0
+"Falloc range op":	0
+"Data journalling":	0
+fsync: 
+67,1
+68,6
+69,6
+71,1
+76,1
+93,1
+114,1
+115,2
+117,1
+119,3
+121,1
+126,1
+140,1
+142,1
+149,1
+150,1
+159,1
+162,1
+543,1

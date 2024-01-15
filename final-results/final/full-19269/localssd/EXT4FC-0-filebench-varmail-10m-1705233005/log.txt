@@ -1,0 +1,4 @@
+[12656.997722] nfsd: last server has exited, flushing export cache
+[12657.068381] XFS (sdb1): Unmounting Filesystem
+[12664.392323] EXT4-fs (nvme0n1p1): mounted filesystem with ordered data mode. Quota mode: none.
+[12664.449648] sh (23086): drop_caches: 3
