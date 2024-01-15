@@ -360,19 +360,19 @@ select_workload()
 			;;
 		"write-interference")
 			fio --name=write_bandwidth_test --filename=/$MNT/fio --filesize=5G --time_based=1 --ramp_time=10s --runtime=120s  --ioengine=libaio --direct=1 --verify=0 --randrepeat=0  --bs=1M --iodepth=4 --rw=write --numjobs=1 --write_bw_log=${UNIQ_OUTDIR}/fio-bw&
-			sleep 10s
+			sleep 30s
 			fs_mark -t 1 -n 10000 -s 1048576 -w 8192 -d $MNT > ${UNIQ_OUTDIR}/fsmark.out
 			sleep 80s
 			;;
 		"read-interference")
 			fio --name=write_bandwidth_test --filename=/$MNT/fio --filesize=5G --time_based=1 --ramp_time=10s --runtime=120s --ioengine=libaio --direct=1 --verify=0 --randrepeat=0  --bs=1M --iodepth=4 --rw=read --numjobs=1 --write_bw_log=${UNIQ_OUTDIR}/fio-bw&
-			sleep 10s
+			sleep 30s
 			fs_mark -t 1 -n 10000 -s 1048576 -w 8192 -d $MNT > ${UNIQ_OUTDIR}/fsmark.out
 			sleep 80s
 			;;
 		"rw-interference")
 			fio --name=write_bandwidth_test --filename=/$MNT/fio --filesize=5G --time_based=1 --ramp_time=10s --runtime=120s --ioengine=libaio --direct=1 --verify=0 --randrepeat=0  --bs=1M --iodepth=4 --rw=rw --numjobs=1 --write_bw_log=${UNIQ_OUTDIR}/fio-bw&
-			sleep 10s
+			sleep 30s
 			bin/filebench -f workloads/varmail_${num_threads}.f > ${UNIQ_OUTDIR}/varmail.out
 			sleep 80s
 			;;
