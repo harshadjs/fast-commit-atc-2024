@@ -48,3 +48,15 @@ Run status group 0 (all jobs):
 
 Disk stats (read/write):
   nvme0n1: ios=0/1770808, merge=0/2671965, ticks=0/511206, in_queue=523273, util=99.94%
+./run_benchmark.sh: line 134: /root/results/EXT4-0-write-interference-1705343118/iostat_after.dat: No such file or directory
+./run_benchmark.sh: line 139: /root/results/EXT4-0-write-interference-1705343118/info.dat: No such file or directory
+./run_benchmark.sh: line 141: /root/results/EXT4-0-write-interference-1705343118/fc_info.dat: No such file or directory
+./run_benchmark.sh: line 169: /root/results/EXT4-0-write-interference-1705343118/log_1.txt: No such file or directory
+0.000000/0.000000 => -nan
+./run_benchmark.sh: line 569: cd: /root/results/EXT4-0-write-interference-1705343118: No such file or directory
+==== Workload complete ====
+==== End the experiment ====
+
+
+awk: cannot open /root/results/summary_total (No such file or directory)
+Find results in: /root/results/EXT4-0-write-interference-1705343118
