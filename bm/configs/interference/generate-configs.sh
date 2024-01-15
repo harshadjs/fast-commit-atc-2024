@@ -73,5 +73,5 @@ for workload in ${WORKLOADS[@]}; do
 	done
 done
 
-rm server/0*
-rm client/*
+# rm server/0*
+# rm client/*
