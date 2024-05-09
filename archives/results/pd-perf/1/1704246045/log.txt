@@ -1,7 +1,0 @@
-[ 1996.524016] nfsd: last server has exited, flushing export cache
-[ 1996.719519] EXT4-fs (sdb1): unmounting filesystem.
-[ 1998.311925] F2FS-fs (sdb1): Found nat_bits in checkpoint
-[ 1998.438212] F2FS-fs (sdb1): Mounted with checkpoint version = 3068bd4f
-[ 1999.609836] NFSD: Using UMH upcall client tracking operations.
-[ 1999.615812] NFSD: starting 90-second grace period (net f0000000)
-[ 1999.668091] sh (6378): drop_caches: 3

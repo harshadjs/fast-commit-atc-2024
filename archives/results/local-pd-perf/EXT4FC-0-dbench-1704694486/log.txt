@@ -1,3 +1,0 @@
-[ 2921.251723] XFS (sdb1): Unmounting Filesystem
-[ 2922.910146] EXT4-fs (sdb1): mounted filesystem with ordered data mode. Quota mode: none.
-[ 2922.960943] sh (6406): drop_caches: 3

@@ -1,5 +1,0 @@
-[ 4346.055559] EXT4-fs (sdb): unmounting filesystem.
-[ 4355.668814] XFS (sdb): Mounting V5 Filesystem
-[ 4355.688302] XFS (sdb): Ending clean mount
-[ 4355.697508] xfs filesystem being mounted at /mnt supports timestamps until 2038 (0x7fffffff)
-[ 4355.749426] sh (158200): drop_caches: 3

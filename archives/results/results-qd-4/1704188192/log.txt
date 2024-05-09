@@ -1,5 +1,0 @@
-[24240.338747] nfsd: last server has exited, flushing export cache
-[24240.379820] EXT4-fs (sdb1): unmounting filesystem.
-[44275.680127] F2FS-fs (sdb1): Found nat_bits in checkpoint
-[44275.778786] F2FS-fs (sdb1): Mounted with checkpoint version = de001f1
-[44275.874063] sh (23977): drop_caches: 3

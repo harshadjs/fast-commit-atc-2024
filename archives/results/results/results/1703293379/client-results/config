@@ -1,4 +1,0 @@
-dev=10.132.0.42
-NFS_CLIENT=1
-BENCHMARK=filebench-webserver
-NUM_THREADS=20

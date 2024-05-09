@@ -1,2 +1,0 @@
-[262140.807534] ext4: Unknown parameter 'logdev'
-[262141.015260] sh (189931): drop_caches: 3

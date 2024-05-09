@@ -1,9 +1,9 @@
 # Fast Commit ATC 2024 Benchmarking
 
 This repository contains benchmarking scripts that were used to evaluate fast commit
-performance for ATC 2024 paper. We have merged majority of the fast commit kernel code into
+performance for ATC 2024 paper. I have merged majority of the fast commit kernel code into
 the upstream Linux kernel. Kernel versions >= 5.10 support Fast Commits natively. Some
-kernel patches are being [actively reviewed](link) upstream, and we expect them to be merged
+kernel patches are being [actively reviewed](link) upstream, and I expect them to be merged
 soon as well. These unmerged patches can be found
 [here](https://github.com/harshadjs/fc-perf-v2).
 
@@ -45,7 +45,56 @@ cd fast-commit-atc-2024
 
 ## Running Benchmarks
 
+The benchmark is designed to run many tests at once. It also supports running tests across
+NFS client / server. The test
 
+### Defining one test
+
+A single test is defined by designing a configuration file consisting of following
+configuration variables:
+- `dev`: Device under test (e.g. /dev/sdb)
+- `FS`:	File system to use for testing. Possible options: `EXT4`, `EXT4FC`, `EXT4ASYNC`,
+  `F2FS`, `XFS`
+- `NFS_SERVER`: Set to `1` if the machine running this test is acting as NFS server. In that
+  case, there should be an equivalent client test.
+- `BENCHMARK`: The actual benchmark to run.
+- `NUM_THREADS`: Number of threads to use.
+
+Define these configurations by placing them in a file. Here is an example configuration
+file:
+
+```sh
+dev=/dev/nvme0n1p1
+FS=EXT4
+JOURNAL_DEV=
+NFS_SERVER=0
+BENCHMARK=filebench-varmail-10m
+NUM_THREADS=1
+```
+
+### Creating tests directory
+
+As seen in the previous section, each configuration file defines one unique test. Create a
+directory with multiple files where each file defines a unique test.
+
+### Running all the tests
+
+To run all the tests in the directory, run the following command:
+
+```
+./run_benchmark.sh my-configs-dir/
+```
+
+This command will run all the tests defined in folder `configs`.
+
+### Simplifying test generations
+
+To simplify generating test configurations, I have provided script
+`configs/generate-configs.sh`. You can tweak that script to generate all the different
+combinations. I have generated different configurations which are ready to use. Please find
+these configurations under `configs/` directory.
+
+### Test suites
 
 ## TODO
 - Add instructions in https://github.com/harshadjs/fc-perf-v2.

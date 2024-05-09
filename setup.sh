@@ -6,14 +6,3 @@ sudo apt-get install xfsprogs kexec-tools fsmark dbench fdisk libtool m4 automak
 
 echo "Setting up NFS export"
 echo '/mnt *(rw,sync,no_subtree_check,no_root_squash)' > /etc/exports
-
-echo "Compiling filebench"
-cd filebench
-libtoolize
-aclocal
-autoheader
-automake --add-missing
-autoconf
-./configure
-make
-make install

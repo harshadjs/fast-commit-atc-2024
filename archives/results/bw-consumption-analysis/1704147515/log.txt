@@ -1,6 +1,0 @@
-[ 3596.456114] nfsd: last server has exited, flushing export cache
-[ 3596.557610] EXT4-fs (sdb1): unmounting filesystem.
-[ 3598.966981] XFS (sdb1): Mounting V5 Filesystem
-[ 3598.984242] XFS (sdb1): Ending clean mount
-[ 3598.992393] xfs filesystem being mounted at /mnt supports timestamps until 2038 (0x7fffffff)
-[ 3599.095035] sh (7625): drop_caches: 3

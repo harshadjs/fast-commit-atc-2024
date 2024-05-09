@@ -1,3 +1,0 @@
-[  319.709984] NFS: SECINFO: security flavor 390003 is not supported
-[  319.716217] NFS: SECINFO: security flavor 390004 is not supported
-[  319.722433] NFS: SECINFO: security flavor 390005 is not supported

@@ -1,6 +1,0 @@
-dev=/dev/sdb
-FS=EXT4FC
-JOURNAL_DEV=
-NFS_SERVER=0
-BENCHMARK=postmark
-NUM_THREADS=0

@@ -1,4 +1,0 @@
-[47575.419924] EXT4-fs (sdb1): unmounting filesystem.
-[47580.640560] F2FS-fs (sdb1): Found nat_bits in checkpoint
-[47580.735028] F2FS-fs (sdb1): Mounted with checkpoint version = 4751e8cd
-[47580.796275] sh (32751): drop_caches: 3

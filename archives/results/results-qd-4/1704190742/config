@@ -1,6 +1,0 @@
-dev=/dev/sdb1
-FS=EXT4FC
-JOURNAL_DEV=/dev/sdb2
-NFS_SERVER=0
-BENCHMARK=filebench-varmail
-NUM_THREADS=40

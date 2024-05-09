@@ -1,6 +1,0 @@
-dev=/dev/sdb
-FS=EXT4FC
-JOURNAL_DEV=
-NFS_SERVER=0
-BENCHMARK=filebench-fileserver
-NUM_THREADS=10
