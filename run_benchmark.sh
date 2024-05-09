@@ -167,7 +167,7 @@ pre_run_workload()
     # Format and Mount
     service nfs-kernel-server stop
     umount $MNT
-    umonut $LOCAL_SERVER_MNT
+    umount $LOCAL_SERVER_MNT
     mntpt=$MNT
     if [ "$LOCAL_NFS_SERVER" == "1" ]; then
 	mntpt=$LOCAL_SERVER_MNT
