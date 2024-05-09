@@ -1,5 +1,5 @@
-#!/bin/bash
 
+#!/bin/bash
 # Library functions to create file systems
 
 function make_ext4() {
@@ -249,7 +249,7 @@ select_workload()
 
     case $BENCHMARK in
 	"filebench-varmail")
-	    bin/filebench -f workloads/varmail_${num_threads}.f \
+	    filebench -f workloads/varmail_${num_threads}.f \
 			  > ${UNIQ_OUTDIR}/result.dat;
 	    ;;
 	"filebench-varmail-1m")
@@ -442,6 +442,7 @@ run_bench()
     cleanup
 }
 
+echo 0 > /proc/sys/kernel/randomize_va_space
 
 for file in $(ls $CONFIGS_DIR); do
     cp ${CONFIGS_DIR}/$file ~/fast-commit-override.sh
