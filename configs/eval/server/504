@@ -1,6 +1,6 @@
 dev=/dev/nvme0n1p1
 FS=EXT4FC
-JOURNAL_DEV=/dev/nvme0n1p2
+JOURNAL_DEV=
 NFS_SERVER=0
 BENCHMARK=postmark
 NUM_THREADS=0

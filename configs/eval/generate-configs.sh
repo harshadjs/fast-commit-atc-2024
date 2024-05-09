@@ -13,7 +13,7 @@ PREFIX="eval"
 CLIENT_DIR="${PREFIX}/client"
 SERVER_DIR="${PREFIX}/server"
 DATA_DEV="/dev/nvme0n1p1"
-JOURNAL_DEV=("/dev/nvme0n1p2")
+JOURNAL_DEV=( "none" )
 SERVER_IP="10.132.15.204"
 NUM_WORKLOAD_THREADS=(40 0)
 
