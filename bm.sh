@@ -448,7 +448,7 @@ for file in $(ls $CONFIGS_DIR); do
     cp ${CONFIGS_DIR}/$file ~/fast-commit-override.sh
     MNT=/mnt
     source ~/fast-commit-override.sh
-    UNIQUE_ID=$(echo "$FS-$NFS_SERVER-$BENCHMARK-$(date +%s)")
+    UNIQUE_ID=$(echo "$(date +%s)")
     echo "[$file]: Results sent to ${OUTDIR}/$UNIQUE_ID/log"
     mkdir -p ${OUTDIR}/$UNIQUE_ID
     echo -n "[$file]: Running Test..."

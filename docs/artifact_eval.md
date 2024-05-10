@@ -25,35 +25,53 @@ ssh eval@$NFS_SERVER_IP
 
 ```sh
 # Running on NFS SERVER VM.
-$ sudo su
-$ cd /root/fast-commit-atc-2024
+sudo su
+cd /root/fast-commit-atc-2024
 ```
 
 ```sh
 # Running on NFS CLIENT VM.
-$ sudo su
-$ cd /root/fast-commit-atc-2024
+sudo su
+cd /root/fast-commit-atc-2024
 ```
 
-- Run sample evaluation on the server VM.
+- Run sample evaluation on the server VM. This would take about ~3 minutes to complete. The
+  command 
 
 ```sh
 # Running on NFS SERVER VM.
-$ ./bm.sh eval/quick/local
+./bm.sh eval/quick/local
 ```
 
-- Run sample evaluation over NFS.
+- Run sample evaluation over NFS. This would take about ~3 minutes to complete.
 
 ```sh
 # Running on NFS SERVER VM.
-$ ./bm.sh eval/quick/server
+./bm.sh eval/quick/server
 ```
 
 ```sh
 # Running on NFS CLIENT VM.
-$ ./bm.sh eval/quick/client
+./bm.sh eval/quick/client
 ```
 
+### Viewing Results
+
+- Each unique run generates a unique ID number. The detailed results can be found in folder
+  `/root/results/<unique-id>`. Here is the meaning of different files found in the folder:
+  - `config`: Configuration used for this run.
+  - `result.dat`: Full output of the benchmark.
+  - `iostat.dat`: Per second iostat output during the run.
+  - `log`: Benchmark runner logs.
+  - `fc_info.dat`: Fast commit statistics.
+  - `info.dat`: JBD2 journal statistics. 
+
+- Summary in CSV format
+
+```sh
+# Running on NFS SERVER VM.
+./parse_results.py /root/results
+```
 ## Detailed Evaluation
 
 Following table describes the commands that should be run to reproduce the results
