@@ -13,9 +13,9 @@ PREFIX="eval"
 CLIENT_DIR="${PREFIX}/client"
 SERVER_DIR="${PREFIX}/server"
 DATA_DEV="/dev/nvme0n1p1"
-JOURNAL_DEV=( "none" )
+JOURNAL_DEV=( "/dev/nvme0n1p2" )
 SERVER_IP="10.132.15.204"
-NUM_WORKLOAD_THREADS=(40 0)
+NUM_WORKLOAD_THREADS=(5 10 20 40 0)
 
 FILESYSTEMS=("EXT4" "EXT4FC" "XFS")
 # WORKLOADS=("kernel-compile" "filebench-varmail" "filebench-varmail-split16" "filebench-webserver" "filebench-fileserver" "postmark")
