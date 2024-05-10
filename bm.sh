@@ -451,7 +451,7 @@ for file in $(ls $CONFIGS_DIR); do
     UNIQUE_ID=$(echo "$(date +%s)")
     mkdir -p ${OUTDIR}/$UNIQUE_ID
     echo "[$UNIQUE_ID]: Results sent to ${OUTDIR}/$UNIQUE_ID"
-    echo "[$UNIQUE_ID]:   FS=$FS, BENCMKARK=$BENCHMARK"
+    echo "[$UNIQUE_ID]:   UNIQUE_ID=$UNIQUE_ID, FS=$FS, BENCMKARK=$BENCHMARK"
     echo "[$UNIQUE_ID]:   Test started."
     run_bench > ${OUTDIR}/$UNIQUE_ID/log 2>&1
     echo "[$UNIQUE_ID]:   Test finished."
