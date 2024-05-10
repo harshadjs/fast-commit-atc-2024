@@ -449,9 +449,9 @@ for file in $(ls $CONFIGS_DIR); do
     MNT=/mnt
     source ~/fast-commit-override.sh
     UNIQUE_ID=$(echo "$(date +%s)")
-    echo "[$file]: Results sent to ${OUTDIR}/$UNIQUE_ID/log"
+    echo "[$UNIQUE_ID]: Results sent to ${OUTDIR}/$UNIQUE_ID"
     mkdir -p ${OUTDIR}/$UNIQUE_ID
-    echo -n "[$file]: Running Test..."
+    echo -n "[$UNIQUE_ID]: Running Test..."
     run_bench > ${OUTDIR}/$UNIQUE_ID/log 2>&1
     echo "\tFinished."
 done
