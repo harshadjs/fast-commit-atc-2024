@@ -7,7 +7,8 @@ kernel patches are being [actively reviewed](link) upstream, and I expect them t
 soon as well. These unmerged patches can be found
 [here](https://github.com/harshadjs/fc-perf-v2).
 
-NOTE:  ATC 2024 Artifact Evaluation can be found [here](https://github.com/harshadjs/fast-commit-atc-2024/blob/main/docs/artifact_eval.md).
+> [!NOTE]
+> ATC 2024 Artifact Evaluation can be found [here](https://github.com/harshadjs/fast-commit-atc-2024/blob/main/docs/artifact_eval.md).
 
 ## Benchmarking Setup
 
