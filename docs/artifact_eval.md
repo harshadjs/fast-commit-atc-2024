@@ -12,7 +12,7 @@ from a given experiment in the paper.
 | 13/14/15 (b) | ./bm.sh eval/13-b/server | ./bm.sh eval/13-b/client 10.128.15.220 |
 | 13/14/15 (c) | ./bm.sh eval/13-c/server | ./bm.sh eval/13-c/client 10.128.15.220 |
 | 16           | ./bm.sh eval/16          | N/A                                    |
-| 17           | ./bm.sh eval/17/server   | ./bm.sh eval/16/client 10.128.15.220   |
+| 17           | ./bm.sh eval/17/server   | ./bm.sh eval/17/client 10.128.15.220   |
 | 18/19        | ./bm.sh eval/13-c/server | ./bm.sh eval/13-c/client 10.128.15.220 |
 
 
