@@ -7,6 +7,8 @@ kernel patches are being [actively reviewed](link) upstream, and I expect them t
 soon as well. These unmerged patches can be found
 [here](https://github.com/harshadjs/fc-perf-v2).
 
+NOTE:  ATC 2024 Artifact Evaluation can be found [here](https://github.com/harshadjs/fast-commit-atc-2024/blob/main/docs/artifact_eval.md).
+
 ## Benchmarking Setup
 
 While we used Google Cloud Compute Engine (GCE) for all our benchmarking, these scripts can
@@ -82,7 +84,7 @@ directory with multiple files where each file defines a unique test.
 To run all the tests in the directory, run the following command:
 
 ```
-./run_benchmark.sh my-configs-dir/
+./bm.sh my-configs-dir/
 ```
 
 This command will run all the tests defined in folder `configs`.

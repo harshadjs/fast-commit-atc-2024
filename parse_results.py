@@ -119,7 +119,7 @@ if len(sys.argv) == 3:
 	filter = sys.argv[2]
 print("ID,FS,Benchmark,Threads,IOs,Journal IOs,KB,Journal KB,Flushes,Flush_wait,IOPS,BW")
 for path in os.listdir(sys.argv[1]):
-	full_path = os.getcwd() + "/" + sys.argv[1] + "/" + path
+	full_path = sys.argv[1] + "/" + path
 	if not os.path.isdir(full_path):
 		continue
 	parse_dir(full_path, filter)

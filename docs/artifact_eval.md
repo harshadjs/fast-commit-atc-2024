@@ -1,10 +1,63 @@
-# Artifact Evaluation
+# Artifact Evaluation for USENIX ATC 2024
 
 This page describes how artifacts mentioned in the paper can be reproduced. Please ensure
-that you have the access to virtual machine (credentials provided over private
-channel). Following table describes the commands that should be run to reproduce the results
-from a given experiment in the paper.
+that you have the access to virtual machine (credentials provided over artifact submission
+website).
 
+## Getting Started
+
+For the purpose of the evaluation, please use provided `NFS_SERVER_IP` and `NFS_CLIENT_IP`
+in the evaluation submission.
+
+- Login to the server VM. The password is provided in the submission instructions.
+
+```sh
+ssh eval@$NFS_SERVER_IP
+```
+
+- Login to the client VM. The password is provided in the submission instructions.
+
+```sh
+ssh eval@$NFS_SERVER_IP
+```
+
+- Switch to `root` user and cd to `/root/fast-commit-atc-2024` on both the VMs.
+
+```sh
+# Running on NFS SERVER VM.
+$ sudo su
+$ cd /root/fast-commit-atc-2024
+```
+
+```sh
+# Running on NFS CLIENT VM.
+$ sudo su
+$ cd /root/fast-commit-atc-2024
+```
+
+- Run sample evaluation on the server VM.
+
+```sh
+# Running on NFS SERVER VM.
+$ ./bm.sh eval/quick/local
+```
+
+- Run sample evaluation over NFS.
+
+```sh
+# Running on NFS SERVER VM.
+$ ./bm.sh eval/quick/server
+```
+
+```sh
+# Running on NFS CLIENT VM.
+$ ./bm.sh eval/quick/client
+```
+
+## Detailed Evaluation
+
+Following table describes the commands that should be run to reproduce the results
+from a given experiment in the paper.
 
 | Figure       | Server                   | Client                                 |
 |:-------------|:-------------------------|:---------------------------------------|
