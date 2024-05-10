@@ -5,10 +5,10 @@ function client() {
     rm -rf ~/results
 
     echo "Running NFS+LocalSSD"
-    ./run_benchmark.sh configs/nfs+localssd/client $1
+    ./bm.sh configs/nfs+localssd/client $1
 
     echo "Running NFS+LocalSSD"
-    ./run_benchmark.sh configs/nfs+pd/client $1
+    ./bm.sh configs/nfs+pd/client $1
 }
 
 function queue-depth() {
@@ -16,7 +16,7 @@ function queue-depth() {
 
     for q in ${QUEUE_DEPTHS[@]}; do
 	echo $q > /sys/block/sdb/queue/nr_requests 
-	./run_benchmark.sh configs/pd-queue-depth/server
+	./bm.sh configs/pd-queue-depth/server
 	mv ~/results ~/results-qd-$q
     done
 }
@@ -26,7 +26,7 @@ function local() {
 
     rm -rf ~/results
 
-    ./run_benchmark.sh configs/localssd/server/
+    ./bm.sh configs/localssd/server/
     mv ~/results/ ~/localssd-$ID
 
     echo "Results are in ~/localssd-$ID"
@@ -46,19 +46,19 @@ function server() {
     ifconfig
 
     echo "Running NFS+LocalSSD" 
-    ./run_benchmark.sh configs/nfs+localssd/server/
+    ./bm.sh configs/nfs+localssd/server/
     mv ~/results/ ~/full-$ID/nfs+localssd
 
     echo "Running NFS+PD" 
-    ./run_benchmark.sh configs/nfs+pd/server/
+    ./bm.sh configs/nfs+pd/server/
     mv ~/results/ ~/full-$ID/nfs+pd
 
     echo "Running LocalSSD" 
-    ./run_benchmark.sh configs/localssd/server/
+    ./bm.sh configs/localssd/server/
     mv ~/results/ ~/full-$ID/localssd
 
     echo "Running fsync_bm" 
-    ./run_benchmark.sh configs/fsync_bm/server/
+    ./bm.sh configs/fsync_bm/server/
     mv ~/results/ ~/full-$ID/fsync_bm
 
     echo "Results are in ~/full-$ID"
