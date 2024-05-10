@@ -52,7 +52,7 @@ cd /root/fast-commit-atc-2024
 
 ```sh
 # Running on NFS CLIENT VM.
-./bm.sh eval/quick/client
+./bm.sh eval/quick/client 10.128.15.220
 ```
 
 ### Viewing Results
