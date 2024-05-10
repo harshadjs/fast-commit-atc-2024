@@ -26,7 +26,7 @@ reproduced.
 | 18/19        | fsmark       | 13-c-fsmark     | True  |
 
 
-## How to generate benchmark key?
+## How to reproduce an experiment from the paper?
 
 1. Note down the figure number and banchmark name from the paper.
 2. Look up the corresponding key from the table above.
