@@ -3,7 +3,7 @@
 This repository contains benchmarking scripts that were used to evaluate fast commit
 performance for ATC 2024 paper. I have merged majority of the fast commit kernel code into
 the upstream Linux kernel. Kernel versions >= 5.10 support Fast Commits natively. Some
-kernel patches are being [actively reviewed](link) upstream, and I expect them to be merged
+kernel patches are being [actively reviewed](https://patchwork.ozlabs.org/project/linux-ext4/list/?series=407368) upstream, and I expect them to be merged
 soon as well. These unmerged patches can be found
 [here](https://github.com/harshadjs/fc-perf-v2).
 
